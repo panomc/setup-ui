@@ -1,0 +1,67 @@
+// Colors
+
+$body-bg: #F8F9FA;
+$primary: #1976d2;
+$secondary: #1565c0;
+$gray: #E6E9ED;
+$success: #66bb6a;
+$light: #eef4f9;
+$glass: rgba(0, 0, 0, .1);
+
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "light": $light,
+        "success": $success,
+        "gray": $gray,
+);
+
+// Settings
+
+$enable-shadows: true;
+$enable-rounded: true;
+
+// Fonts
+
+$lead-font-weight: normal;
+$font-family-sans-serif: 'Quicksand', sans-serif;
+$headings-font-family: 'Quicksand', sans-serif;
+
+// Headings
+
+$headings-font-weight: bolder;
+
+// Borders
+
+$border-radius: .5rem;
+$border-radius-lg: .5rem;
+$border-radius-sm: .5rem;
+
+// Buttons
+
+$btn-padding-x-lg: 1rem;
+$btn-padding-x: 1rem;
+$btn-padding-x-sm: 1rem;
+$btn-font-weight: 500;
+$btn-box-shadow: 0 5px 0 $glass;
+$btn-active-box-shadow: none;
+
+// Links
+
+$link-color: $primary;
+$link-hover-decoration: none;
+
+// Box Shadow
+
+$box-shadow: 0 5px 0 $glass;
+$box-shadow-sm: 0 3px 0 $glass;
+$box-shadow-lg: 0 10px 0 $glass;
+
+// Dropdowns
+
+$dropdown-box-shadow: 0 5px 0 $glass;
+
+// Navbar
+
+$navbar-padding-y: 2rem;
+$navbar-padding-x: 3rem;
