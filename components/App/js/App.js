@@ -1,14 +1,26 @@
-requirejs(["/components/Stage_1/js/Stage_1.js"], function () {
+function loadComponent(componentName, path) {
+    return new Promise(function (resolve, reject) {
+        requirejs([path], function () {
+            const component = Vue.component(componentName);
+
+            if (component) {
+                resolve(component);
+            } else {
+                reject();
+            }
+        });
+    });
+}
+
+requirejs(["/components/App/js/router.js"], function () {
     axios.get('/components/App/ui').then(function (response) {
         const app = new Vue({
             el: '#app',
             data: {
                 message: 'Hello Vue!'
             },
-            components: {
-                Stage_1,
-            },
-            template: response.data
+            template: response.data,
+            router
         });
     });
 });
