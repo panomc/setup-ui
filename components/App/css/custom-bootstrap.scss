@@ -5,15 +5,17 @@ $primary: #1976d2;
 $secondary: #1565c0;
 $gray: #E6E9ED;
 $success: #66bb6a;
-$light: #eef4f9;
+$light: #F5F7FA;
 $glass: rgba(0, 0, 0, .1);
+$white: #fff;
 
 $theme-colors: (
-        "primary": $primary,
-        "secondary": $secondary,
-        "light": $light,
-        "success": $success,
-        "gray": $gray,
+	"primary": $primary,
+	"secondary": $secondary,
+	"light": $light,
+	"success": $success,
+	"gray": $gray,
+	"white": $white,
 );
 
 // Settings
@@ -65,3 +67,8 @@ $dropdown-box-shadow: 0 5px 0 $glass;
 
 $navbar-padding-y: 2rem;
 $navbar-padding-x: 3rem;
+
+// Tabs
+
+$nav-tabs-border-width: 0;
+$nav-tabs-link-active-bg: $white;

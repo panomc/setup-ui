@@ -4,11 +4,6 @@
 
 // Main styles
 
-
-.fullheight {
-  min-height: 100vh;
-}
-
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -25,4 +20,21 @@
 ::-webkit-scrollbar-thumb {
   background: #1254a1;
   border-radius: 10px;
+}
+
+.setup {
+	min-width: 600px;
+	width: auto;
+	height: auto;
+}
+
+.setup-bg {
+	background: url("../img/logo-blue.svg");
+	background-position: right -16px bottom -32px;
+	background-repeat: no-repeat;
+	background-size: 128px;
+}
+
+.nav-tabs .nav-link.active {
+	border-bottom: 4px solid #1565c0;
 }
