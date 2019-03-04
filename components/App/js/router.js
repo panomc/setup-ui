@@ -18,6 +18,12 @@ const router = new VueRouter({
                 {
                     path: '',
                     component: function (resolve, reject) {
+                        loadComponent('Step_Beginning', '/components/Pages/Main/Steps/Step_Beginning/js/Step_Beginning.js').then(resolve, reject);
+                    }
+                },
+                {
+                    path: 'Step-1',
+                    component: function (resolve, reject) {
                         loadComponent('Step_1', '/components/Pages/Main/Steps/Step_1/js/Step_1.js').then(resolve, reject);
                     }
                 },
