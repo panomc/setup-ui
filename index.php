@@ -11,11 +11,11 @@
 <body>
 	<div id="app"></div>
 
-	<script src="/components/App/js/vue.<?= PANO_ENV ?>.js"></script>
-	<script src="/components/App/js/vue-router.min.js"></script>
-	<script src="/components/App/js/axios.min.js"></script>
-	<script src="/components/App/js/requirejs.min.js"></script>
-	<script src="/components/App/js/App.js"></script>
+    <script src="/assets/js/vue.<?= PANO_ENV ?>.js"></script>
+    <script src="/assets/js/vue-router.min.js"></script>
+    <script src="/assets/js/axios.min.js"></script>
+    <script src="/assets/js/requirejs.min.js"></script>
+    <script src="/components/App"></script>
 </body>
 
 </html>
