@@ -1,5 +1,11 @@
 {
   "message": {
     "hello": "hello world"
+  },
+  "Common": {
+    "Page": {
+      "title": "Pano | Minecraft Web Platform",
+      "description": "The Pano offers great systems for optimal presentation and management of your Minecraft game server."
+    }
   }
 }

@@ -30,6 +30,14 @@ requirejs(["/assets/js/router.js", "/assets/js/i18n.js", "/assets/js/storage.uti
                     loadLanguage = "en"
 
                 loadLanguageAsync(loadLanguage)
+            },
+            metaInfo() {
+                return {
+                    title: this.$t("Common.Page.title"),
+                    meta: [
+                        {name: 'description', content: this.$t("Common.Page.description")}
+                    ]
+                }
             }
         });
     });

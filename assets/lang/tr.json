@@ -1,5 +1,11 @@
 {
   "message": {
     "hello": "selam dünya"
+  },
+  "Common": {
+    "Page": {
+      "title": "Pano | Minecraft Web Platformu",
+      "description": "Pano, Minecraft oyun sunucunuzu en iyi şekilde sunmak ve yönetmek için harika sistemler sunar."
+    }
   }
 }
