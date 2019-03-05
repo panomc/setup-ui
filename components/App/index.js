@@ -12,15 +12,25 @@ function loadComponent(componentName, path) {
     });
 }
 
-requirejs(["/assets/js/router.js"], function () {
+requirejs(["/assets/js/router.js", "/assets/js/i18n.js", "/assets/js/storage.util.js"], function () {
     axios.get('/components/App/ui').then(function (response) {
         const app = new Vue({
             el: '#app',
-            data: {
-                message: 'Hello Vue!'
-            },
             template: response.data,
-            router
+            router,
+            i18n,
+            mounted() {
+                let loadLanguage;
+
+                if (LanguageUtil.isThereLanguage())
+                    loadLanguage = LanguageUtil.getLanguage()
+                else if (navigator.language.toUpperCase() === "tr".toUpperCase() || navigator.language.toUpperCase() === "tr-tr".toUpperCase())
+                    loadLanguage = "tr"
+                else
+                    loadLanguage = "en"
+
+                loadLanguageAsync(loadLanguage)
+            }
         });
     });
 });
