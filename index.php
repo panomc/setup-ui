@@ -11,6 +11,10 @@
 <body>
 	<div id="app"></div>
 
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/vue.<?= PANO_ENV ?>.js"></script>
     <script src="/assets/js/vue-router.min.js"></script>
     <script src="/assets/js/vue-i18n.min.js"></script>
