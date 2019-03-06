@@ -16,7 +16,7 @@
     <script src="/assets/js/vue-i18n.min.js"></script>
     <script src="/assets/js/vue-meta.min.js"></script>
     <script src="/assets/js/axios.min.js"></script>
-    <script src="/assets/js/requirejs.min.js"></script>
+		<script src="/assets/js/requirejs.min.js"></script>
     <script src="/components/App"></script>
 </body>
 
