@@ -4,19 +4,35 @@
 			<p>Platformunuzu yönetmek için bir hesaba ihtiyacınız var. Pano hesabınızı kullanabilir veya yerel bir hesap oluşturabilirsiniz.</p>
 				<h5 class="text-muted">Yönetici Hesabı Bilgileri</h5>
 				<div class="pt-3 pb-3">
-					<nav class="nav nav-tabs">
-						<a class="nav-link active" href="#">
+
+					<nav class="nav nav-tabs" id="accountTabs" role="tablist">
+						<a class="nav-link active" id="pano-account-tab" data-toggle="tab" href="#pano-account" role="tab" aria-controls="pano-account" aria-selected="true">
 							<img alt="Pano Hesabı" src="/assets/img/logo-blue.svg" width="12">
-							Pano Hesabı
+							Pano Hesabı (Önerilir)
 						</a>
-						<a class="nav-link" href="#">
+						<a class="nav-link" id="offline-account-tab" data-toggle="tab" href="#offline-account" role="tab" aria-controls="offline-account" aria-selected="false">
 							<i class="fa fa-user-plus" aria-hidden="true"></i>
 							Yerel Hesap Kullan
 						</a>
 					</nav>
+
 				</div>
-				<div class="pt-4 pb-4">
-					<a class="btn btn-link btn-lg text-muted" href="#" target="_blank"><i class="fas fa-arrow-right" aria-hidden="true"></i> Panomc.com'da Oturum Aç</a>
+				<div class="pt-2 pb-2">
+					
+					<div class="tab-content" id="accountTabs">
+						
+  					<div class="tab-pane fade show active" id="pano-account" role="tabpanel" aria-labelledby="pano-account-tab">
+							<a class="btn btn-link btn-lg" href="#" target="_blank"><i class="fas fa-arrow-right" aria-hidden="true"></i> Panomc.com'da Oturum Aç</a>
+						</div>
+						
+  					<div class="tab-pane fade show" id="offline-account" role="tabpanel" aria-labelledby="offline-account-tab">
+							
+							<div class="alert alert-warning"><i class="fa fa-exclamation mr-2" aria-hidden="true"></i>Yerel Hesap kullandığınızda çevrimdışı çalışabilirsiniz fakat platformunuz için Eklenti ve Tema satın alamazsınız.</div>
+
+							offline
+						</div>
+					</div>
+
 				</div>
 		<!--<div>
 					<form>

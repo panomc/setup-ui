@@ -1,5 +1,5 @@
 @import "custom-bootstrap";
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "fonts";
 
 // Main styles
@@ -37,4 +37,8 @@
 
 .nav-tabs .nav-link.active {
   border-bottom: 4px solid #1565c0;
+}
+
+.nav-tabs .nav-link:not(.active):hover {
+  border-bottom: 4px solid #E6E9ED;
 }
