@@ -13,19 +13,13 @@
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
+  box-shadow: inset 0 0 5px $gray;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1254a1;
+  background: $primary;
   border-radius: 10px;
-}
-
-.setup {
-  min-width: 600px;
-  width: auto;
-  height: auto;
 }
 
 .setup-bg {
@@ -36,9 +30,9 @@
 }
 
 .nav-tabs .nav-link.active {
-  border-bottom: 4px solid #1565c0;
+  border-bottom: 4px solid $primary;
 }
 
 .nav-tabs .nav-link:not(.active):hover {
-  border-bottom: 4px solid #E6E9ED;
+  border-bottom: 4px solid $gray;
 }
