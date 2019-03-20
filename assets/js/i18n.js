@@ -11,6 +11,7 @@ function setI18nLanguage(lang) {
 function loadLanguageAsync(lang) {
     if (i18n.locale !== lang) {
         if (!loadedLanguages.includes(lang)) {
+            store.state.langLoading = true
 
             return new Promise(function (resolve) {
                 axios.get(`/assets/lang/${lang}.json`).then(function (response) {
@@ -18,6 +19,8 @@ function loadLanguageAsync(lang) {
                     loadedLanguages.push(lang)
 
                     const result = setI18nLanguage(lang)
+
+                    store.state.langLoading = false
 
                     resolve(
                         result

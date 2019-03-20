@@ -43,7 +43,12 @@ requirejs(["/assets/js/router.js", "/assets/js/i18n.js", "/assets/js/vuex-store.
             methods: {
                 setLang: function (lang) {
                     this.$store.dispatch('setLang', lang)
-                },
+                }
+            },
+            computed: {
+                langLoading() {
+                    return this.$store.state.langLoading
+                }
             }
         });
     });
