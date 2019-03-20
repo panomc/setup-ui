@@ -32,6 +32,9 @@ Vue.component('Step_1', new Promise(function (resolve) {
                 mounted() {
                     if (this.$store.state.stepState !== 1)
                         this.$router.push('/')
+                    else {
+                        this.checkForm()
+                    }
                 },
                 computed: {
                     websiteName: {
