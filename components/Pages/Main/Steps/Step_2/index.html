@@ -1,82 +1,80 @@
-<div class="card shadow bg-white setup-bg m-0 p-0">
-	<div class="col-lg-6 col-10 m-auto pt-5 pb-5 text-left">
-		<h3 class="text-muted pb-3">Adım - 2/3</h3>
-		<p>Pano, farklı Veri Tabanı türlerinde ve farklı olanaklarda çalışaiblir.</p>
-		<h5 class="text-muted">Veri Tabanı Bilgileri</h5>
-		<div class="pt-3 pb-3">
+<div>
+	<h3 class="text-muted pb-3">Adım - 2/3</h3>
+	<p>Pano, farklı Veri Tabanı türlerinde ve farklı olanaklarda çalışaiblir.</p>
+	<h5 class="text-muted">Veri Tabanı Bilgileri</h5>
+	<div class="pt-3 pb-3">
 
-			<nav class="nav nav-tabs flex-nowrap text-lg-left text-center" id="databaseTabs" role="tablist">
-				<a class="nav-link active" id="mysql-tab" data-toggle="tab" href="#mysql" role="tab" aria-controls="mysql"
-				 aria-selected="true">
-					<img alt="MySQL" class="rounded" src="/assets/img/mysql.png" width="24">
-					MySQL
-				</a>
-				<a class="nav-link" id="sqlite-tab" data-toggle="tab" href="#sqlite" role="tab" aria-controls="sqlite"
-				 aria-selected="false">
-					<img alt="SQLite" class="rounded" src="/assets/img/sqlite.png" width="24">
-					SQLite
-				</a>
-				<a class="nav-link" id="mariadb-tab" data-toggle="tab" href="#mariadb" role="tab" aria-controls="mariadb"
-				 aria-selected="false">
-					<img alt="MariaDB" class="rounded" src="/assets/img/mariadb.png" width="24">
-					MariaDB
-				</a>
-			</nav>
+		<nav class="nav nav-tabs flex-nowrap text-lg-left text-center" id="databaseTabs" role="tablist">
+			<a class="nav-link active" id="mysql-tab" data-toggle="tab" href="#mysql" role="tab" aria-controls="mysql"
+				aria-selected="true">
+				<img alt="MySQL" class="rounded" src="/assets/img/mysql.png" width="24">
+				MySQL
+			</a>
+			<a class="nav-link" id="sqlite-tab" data-toggle="tab" href="#sqlite" role="tab" aria-controls="sqlite"
+				aria-selected="false">
+				<img alt="SQLite" class="rounded" src="/assets/img/sqlite.png" width="24">
+				SQLite
+			</a>
+			<a class="nav-link" id="mariadb-tab" data-toggle="tab" href="#mariadb" role="tab" aria-controls="mariadb"
+				aria-selected="false">
+				<img alt="MariaDB" class="rounded" src="/assets/img/mariadb.png" width="24">
+				MariaDB
+			</a>
+		</nav>
+
+	</div>
+
+	<div class="tab-content" id="databaseTabs">
+
+		<div class="tab-pane fade show active" id="mysql" role="tabpanel" aria-labelledby="mysql-tab">
+			<div class="alert alert-primary"><i class="fa fa-info mr-2" aria-hidden="true"></i> Lorem ipsum dolor sit amet
+				consectetur adipisicing elit. Vitae iste quam, a nesciunt porro perspiciatis.</div>
+			<form>
+				<div class="form-group">
+					<label for="test2">Veri Tabanı Adresi:</label>
+					<input class="form-control" id="test2" placeholder="localhost:80" type="text">
+				</div>
+				<div class="form-group">
+					<label for="test3">Veri Tabanı Kullanıcı Adı:</label>
+					<input class="form-control" id="test3" placeholder="admin" type="text">
+				</div>
+				<div class="form-group">
+					<label for="test4">Veri Tabanı Şifresi:</label>
+					<input class="form-control" id="test4" placeholder="****************" type="password">
+				</div>
+			</form>
+		</div>
+
+		<div class="tab-pane fade show" id="sqlite" role="tabpanel" aria-labelledby="sqlite-tab">
+			sqlite
+		</div>
+
+		<div class="tab-pane fade show" id="mariadb" role="tabpanel" aria-labelledby="mariadb-tab">
+
+			<form>
+				<div class="form-group">
+					<label for="test2">Veri Tabanı Adresi:</label>
+					<input class="form-control" id="test2" placeholder="localhost:80" type="text">
+				</div>
+				<div class="form-group">
+					<label for="test3">Veri Tabanı Kullanıcı Adı:</label>
+					<input class="form-control" id="test3" placeholder="admin" type="text">
+				</div>
+				<div class="form-group">
+					<label for="test4">Veri Tabanı Şifresi:</label>
+					<input class="form-control" id="test4" placeholder="****************" type="password">
+				</div>
+			</form>
 
 		</div>
 
-		<div class="tab-content" id="databaseTabs">
+	</div>
 
-			<div class="tab-pane fade show active" id="mysql" role="tabpanel" aria-labelledby="mysql-tab">
-				<div class="alert alert-primary"><i class="fa fa-info mr-2" aria-hidden="true"></i> Lorem ipsum dolor sit amet
-					consectetur adipisicing elit. Vitae iste quam, a nesciunt porro perspiciatis.</div>
-				<form>
-					<div class="form-group">
-						<label for="test2">Veri Tabanı Adresi:</label>
-						<input class="form-control" id="test2" placeholder="localhost:80" type="text">
-					</div>
-					<div class="form-group">
-						<label for="test3">Veri Tabanı Kullanıcı Adı:</label>
-						<input class="form-control" id="test3" placeholder="admin" type="text">
-					</div>
-					<div class="form-group">
-						<label for="test4">Veri Tabanı Şifresi:</label>
-						<input class="form-control" id="test4" placeholder="****************" type="password">
-					</div>
-				</form>
-			</div>
-
-			<div class="tab-pane fade show" id="sqlite" role="tabpanel" aria-labelledby="sqlite-tab">
-				sqlite
-			</div>
-
-			<div class="tab-pane fade show" id="mariadb" role="tabpanel" aria-labelledby="mariadb-tab">
-
-				<form>
-					<div class="form-group">
-						<label for="test2">Veri Tabanı Adresi:</label>
-						<input class="form-control" id="test2" placeholder="localhost:80" type="text">
-					</div>
-					<div class="form-group">
-						<label for="test3">Veri Tabanı Kullanıcı Adı:</label>
-						<input class="form-control" id="test3" placeholder="admin" type="text">
-					</div>
-					<div class="form-group">
-						<label for="test4">Veri Tabanı Şifresi:</label>
-						<input class="form-control" id="test4" placeholder="****************" type="password">
-					</div>
-				</form>
-
-			</div>
-
-		</div>
-
-		<div class="pt-3 d-block m-auto">
-			<button aria-disabled="true" class="btn btn-primary" disabled type="button"><i class="fas fa-arrow-alt-circle-right"></i>
-				Devam Et
-			</button>
-			<button class="btn btn-outline-primary" type="button"><i class="fas fa-arrow-alt-circle-left"></i> Geri
-			</button>
-		</div>
+	<div class="pt-3 d-block m-auto">
+		<button aria-disabled="true" class="btn btn-primary" disabled type="button"><i class="fas fa-arrow-alt-circle-right"></i>
+			Devam Et
+		</button>
+		<button class="btn btn-outline-primary" type="button"><i class="fas fa-arrow-alt-circle-left"></i> Geri
+		</button>
 	</div>
 </div>
