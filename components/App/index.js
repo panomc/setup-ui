@@ -12,7 +12,7 @@ function loadComponent(componentName, path) {
     });
 }
 
-requirejs(["/assets/js/router.js", "/assets/js/i18n.js", "/assets/js/vuex-store.js", "/assets/js/storage.util.js"], function () {
+requirejs(["/assets/js/router.js", "/assets/js/storage.util.js", "/assets/js/vuex-store.js", "/assets/js/i18n.js"], function () {
     axios.get('/components/App/ui').then(function (response) {
         const app = new Vue({
             el: '#app',
@@ -20,6 +20,9 @@ requirejs(["/assets/js/router.js", "/assets/js/i18n.js", "/assets/js/vuex-store.
             router,
             i18n,
             store,
+            data: {
+                routePageLoading: true
+            },
             mounted() {
                 let loadLanguage;
 
@@ -31,6 +34,16 @@ requirejs(["/assets/js/router.js", "/assets/js/i18n.js", "/assets/js/vuex-store.
                     loadLanguage = "en"
 
                 loadLanguageAsync(loadLanguage)
+
+                this.$router.beforeEach((to, from, next) => {
+                    this.routePageLoading = true
+
+                    next()
+                })
+
+                this.$router.afterEach((to, from, next) => {
+                    this.routePageLoading = false
+                })
             },
             metaInfo() {
                 return {
