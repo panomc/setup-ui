@@ -2,7 +2,12 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        langLoading: false
+        langLoading: false,
+        stepState: 0,
+        data: {
+            websiteName: "",
+            websiteDescription: ""
+        }
     },
 
     mutations: {

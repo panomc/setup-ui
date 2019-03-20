@@ -12,7 +12,9 @@ function loadComponent(componentName, path) {
     });
 }
 
-requirejs(["/assets/js/router.js", "/assets/js/storage.util.js", "/assets/js/vuex-store.js", "/assets/js/i18n.js"], function () {
+requirejs(["/assets/js/router.js", "/assets/js/api.util.js", "/assets/js/storage.util.js", "/assets/js/vuex-store.js", "/assets/js/i18n.js"], function () {
+    ApiUtil.init()
+
     axios.get('/components/App/ui').then(function (response) {
         const app = new Vue({
             el: '#app',

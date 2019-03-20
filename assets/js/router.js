@@ -43,3 +43,15 @@ const router = new VueRouter({
         }
     ]
 });
+
+router.beforeEach((to, from, next) => {
+    const check = function () {
+        if (store.state.status !== "" && store.state.status !== "CHECKING") {
+            next();
+        } else {
+            setTimeout(check, 100); // check again in a second
+        }
+    }
+
+    check();
+})
