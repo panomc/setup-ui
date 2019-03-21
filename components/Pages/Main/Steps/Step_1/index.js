@@ -17,9 +17,6 @@ Vue.component('Step_1', new Promise(function (resolve) {
                     },
 
                     back() {
-                        this.websiteName = ""
-                        this.websiteDescription = ""
-
                         this.$store.state.stepState = 0
 
                         this.$router.push('/')

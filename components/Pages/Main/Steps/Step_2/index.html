@@ -1,34 +1,25 @@
 <div>
     <h3 class="text-muted pb-3">Adım - 2/3</h3>
-    <p>Pano, farklı Veri Tabanı türlerinde ve farklı olanaklarda çalışaiblir.</p>
-    <h5 class="text-muted">Veri Tabanı Bilgileri</h5>
-    <div class="pt-3 pb-3">
 
+    <p>Pano, farklı Veri Tabanı türlerinde ve farklı olanaklarda çalışaiblir.</p>
+
+    <h5 class="text-muted">Veri Tabanı Bilgileri</h5>
+
+    <div class="pt-3 pb-3">
         <nav class="nav nav-tabs flex-nowrap text-lg-left text-center" id="databaseTabs" role="tablist">
             <a aria-controls="mysql" aria-selected="true" class="nav-link active" data-toggle="tab" href="#mysql"
                id="mysql-tab"
                role="tab">
                 <img alt="MySQL" class="rounded" src="/assets/img/mysql.png" width="24">
                 MySQL
-            </a>
-            <a aria-controls="sqlite" aria-selected="false" class="nav-link" data-toggle="tab" href="#sqlite"
-               id="sqlite-tab"
-               role="tab">
-                <img alt="SQLite" class="rounded" src="/assets/img/sqlite.png" width="24">
-                SQLite
-            </a>
-            <a aria-controls="mariadb" aria-selected="false" class="nav-link" data-toggle="tab" href="#mariadb"
-               id="mariadb-tab"
-               role="tab">
+                /
                 <img alt="MariaDB" class="rounded" src="/assets/img/mariadb.png" width="24">
                 MariaDB
             </a>
         </nav>
-
     </div>
 
-    <div class="tab-content" id="databaseTabs">
-
+    <div class="tab-content">
         <div aria-labelledby="mysql-tab" class="tab-pane fade show active" id="mysql" role="tabpanel">
             <div class="alert alert-primary"><i aria-hidden="true" class="fa fa-info mr-2"></i> Lorem ipsum dolor sit
                 amet
@@ -36,16 +27,25 @@
             </div>
             <form>
                 <div class="form-group">
-                    <label for="test2">Veri Tabanı Adresi:</label>
-                    <input class="form-control" id="test2" placeholder="localhost:80" type="text">
+                    <label for="databaseAddress">Veri Tabanı Adresi:</label>
+                    <input class="form-control" id="databaseAddress" placeholder="localhost:80" type="text"
+                           v-model="host">
+                </div>
+
+                <div class="form-group">
+                    <label for="databaseName">Veri Tabanı Adı:</label>
+                    <input class="form-control" id="databaseName" placeholder="pano" type="text" v-model="dbName">
                 </div>
                 <div class="form-group">
-                    <label for="test3">Veri Tabanı Kullanıcı Adı:</label>
-                    <input class="form-control" id="test3" placeholder="admin" type="text">
+                    <label for="databaseUserName">Veri Tabanı Kullanıcı Adı:</label>
+                    <input class="form-control" id="databaseUserName" placeholder="admin" type="text"
+                           v-model="username">
                 </div>
+
                 <div class="form-group">
-                    <label for="test4">Veri Tabanı Şifresi:</label>
-                    <input class="form-control" id="test4" placeholder="****************" type="password">
+                    <label for="databaseUserPassword">Veri Tabanı Şifresi:</label>
+                    <input class="form-control" id="databaseUserPassword" placeholder="****************" type="password"
+                           v-model="password">
                 </div>
             </form>
         </div>
@@ -53,26 +53,6 @@
         <div aria-labelledby="sqlite-tab" class="tab-pane fade show" id="sqlite" role="tabpanel">
             sqlite
         </div>
-
-        <div aria-labelledby="mariadb-tab" class="tab-pane fade show" id="mariadb" role="tabpanel">
-
-            <form>
-                <div class="form-group">
-                    <label for="test2">Veri Tabanı Adresi:</label>
-                    <input class="form-control" id="test2" placeholder="localhost:80" type="text">
-                </div>
-                <div class="form-group">
-                    <label for="test3">Veri Tabanı Kullanıcı Adı:</label>
-                    <input class="form-control" id="test3" placeholder="admin" type="text">
-                </div>
-                <div class="form-group">
-                    <label for="test4">Veri Tabanı Şifresi:</label>
-                    <input class="form-control" id="test4" placeholder="****************" type="password">
-                </div>
-            </form>
-
-        </div>
-
     </div>
 
     <div class="pt-3 d-block m-auto">

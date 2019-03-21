@@ -6,7 +6,13 @@ const store = new Vuex.Store({
         stepState: 0,
         data: {
             websiteName: "",
-            websiteDescription: ""
+            websiteDescription: "",
+            db: {
+                host: "",
+                dbName: "",
+                username: "",
+                password: ""
+            }
         }
     },
 
