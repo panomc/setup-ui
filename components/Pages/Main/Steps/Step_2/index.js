@@ -6,14 +6,14 @@ Vue.component('Step_2', new Promise(function (resolve) {
                 template: response.data,
                 data() {
                     return {
-                        disableNextButton: true
+                        disableNextButton: true,
+                        errorCode: "NOTHING",
+                        loading: false
                     }
                 },
                 methods: {
                     next() {
-                        this.$store.state.stepState = 3
-
-                        this.$router.push('/step-3')
+                        this.checkDB()
                     },
 
                     back() {
@@ -22,8 +22,78 @@ Vue.component('Step_2', new Promise(function (resolve) {
                         this.$router.push('/step-1')
                     },
 
+                    passStep() {
+                        this.$store.state.stepState = 3
+
+                        this.$router.push('/step-3')
+                    },
+
+                    checkDB() {
+                        this.loading = true
+
+                        const {
+                            host,
+                            dbName,
+                            username,
+                            password
+                        } = this
+
+                        ApiUtil.post("/api/setup/dbConnectionTest", {
+                            host,
+                            dbName,
+                            username,
+                            password
+                        })
+                            .then(response => {
+
+                                console.log(response.data)
+                                console.log(response.data.result)
+                                if (response.data.result === "ok") {
+                                    console.log("gelmiş olmalı")
+                                    this.passStep()
+
+                                } else if (response.data.result === "error") {
+                                    const errorCode = response.data.error
+
+                                    this.showError(errorCode)
+                                } else
+                                    this.showError(NETWORK_ERROR)
+                            })
+                            .catch(error => {
+                                if (error.response) {
+                                    // The request was made and the server responded with a status code
+                                    // that falls out of the range of 2xx
+                                    console.log(error.response.data);
+                                    console.log(error.response.status);
+                                    console.log(error.response.headers);
+                                } else if (error.request) {
+                                    // The request was made but no response was received
+                                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                                    // http.ClientRequest in node.js
+                                    console.log(error.request);
+                                } else {
+                                    // Something happened in setting up the request that triggered an Error
+                                    console.log('Error', error.message);
+                                }
+                                console.log(error.config);
+                                this.showError(NETWORK_ERROR)
+                            })
+                    },
+
                     checkForm() {
                         this.disableNextButton = !(this.host !== "" && this.dbName !== "" && this.username !== "");
+                    },
+
+                    showError: function (error) {
+                        this.loading = false
+
+                        this.errorCode = error;
+
+                        $("#databaseError").fadeIn();
+                    },
+
+                    dismissErrorBox() {
+                        $("#databaseError").fadeOut("slow");
                     }
                 },
                 mounted() {

@@ -5,6 +5,18 @@
 
     <h5 class="text-muted">Veri Tabanı Bilgileri</h5>
 
+    <div class="alert alert-dismissible text-danger text-left font-weight-bold p-2"
+         id="databaseError" style="display: none;">
+        {{ $t("Common.Error") }}: {{ $t("Errors." + errorCode) }}
+        <button
+                :aria-label="$t('Register.close')"
+                @click="dismissErrorBox"
+                class="close p-1"
+                type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
     <div class="pt-3 pb-3">
         <nav class="nav nav-tabs flex-nowrap text-lg-left text-center" id="databaseTabs" role="tablist">
             <a aria-controls="mysql" aria-selected="true" class="nav-link active" data-toggle="tab" href="#mysql"
@@ -56,10 +68,18 @@
     </div>
 
     <div class="pt-3 d-block m-auto">
-        <button :aria-disabled="disableNextButton" :disabled="disableNextButton" @click="next" class="btn btn-primary"
+        <button :aria-disabled="disableNextButton || loading" :disabled="disableNextButton || loading" @click="next"
+                class="btn btn-primary"
                 type="button">
-            <i class="fas fa-arrow-alt-circle-right"></i>
-            Devam Et
+            <span aria-hidden="true"
+                  class="spinner-border spinner-border-sm text-light mr-4 ml-4"
+                  role="status"
+                  v-if="loading"></span>
+            <a v-if="!loading">
+                <i class="fas fa-arrow-alt-circle-right"></i>
+                Devam Et
+            </a>
+
         </button>
         <button @click="back" class="btn btn-outline-primary" type="button">
             <i class="fas fa-arrow-alt-circle-left"></i> Geri
