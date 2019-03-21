@@ -45,11 +45,7 @@ Vue.component('Step_2', new Promise(function (resolve) {
                             password
                         })
                             .then(response => {
-
-                                console.log(response.data)
-                                console.log(response.data.result)
                                 if (response.data.result === "ok") {
-                                    console.log("gelmiş olmalı")
                                     this.passStep()
 
                                 } else if (response.data.result === "error") {
