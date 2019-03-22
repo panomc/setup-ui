@@ -4,8 +4,9 @@
         Ayrıntılı özelleştirmeleri daha sonra Panel ayarlarından yapabileceksiniz.</p>
 
     <h5 class="text-muted">Website Adı ve Açıklaması</h5>
-    <div class="pt-3">
-        <form>
+
+    <form @submit.prevent="submit">
+        <div class="pt-3">
             <div class="form-group">
                 <label for="test2">Website Adı:</label>
                 <input class="form-control" id="test2" placeholder="Panocraft" type="text" v-model="websiteName">
@@ -15,17 +16,18 @@
                 <textarea class="form-control" id="test3" placeholder="Benim Minecraft sunucu websitem." rows="2"
                           style="min-height: 60px;" v-model="websiteDescription"></textarea>
             </div>
-        </form>
-    </div>
+        </div>
 
-    <div class="pt-3 d-block m-auto">
-        <button :aria-disabled="disableNextButton" :disabled="disableNextButton" @click="next" class="btn btn-primary"
-                type="button">
-            <i class="fas fa-arrow-alt-circle-right"></i>
-            Devam Et
-        </button>
-        <button @click="back" class="btn btn-outline-primary" type="button">
-            <i class="fas fa-arrow-alt-circle-left"></i> Geri
-        </button>
-    </div>
+        <div class="pt-3 d-block m-auto">
+            <button :aria-disabled="disableNextButton" :disabled="disableNextButton"
+                    class="btn btn-primary"
+                    type="submit">
+                <i class="fas fa-arrow-alt-circle-right"></i>
+                Devam Et
+            </button>
+            <button @click="back" class="btn btn-outline-primary" type="button">
+                <i class="fas fa-arrow-alt-circle-left"></i> Geri
+            </button>
+        </div>
+    </form>
 </div>

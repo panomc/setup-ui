@@ -10,7 +10,7 @@ Vue.component('Step_1', new Promise(function (resolve) {
                     }
                 },
                 methods: {
-                    next() {
+                    submit() {
                         this.$store.state.stepState = 2
 
                         this.$router.push('/step-2')

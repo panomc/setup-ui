@@ -31,13 +31,14 @@
         </nav>
     </div>
 
-    <div class="tab-content">
-        <div aria-labelledby="mysql-tab" class="tab-pane fade show active" id="mysql" role="tabpanel">
-            <div class="alert alert-primary"><i aria-hidden="true" class="fa fa-info mr-2"></i> Lorem ipsum dolor sit
-                amet
-                consectetur adipisicing elit. Vitae iste quam, a nesciunt porro perspiciatis.
-            </div>
-            <form>
+    <form @submit.prevent="submit">
+        <div class="tab-content">
+            <div aria-labelledby="mysql-tab" class="tab-pane fade show active" id="mysql" role="tabpanel">
+                <div class="alert alert-primary"><i aria-hidden="true" class="fa fa-info mr-2"></i> Lorem ipsum dolor
+                    sit
+                    amet
+                    consectetur adipisicing elit. Vitae iste quam, a nesciunt porro perspiciatis.
+                </div>
                 <div class="form-group">
                     <label for="databaseAddress">Veri Tabanı Adresi:</label>
                     <input class="form-control" id="databaseAddress" placeholder="localhost:80" type="text"
@@ -59,30 +60,30 @@
                     <input class="form-control" id="databaseUserPassword" placeholder="****************" type="password"
                            v-model="password">
                 </div>
-            </form>
+            </div>
+
+            <div aria-labelledby="sqlite-tab" class="tab-pane fade show" id="sqlite" role="tabpanel">
+                sqlite
+            </div>
         </div>
 
-        <div aria-labelledby="sqlite-tab" class="tab-pane fade show" id="sqlite" role="tabpanel">
-            sqlite
-        </div>
-    </div>
-
-    <div class="pt-3 d-block m-auto">
-        <button :aria-disabled="disableNextButton || loading" :disabled="disableNextButton || loading" @click="next"
-                class="btn btn-primary"
-                type="button">
+        <div class="pt-3 d-block m-auto">
+            <button :aria-disabled="disableNextButton || loading" :disabled="disableNextButton || loading"
+                    class="btn btn-primary"
+                    type="submit">
             <span aria-hidden="true"
                   class="spinner-border spinner-border-sm text-light mr-4 ml-4"
                   role="status"
                   v-if="loading"></span>
-            <a v-if="!loading">
-                <i class="fas fa-arrow-alt-circle-right"></i>
-                Devam Et
-            </a>
+                <a v-if="!loading">
+                    <i class="fas fa-arrow-alt-circle-right"></i>
+                    Devam Et
+                </a>
 
-        </button>
-        <button @click="back" class="btn btn-outline-primary" type="button">
-            <i class="fas fa-arrow-alt-circle-left"></i> Geri
-        </button>
-    </div>
+            </button>
+            <button @click="back" class="btn btn-outline-primary" type="button">
+                <i class="fas fa-arrow-alt-circle-left"></i> Geri
+            </button>
+        </div>
+    </form>
 </div>

@@ -12,7 +12,7 @@ Vue.component('Step_2', new Promise(function (resolve) {
                     }
                 },
                 methods: {
-                    next() {
+                    submit() {
                         this.checkDB()
                     },
 
