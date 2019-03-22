@@ -16,8 +16,9 @@
 					<div aria-labelledby="selectLanguage" class="dropdown-menu dropdown-menu-right">
 						<h6 class="dropdown-header">Dil Seçimi</h6>
 						<div class="dropdown-divider"></div>
-						<a :key="index" @click='setLang(language.symbol)' class="dropdown-item" href="#" v-for="(language, index) in $t('Common.Language.languages')"
-						 v-text="language.name"></a>
+						<a :key="index" @click='setLang(language.symbol)' class="dropdown-item" style="cursor: pointer;"
+						   v-for="(language, index) in $t('Common.Language.languages')"
+						   v-text="language.name"></a>
 					</div>
 				</div>
 
