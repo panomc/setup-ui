@@ -74,8 +74,8 @@ const store = new Vuex.Store({
                 })
         },
 
-        backStep(context) {
-            ApiUtil.post("/api/setup/step/backStep", {})
+        backStep(context, data) {
+            ApiUtil.post("/api/setup/step/backStep", data)
                 .then(() => {
                     context.dispatch("checkCurrentStep")
                 })

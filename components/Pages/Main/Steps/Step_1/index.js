@@ -28,7 +28,9 @@ Vue.component('Step_1', new Promise(function (resolve) {
                         if (!this.nextButtonLoading) {
                             this.backButtonLoading = true
 
-                            this.$store.dispatch("backStep")
+                            this.$store.dispatch("backStep", {
+                                step: 1
+                            })
                         }
                     },
 
