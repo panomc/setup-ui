@@ -2,13 +2,6 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '*',
-            name: 'Error404',
-            component: function (resolve, reject) {
-                loadComponent('Error404', '/components/Pages/Error404').then(resolve, reject);
-            }
-        },
-        {
             path: '/',
             name: 'Main',
             component: function (resolve, reject) {
@@ -44,14 +37,21 @@ const router = new VueRouter({
     ]
 });
 
+
 router.beforeEach((to, from, next) => {
     const check = function () {
-        if (store.state.status !== "" && store.state.status !== "CHECKING") {
-            next();
+        if (store.state.stepChecked !== false) {
+            store.state.routePageLoading = true
+
+            next()
         } else {
             setTimeout(check, 100); // check again in a second
         }
     }
 
-    check();
+    check()
+})
+
+router.afterEach((to, from) => {
+    store.state.routePageLoading = false
 })

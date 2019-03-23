@@ -8,24 +8,38 @@ Vue.component('Step_2', new Promise(function (resolve) {
                     return {
                         disableNextButton: true,
                         errorCode: "NOTHING",
-                        loading: false
+                        loading: false,
+                        nextButtonLoading: false,
+                        backButtonLoading: false
                     }
                 },
                 methods: {
                     submit() {
-                        this.checkDB()
-                    },
-
-                    back() {
-                        this.$store.state.stepState = 1
-
-                        this.$router.push('/step-1')
+                        if (!this.nextButtonLoading) {
+                            this.checkDB()
+                        }
                     },
 
                     passStep() {
-                        this.$store.state.stepState = 3
+                        if (!this.backButtonLoading) {
+                            this.nextButtonLoading = true
 
-                        this.$router.push('/step-3')
+                            this.$store.dispatch("nextStep", {
+                                step: 2,
+                                host: this.host,
+                                dbName: this.dbName,
+                                username: this.username,
+                                password: this.password
+                            })
+                        }
+                    },
+
+                    back() {
+                        if (!this.nextButtonLoading) {
+                            this.backButtonLoading = true
+
+                            this.$store.dispatch("backStep")
+                        }
                     },
 
                     checkDB() {
@@ -92,7 +106,7 @@ Vue.component('Step_2', new Promise(function (resolve) {
                         $("#databaseError").fadeOut("slow");
                     }
                 },
-                mounted() {
+                beforeMount() {
                     if (this.$store.state.stepState !== 2) {
                         this.$router.push('/')
                     } else {

@@ -6,27 +6,37 @@ Vue.component('Step_1', new Promise(function (resolve) {
                 template: response.data,
                 data() {
                     return {
-                        disableNextButton: true
+                        disableNextButton: true,
+                        nextButtonLoading: false,
+                        backButtonLoading: false
                     }
                 },
                 methods: {
                     submit() {
-                        this.$store.state.stepState = 2
+                        if (!this.backButtonLoading) {
+                            this.nextButtonLoading = true
 
-                        this.$router.push('/step-2')
+                            this.$store.dispatch("nextStep", {
+                                step: 1,
+                                websiteName: this.websiteName,
+                                websiteDescription: this.websiteDescription
+                            })
+                        }
                     },
 
                     back() {
-                        this.$store.state.stepState = 0
+                        if (!this.nextButtonLoading) {
+                            this.backButtonLoading = true
 
-                        this.$router.push('/')
+                            this.$store.dispatch("backStep")
+                        }
                     },
 
                     checkForm() {
                         this.disableNextButton = !(this.websiteName !== "" && this.websiteDescription !== "");
                     }
                 },
-                mounted() {
+                beforeMount() {
                     if (this.$store.state.stepState !== 1)
                         this.$router.push('/')
                     else {

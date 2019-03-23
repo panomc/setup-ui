@@ -10,8 +10,15 @@
         <li>Yönetici Hesabı Bilgileri</li>
     </ul>
     <div class="pt-3 d-block m-auto">
-        <button @click="start" class="btn btn-primary" type="button">
-            <i class="fas fa-arrow-alt-circle-right"></i> Başlayalım
+        <button :aria-disabled="nextButtonLoading"
+                :disabled="nextButtonLoading" @click="start" class="btn btn-primary" type="button">
+            <span aria-hidden="true"
+                  class="spinner-border spinner-border-sm text-light mr-4 ml-4"
+                  role="status"
+                  v-if="nextButtonLoading"></span>
+            <a v-if="!nextButtonLoading">
+                <i class="fas fa-arrow-alt-circle-right"></i> Başlayalım
+            </a>
         </button>
     </div>
 </div>

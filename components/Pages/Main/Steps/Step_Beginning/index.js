@@ -4,11 +4,18 @@ Vue.component('Step_Beginning', new Promise(function (resolve) {
         axios.get('/components/Pages/Main/Steps/Step_Beginning/ui').then(function (response) {
             resolve({
                 template: response.data,
+                data() {
+                    return {
+                        nextButtonLoading: false
+                    }
+                },
                 methods: {
                     start() {
-                        this.$store.state.stepState = 1
+                        this.nextButtonLoading = true
 
-                        this.$router.push('/step-1')
+                        this.$store.dispatch("nextStep", {
+                            step: 0
+                        })
                     }
                 }
             });

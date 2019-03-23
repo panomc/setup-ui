@@ -68,21 +68,31 @@
         </div>
 
         <div class="pt-3 d-block m-auto">
-            <button :aria-disabled="disableNextButton || loading" :disabled="disableNextButton || loading"
+            <button :aria-disabled="disableNextButton || loading || nextButtonLoading"
+                    :disabled="disableNextButton || loading || nextButtonLoading"
                     class="btn btn-primary"
                     type="submit">
             <span aria-hidden="true"
                   class="spinner-border spinner-border-sm text-light mr-4 ml-4"
                   role="status"
-                  v-if="loading"></span>
-                <a v-if="!loading">
+                  v-if="loading || nextButtonLoading"></span>
+                <a v-if="!loading || nextButtonLoading">
                     <i class="fas fa-arrow-alt-circle-right"></i>
                     Devam Et
                 </a>
 
             </button>
-            <button @click="back" class="btn btn-outline-primary" type="button">
-                <i class="fas fa-arrow-alt-circle-left"></i> Geri
+            <button :aria-disabled="backButtonLoading || backButtonLoading"
+                    :disabled="backButtonLoading || backButtonLoading" @click="back"
+                    class="btn btn-outline-primary"
+                    type="button">
+                <span aria-hidden="true"
+                      class="spinner-border spinner-border-sm text-light mr-4 ml-4"
+                      role="status"
+                      v-if="backButtonLoading"></span>
+                <a v-if="!backButtonLoading">
+                    <i class="fas fa-arrow-alt-circle-left"></i> Geri
+                </a>
             </button>
         </div>
     </form>

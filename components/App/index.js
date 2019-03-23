@@ -22,10 +22,29 @@ requirejs(["/assets/js/router.js", "/assets/js/api.util.js", "/assets/js/storage
             router,
             i18n,
             store,
-            data: {
-                routePageLoading: true
+            metaInfo() {
+                return {
+                    title: this.$t("Common.Page.title"),
+                    meta: [
+                        {name: 'description', content: this.$t("Common.Page.description")}
+                    ]
+                }
             },
-            mounted() {
+            methods: {
+                setLang(lang) {
+                    this.$store.dispatch('setLang', lang)
+                }
+            },
+            computed: {
+                langLoading() {
+                    return this.$store.state.langLoading
+                },
+
+                routePageLoading() {
+                    return this.$store.state.routePageLoading
+                }
+            },
+            beforeMount() {
                 let loadLanguage;
 
                 if (LanguageUtil.isThereLanguage())
@@ -37,33 +56,7 @@ requirejs(["/assets/js/router.js", "/assets/js/api.util.js", "/assets/js/storage
 
                 loadLanguageAsync(loadLanguage)
 
-                this.$router.beforeEach((to, from, next) => {
-                    this.routePageLoading = true
-
-                    next()
-                })
-
-                this.$router.afterEach((to, from, next) => {
-                    this.routePageLoading = false
-                })
-            },
-            metaInfo() {
-                return {
-                    title: this.$t("Common.Page.title"),
-                    meta: [
-                        {name: 'description', content: this.$t("Common.Page.description")}
-                    ]
-                }
-            },
-            methods: {
-                setLang: function (lang) {
-                    this.$store.dispatch('setLang', lang)
-                }
-            },
-            computed: {
-                langLoading() {
-                    return this.$store.state.langLoading
-                }
+                this.$store.dispatch("checkCurrentStep")
             }
         });
     });
