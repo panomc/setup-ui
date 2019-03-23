@@ -11,10 +11,27 @@ Vue.component('Step_3', new Promise(function (resolve) {
                     }
                 },
                 methods: {
+                    popupCenter(url, title, w, h) {
+                        // Fixes dual-screen position                         Most browsers      Firefox
+                        const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
+                        const dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
+
+                        const width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+                        const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+                        const systemZoom = width / window.screen.availWidth;
+                        const left = (width - w) / 2 / systemZoom + dualScreenLeft;
+                        const top = (height - h) / 2 / systemZoom + dualScreenTop;
+                        const newWindow = window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, resizable=no, copyhistory=no, scrollbars=yes, width=' + w / systemZoom + ', height=' + h / systemZoom + ', top=' + top + ', left=' + left);
+
+                        // Puts focus on the newWindow
+                        if (window.focus) newWindow.focus();
+                    },
+
                     connectPanoAccount() {
                         const vue = this
 
-                        window.open("http://localhost:8080/login-platform", "", "toolbar=no,scrollbars=false,width=500,height=500,top=300,left=100");
+                        this.popupCenter("http://localhost:8080/login-platform", "Pano Giriş", "550", "620")
 
                         // Create IE + others compatible event handler
                         const eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
