@@ -6,7 +6,7 @@
 	 rel="stylesheet">
 
 	<div class="container">
-		<div class="row justify-content-center align-items-center vh-100">
+		<div class="row justify-content-center align-items-center vh-100 my-3">
 			<div class="col">
 				<div class="dropdown mb-1" v-show="!langLoading">
 					<button aria-expanded="false" aria-haspopup="true" class="btn btn-sm text-muted dropdown-toggle d-block ml-auto"
@@ -16,7 +16,7 @@
 					<div aria-labelledby="selectLanguage" class="dropdown-menu dropdown-menu-right">
 						<h6 class="dropdown-header">Dil Seçimi</h6>
 						<div class="dropdown-divider"></div>
-						<a :key="index" @click='setLang(language.symbol)' class="dropdown-item" style="cursor: pointer;"
+						<a href="javascript:void(0);" :key="index" @click='setLang(language.symbol)' class="dropdown-item"
 						   v-for="(language, index) in $t('Common.Language.languages')"
 						   v-text="language.name"></a>
 					</div>
@@ -27,12 +27,12 @@
 				</div>
 
 				<div class="card bg-white shadow setup-bg m-0 p-0">
-					<div class="col-lg-6 col-10 m-auto pt-5 pb-5">
-                        <router-view v-show="!routePageLoading"></router-view>
+					<div class="col-lg-6 col-10 m-auto py-5">
+							<router-view v-show="!routePageLoading"></router-view>
 
-                        <div class="text-center" v-show="routePageLoading">
-                            <div class="spinner-border text-primary" role="status"></div>
-                        </div>
+							<div class="text-center" v-show="routePageLoading">
+									<div class="spinner-border text-primary" role="status"></div>
+							</div>
 					</div>
 				</div>
 			</div>
