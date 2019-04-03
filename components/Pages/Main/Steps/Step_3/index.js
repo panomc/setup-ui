@@ -7,7 +7,8 @@ Vue.component('Step_3', new Promise(function (resolve) {
                 data() {
                     return {
                         justVariable: 54,
-                        backButtonLoading: false
+                        backButtonLoading: false,
+                        connectPanoAccountButtonStatus: ""
                     }
                 },
                 methods: {
@@ -26,12 +27,17 @@ Vue.component('Step_3', new Promise(function (resolve) {
 
                         // Puts focus on the newWindow
                         if (window.focus) newWindow.focus();
+
+                        return newWindow;
+                    },
+
+                    showError: function (error) {
                     },
 
                     connectPanoAccount() {
-                        const vue = this
+                        const vue = this;
 
-                        this.popupCenter("http://localhost:8080/login-platform", "Pano Giriş", "550", "620")
+                        const newWindow = this.popupCenter("http://localhost:8080/login-platform", "Pano Giriş", "550", "620")
 
                         // Create IE + others compatible event handler
                         const eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
@@ -39,12 +45,27 @@ Vue.component('Step_3', new Promise(function (resolve) {
                         const messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
 
                         // Listen to message from child window
-                        eventer(messageEvent, function (e) {
-                            console.log('origin: ', e.origin)
-
+                        eventer(messageEvent, function (event) {
                             // Check if origin is proper
-                            // if( e.origin !== 'http://localhost' ){ return }
-                            console.log('parent received message!: ', e.data);
+                            if (event.origin !== 'http://localhost:8080' && event.data.type !== "PanoMC") {
+                                return
+                            }
+
+                            if (event.data.command === "getPlatformData")
+                                newWindow.postMessage({
+                                    type: "PanoPlatform",
+                                    command: "returnPlatformData",
+                                    platform: {
+                                        websiteName: vue.websiteName,
+                                        websiteDescription: vue.websiteDescription,
+                                        host: vue.ip
+                                    }
+                                }, "http://localhost:8080");
+                            else if (event.data.command === "returnConnectedData") {
+                                newWindow.close()
+
+                                vue.connectPanoAccountButtonStatus = "LOADING"
+                            }
                         }, false);
                     },
                     finish() {
@@ -52,7 +73,7 @@ Vue.component('Step_3', new Promise(function (resolve) {
 
                     back() {
                         if (!this.nextButtonLoading) {
-                            this.backButtonLoading = true
+                            this.backButtonLoading = true;
 
                             this.$store.dispatch("backStep", {
                                 step: 3
@@ -62,7 +83,20 @@ Vue.component('Step_3', new Promise(function (resolve) {
                 },
                 beforeMount() {
                     if (this.$store.state.stepState !== 3)
-                        this.$router.push('/')
+                        this.$router.push('/');
+                },
+                computed: {
+                    websiteName() {
+                        return this.$store.state.data.websiteName
+                    },
+
+                    websiteDescription() {
+                        return this.$store.state.data.websiteDescription
+                    },
+
+                    ip() {
+                        return this.$store.state.data.ip
+                    }
                 }
             });
         });

@@ -14,7 +14,9 @@ const store = new Vuex.Store({
                 dbName: "",
                 username: "",
                 password: ""
-            }
+            },
+            host: "",
+            ip: ""
         }
     },
 
@@ -44,6 +46,11 @@ const store = new Vuex.Store({
 
                 router.push('/step-2')
             } else if (step === 3) {
+                state.data.websiteName = response.data.websiteName
+                state.data.websiteDescription = response.data.websiteDescription
+
+                state.data.host = response.data.host
+                state.data.ip = response.data.ip
                 // TODO
 
                 router.push('/step-3')

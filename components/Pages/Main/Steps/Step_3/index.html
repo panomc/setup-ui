@@ -28,9 +28,18 @@
         <div class="tab-content" id="accountTabs">
 
             <div aria-labelledby="pano-account-tab" class="tab-pane fade show active" id="pano-account" role="tabpanel">
-                <button @click="connectPanoAccount" class="btn text-primary btn-lg" target="_blank"><i
-                        aria-hidden="true" class="fas fa-arrow-right"></i>
-                    Panomc.com'da Oturum Aç
+                <button :aria-disabled="connectPanoAccountButtonStatus === 'LOADING'"
+                        :disabled="connectPanoAccountButtonStatus === 'LOADING'" @click="connectPanoAccount"
+                        class="btn text-primary btn-lg"
+                        target="_blank">
+                    <span aria-hidden="true"
+                          class="spinner-border spinner-border text-primary mx-4"
+                          role="status"
+                          v-if="connectPanoAccountButtonStatus === 'LOADING'"></span>
+                    <span v-if="connectPanoAccountButtonStatus !== 'LOADING'">
+                        <i aria-hidden="true" class="fas fa-arrow-right"></i>
+                        Panomc.com'da Oturum Aç
+                    </span>
                 </button>
             </div>
 
