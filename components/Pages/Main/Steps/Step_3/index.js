@@ -8,7 +8,8 @@ Vue.component('Step_3', new Promise(function (resolve) {
                     return {
                         justVariable: 54,
                         backButtonLoading: false,
-                        connectPanoAccountButtonStatus: ""
+                        connectPanoAccountButtonStatus: "",
+                        savingPanoAccount: false
                     }
                 },
                 methods: {
@@ -31,7 +32,102 @@ Vue.component('Step_3', new Promise(function (resolve) {
                         return newWindow;
                     },
 
-                    showError: function (error) {
+                    showError(error) {
+                    },
+
+                    sendPlatformData(window) {
+                        window.postMessage({
+                            type: "PanoPlatform",
+                            command: "returnPlatformData",
+                            platform: {
+                                websiteName: this.websiteName,
+                                websiteDescription: this.websiteDescription,
+                                host: this.ip
+                            }
+                        }, "http://localhost:8080");
+                    },
+
+                    savePanoAccount() {
+                        ApiUtil.post("/api/setup/panoAccount/save", {
+                            username: this.panoAccountUsername,
+                            email: this.panoAccountEmail,
+                            access_token: this.panoAccountAccessToken
+                        })
+                            .then(response => {
+                                if (response.data.result === "ok") {
+                                    this.savingPanoAccount = false
+
+                                } else if (response.data.result === "error") {
+                                    const errorCode = response.data.error
+
+                                    this.showError(errorCode)
+                                } else
+                                    this.showError(NETWORK_ERROR)
+                            })
+                            .catch(error => {
+                                if (error.response) {
+                                    // The request was made and the server responded with a status code
+                                    // that falls out of the range of 2xx
+                                    console.log(error.response.data);
+                                    console.log(error.response.status);
+                                    console.log(error.response.headers);
+                                } else if (error.request) {
+                                    // The request was made but no response was received
+                                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                                    // http.ClientRequest in node.js
+                                    console.log(error.request);
+                                } else {
+                                    // Something happened in setting up the request that triggered an Error
+                                    console.log('Error', error.message);
+                                }
+                                console.log(error.config);
+                                this.showError(NETWORK_ERROR)
+                            })
+
+                    },
+
+                    disconnectPanoAccount() {
+                        this.savingPanoAccount = true;
+                        this.connectPanoAccountButtonStatus = "LOADING"
+                        console.log("hi")
+
+                        ApiUtil.post("/api/setup/panoAccount/disconnect", {})
+                            .then(response => {
+                                this.savingPanoAccount = false;
+
+                                if (response.data.result === "ok") {
+                                    this.connectPanoAccountButtonStatus = "";
+
+                                    this.$store.state.data.panoAccount.access_token = "";
+                                    this.$store.state.data.panoAccount.username = "";
+                                    this.$store.state.data.panoAccount.email = "";
+
+                                } else if (response.data.result === "error") {
+                                    const errorCode = response.data.error;
+
+                                    this.showError(errorCode)
+                                } else
+                                    this.showError(NETWORK_ERROR)
+                            })
+                            .catch(error => {
+                                if (error.response) {
+                                    // The request was made and the server responded with a status code
+                                    // that falls out of the range of 2xx
+                                    console.log(error.response.data);
+                                    console.log(error.response.status);
+                                    console.log(error.response.headers);
+                                } else if (error.request) {
+                                    // The request was made but no response was received
+                                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                                    // http.ClientRequest in node.js
+                                    console.log(error.request);
+                                } else {
+                                    // Something happened in setting up the request that triggered an Error
+                                    console.log('Error', error.message);
+                                }
+                                console.log(error.config);
+                                this.showError(NETWORK_ERROR)
+                            })
                     },
 
                     connectPanoAccount() {
@@ -52,19 +148,19 @@ Vue.component('Step_3', new Promise(function (resolve) {
                             }
 
                             if (event.data.command === "getPlatformData")
-                                newWindow.postMessage({
-                                    type: "PanoPlatform",
-                                    command: "returnPlatformData",
-                                    platform: {
-                                        websiteName: vue.websiteName,
-                                        websiteDescription: vue.websiteDescription,
-                                        host: vue.ip
-                                    }
-                                }, "http://localhost:8080");
+                                vue.sendPlatformData(newWindow)
                             else if (event.data.command === "returnConnectedData") {
                                 newWindow.close()
 
                                 vue.connectPanoAccountButtonStatus = "LOADING"
+
+                                vue.savingPanoAccount = true
+
+                                vue.$store.state.data.panoAccount.access_token = event.data.token;
+                                vue.$store.state.data.panoAccount.username = event.data.account.username;
+                                vue.$store.state.data.panoAccount.email = event.data.account.email;
+
+                                vue.savePanoAccount()
                             }
                         }, false);
                     },
@@ -96,6 +192,18 @@ Vue.component('Step_3', new Promise(function (resolve) {
 
                     ip() {
                         return this.$store.state.data.ip
+                    },
+
+                    panoAccountUsername() {
+                        return this.$store.state.data.panoAccount.username
+                    },
+
+                    panoAccountEmail() {
+                        return this.$store.state.data.panoAccount.email
+                    },
+
+                    panoAccountAccessToken() {
+                        return this.$store.state.data.panoAccount.access_token
                     }
                 }
             });

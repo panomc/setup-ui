@@ -16,7 +16,12 @@ const store = new Vuex.Store({
                 password: ""
             },
             host: "",
-            ip: ""
+            ip: "",
+            panoAccount: {
+                username: "",
+                email: "",
+                access_token: ""
+            }
         }
     },
 
@@ -51,7 +56,10 @@ const store = new Vuex.Store({
 
                 state.data.host = response.data.host
                 state.data.ip = response.data.ip
-                // TODO
+
+                state.data.panoAccount.username = response.data.panoAccount.username
+                state.data.panoAccount.email = response.data.panoAccount.email
+                state.data.panoAccount.access_token = response.data.panoAccount.access_token
 
                 router.push('/step-3')
             } else {
