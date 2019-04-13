@@ -89,7 +89,6 @@ Vue.component('Step_3', new Promise(function (resolve) {
                     disconnectPanoAccount() {
                         this.savingPanoAccount = true;
                         this.connectPanoAccountButtonStatus = "LOADING"
-                        console.log("hi")
 
                         ApiUtil.post("/api/setup/panoAccount/disconnect", {})
                             .then(response => {
@@ -160,6 +159,12 @@ Vue.component('Step_3', new Promise(function (resolve) {
                                 vue.$store.state.data.panoAccount.username = event.data.account.username;
                                 vue.$store.state.data.panoAccount.email = event.data.account.email;
 
+                                if (vue.$store.state.data.account.username === "")
+                                    vue.$store.state.data.account.username = event.data.account.username;
+
+                                if (vue.$store.state.data.account.email === "")
+                                    vue.$store.state.data.account.email = event.data.account.email;
+
                                 vue.savePanoAccount()
                             }
                         }, false);
@@ -175,6 +180,10 @@ Vue.component('Step_3', new Promise(function (resolve) {
                                 step: 3
                             })
                         }
+                    },
+
+                    checkForm() {
+
                     }
                 },
                 beforeMount() {
@@ -204,6 +213,39 @@ Vue.component('Step_3', new Promise(function (resolve) {
 
                     panoAccountAccessToken() {
                         return this.$store.state.data.panoAccount.access_token
+                    },
+
+                    username: {
+                        get() {
+                            return this.$store.state.data.account.username
+                        },
+                        set(value) {
+                            this.$store.state.data.account.username = value
+
+                            this.checkForm()
+                        }
+                    },
+
+                    email: {
+                        get() {
+                            return this.$store.state.data.account.email
+                        },
+                        set(value) {
+                            this.$store.state.data.account.email = value
+
+                            this.checkForm()
+                        }
+                    },
+
+                    password: {
+                        get() {
+                            return this.$store.state.data.account.password
+                        },
+                        set(value) {
+                            this.$store.state.data.account.password = value
+
+                            this.checkForm()
+                        }
                     }
                 }
             });

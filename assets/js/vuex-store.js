@@ -21,6 +21,11 @@ const store = new Vuex.Store({
                 username: "",
                 email: "",
                 access_token: ""
+            },
+            account: {
+                username: "",
+                email: "",
+                password: ""
             }
         }
     },

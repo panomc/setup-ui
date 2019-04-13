@@ -35,15 +35,15 @@
         <form class="pt-3">
             <div class="form-group">
                 <label for="admin-username">Minecraft Kullanıcı Adı:</label>
-                <input class="form-control" id="admin-username" type="email">
+                <input class="form-control" id="admin-username" type="email" v-model="username">
             </div>
             <div class="form-group">
                 <label for="admin-email">E-Posta:</label>
-                <input class="form-control" id="admin-email" type="email">
+                <input class="form-control" id="admin-email" type="email" v-model="email">
             </div>
             <div class="form-group">
                 <label for="admin-password">Şifre:</label>
-                <input class="form-control" id="admin-password" type="password">
+                <input class="form-control" id="admin-password" type="password" v-model="password">
                 <small>Minimum: 6 karakter.</small>
             </div>
         </form>
