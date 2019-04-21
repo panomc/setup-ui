@@ -12,7 +12,7 @@
 
         <button :aria-disabled="connectPanoAccountButtonStatus === 'LOADING'"
                 :disabled="connectPanoAccountButtonStatus === 'LOADING'" @click="connectPanoAccount"
-                class="btn text-primary btn-lg"
+                class="btn text-primary"
                 target="_blank" v-if="panoAccountAccessToken === '' || savingPanoAccount">
             <span aria-hidden="true"
                   class="spinner-border spinner-border text-primary mx-4"
@@ -28,9 +28,15 @@
 
         <div class="alert alert-success" v-if="panoAccountAccessToken !== '' && !savingPanoAccount">
             <h5><i aria-hidden="true" class="fa fa-check mr-2"></i> Başarılı!</h5>
+            <hr>
             <strong>@{{ panoAccountUsername }}</strong> hesabı başarıyla platforma bağlandı.
-            <a @click="disconnectPanoAccount" href="javascript:void(0);">Bağlantıyı Kes</a>
-        </div>
+            <br>
+            <br>
+            <a class="alert-link text-danger"
+                @click="disconnectPanoAccount"
+                href="javascript:void(0);">Bağlantıyı Kes
+            </a>
+        </div>       
 
         <div class="alert alert-dismissible text-danger text-left font-weight-bold p-2"
              id="finishError" style="display: none;">
@@ -65,9 +71,9 @@
     <div class="pt-3 d-block m-auto">
         <button :aria-disabled="disableFinishButton || finishButtonLoading"
                 :disabled="disableFinishButton || finishButtonLoading"
-                @click="finish" class="btn btn-success" type="button">
+                @click="finish" class="btn btn-success text-white" type="button">
             <span aria-hidden="true"
-                  class="spinner-border spinner-border-sm text-primary mx-4"
+                  class="spinner-border spinner-border-sm text-light mx-4"
                   role="status"
                   v-if="finishButtonLoading">
             </span>
