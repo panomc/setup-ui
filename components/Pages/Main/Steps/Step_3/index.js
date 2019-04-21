@@ -9,7 +9,9 @@ Vue.component('Step_3', new Promise(function (resolve) {
                         justVariable: 54,
                         backButtonLoading: false,
                         connectPanoAccountButtonStatus: "",
-                        savingPanoAccount: false
+                        savingPanoAccount: false,
+                        disableFinishButton: true,
+                        finishButtonLoading: false
                     }
                 },
                 methods: {
@@ -165,6 +167,8 @@ Vue.component('Step_3', new Promise(function (resolve) {
                                 if (vue.$store.state.data.account.email === "")
                                     vue.$store.state.data.account.email = event.data.account.email;
 
+                                vue.checkForm()
+
                                 vue.savePanoAccount()
                             }
                         }, false);
@@ -183,7 +187,7 @@ Vue.component('Step_3', new Promise(function (resolve) {
                     },
 
                     checkForm() {
-
+                        this.disableFinishButton = !(this.username !== "" && this.email !== "" && this.password !== "");
                     }
                 },
                 beforeMount() {

@@ -51,11 +51,13 @@
     </div>
 
     <div class="pt-3 d-block m-auto">
-        <button aria-disabled="true" class="btn btn-success" disabled type="button"><i class="fas fa-check"></i>
-            Tammala
+        <button :aria-disabled="disableFinishButton || finishButtonLoading"
+                :disabled="disableFinishButton || finishButtonLoading"
+                class="btn btn-success" type="button"><i class="fas fa-check"></i>
+            Tamamla
         </button>
-        <button :aria-disabled="backButtonLoading || backButtonLoading"
-                :disabled="backButtonLoading || backButtonLoading" @click="back"
+        <button :aria-disabled="backButtonLoading"
+                :disabled="backButtonLoading" @click="back"
                 class="btn btn-outline-primary"
                 type="button">
             <span aria-hidden="true"
