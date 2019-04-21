@@ -11,7 +11,8 @@ Vue.component('Step_3', new Promise(function (resolve) {
                         connectPanoAccountButtonStatus: "",
                         savingPanoAccount: false,
                         disableFinishButton: true,
-                        finishButtonLoading: false
+                        finishButtonLoading: false,
+                        errorCode: ""
                     }
                 },
                 methods: {
@@ -35,6 +36,11 @@ Vue.component('Step_3', new Promise(function (resolve) {
                     },
 
                     showError(error) {
+                        this.finishButtonLoading = false
+
+                        this.errorCode = error;
+
+                        $("#finishError").fadeIn();
                     },
 
                     sendPlatformData(window) {
@@ -173,7 +179,51 @@ Vue.component('Step_3', new Promise(function (resolve) {
                             }
                         }, false);
                     },
+
                     finish() {
+                        this.finishButtonLoading = true
+
+                        const {
+                            username,
+                            email,
+                            password
+                        } = this
+
+                        ApiUtil.post("/api/setup/finish", {
+                            username,
+                            email,
+                            password
+                        })
+                            .then(response => {
+                                if (response.data.result === "ok") {
+                                    alert("done pnpppppp!!!!")
+
+                                } else if (response.data.result === "error") {
+                                    const errorCode = response.data.error
+
+                                    this.showError(errorCode)
+                                } else
+                                    this.showError(NETWORK_ERROR)
+                            })
+                            .catch(error => {
+                                if (error.response) {
+                                    // The request was made and the server responded with a status code
+                                    // that falls out of the range of 2xx
+                                    console.log(error.response.data);
+                                    console.log(error.response.status);
+                                    console.log(error.response.headers);
+                                } else if (error.request) {
+                                    // The request was made but no response was received
+                                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                                    // http.ClientRequest in node.js
+                                    console.log(error.request);
+                                } else {
+                                    // Something happened in setting up the request that triggered an Error
+                                    console.log('Error', error.message);
+                                }
+                                console.log(error.config);
+                                this.showError(NETWORK_ERROR)
+                            })
                     },
 
                     back() {
@@ -188,6 +238,10 @@ Vue.component('Step_3', new Promise(function (resolve) {
 
                     checkForm() {
                         this.disableFinishButton = !(this.username !== "" && this.email !== "" && this.password !== "");
+                    },
+
+                    dismissErrorBox() {
+                        $("#finishError").fadeOut("slow");
                     }
                 },
                 beforeMount() {

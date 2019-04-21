@@ -32,6 +32,18 @@
             <a @click="disconnectPanoAccount" href="javascript:void(0);">Bağlantıyı Kes</a>
         </div>
 
+        <div class="alert alert-dismissible text-danger text-left font-weight-bold p-2"
+             id="finishError" style="display: none;">
+            {{ $t("Common.Error") }}: {{ $t("Errors." + errorCode) }}
+            <button
+                    :aria-label="$t('Finish.close')"
+                    @click="dismissErrorBox"
+                    class="close p-1"
+                    type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
         <form class="pt-3">
             <div class="form-group">
                 <label for="admin-username">Minecraft Kullanıcı Adı:</label>
@@ -53,8 +65,15 @@
     <div class="pt-3 d-block m-auto">
         <button :aria-disabled="disableFinishButton || finishButtonLoading"
                 :disabled="disableFinishButton || finishButtonLoading"
-                class="btn btn-success" type="button"><i class="fas fa-check"></i>
-            Tamamla
+                @click="finish" class="btn btn-success" type="button">
+            <span aria-hidden="true"
+                  class="spinner-border spinner-border-sm text-primary mx-4"
+                  role="status"
+                  v-if="finishButtonLoading">
+            </span>
+            <span v-if="!finishButtonLoading">
+                <i class="fas fa-check"></i> Tamamla
+            </span>
         </button>
         <button :aria-disabled="backButtonLoading"
                 :disabled="backButtonLoading" @click="back"
