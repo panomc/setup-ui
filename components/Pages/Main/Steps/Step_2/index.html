@@ -60,6 +60,12 @@
                     <input class="form-control" id="databaseUserPassword" placeholder="****************" type="password"
                            v-model="password">
                 </div>
+
+                <div class="form-group">
+                    <label for="databaseUserPassword">Veri Tabanı Tablo Öneki:</label>
+                    <input class="form-control" id="databaseTablePrefix" placeholder="pano_" type="text"
+                           v-model="prefix">
+                </div>
             </div>
 
             <div aria-labelledby="sqlite-tab" class="tab-pane fade show" id="sqlite" role="tabpanel">

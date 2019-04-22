@@ -29,7 +29,8 @@ Vue.component('Step_2', new Promise(function (resolve) {
                                 host: this.host,
                                 dbName: this.dbName,
                                 username: this.username,
-                                password: this.password
+                                password: this.password,
+                                prefix: this.prefix
                             })
                         }
                     },
@@ -155,6 +156,17 @@ Vue.component('Step_2', new Promise(function (resolve) {
                         },
                         set(value) {
                             this.$store.state.data.db.password = value
+
+                            this.checkForm()
+                        }
+                    },
+
+                    prefix: {
+                        get() {
+                            return this.$store.state.data.db.prefix
+                        },
+                        set(value) {
+                            this.$store.state.data.db.prefix = value
 
                             this.checkForm()
                         }

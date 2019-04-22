@@ -13,7 +13,8 @@ const store = new Vuex.Store({
                 host: "",
                 dbName: "",
                 username: "",
-                password: ""
+                password: "",
+                prefix: "pano_"
             },
             host: "",
             ip: "",
@@ -53,6 +54,7 @@ const store = new Vuex.Store({
                 state.data.db.dbName = response.data.db.dbName
                 state.data.db.username = response.data.db.username
                 state.data.db.password = response.data.db.password
+                state.data.db.prefix = response.data.db.prefix
 
                 router.push('/step-2')
             } else if (step === 3) {
