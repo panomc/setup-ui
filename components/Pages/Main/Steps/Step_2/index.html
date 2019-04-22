@@ -72,16 +72,16 @@
                     :disabled="disableNextButton || loading || nextButtonLoading"
                     class="btn btn-primary"
                     type="submit">
-            <span aria-hidden="true"
-                  class="spinner-border spinner-border-sm text-light mx-4"
-                  role="status"
-                  v-if="loading || nextButtonLoading"></span>
-                <a v-if="!loading || !nextButtonLoading">
+                <span aria-hidden="true"
+                      class="spinner-border spinner-border-sm text-light mx-4"
+                      role="status"
+                      v-if="loading || nextButtonLoading"></span>
+                <a v-if="!loading && !nextButtonLoading">
                     <i class="fas fa-arrow-alt-circle-right"></i>
                     Devam Et
                 </a>
-
             </button>
+
             <button :aria-disabled="backButtonLoading"
                     :disabled="backButtonLoading" @click="back"
                     class="btn btn-outline-primary"
