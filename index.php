@@ -23,5 +23,12 @@
 <script src="/assets/js/axios.min.js"></script>
 <script src="/assets/js/requirejs.min.js"></script>
 <script src="/components/App"></script>
+
+<?php if (PANO_ENV === 'dev') { ?>
+    <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+            ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+<?php } ?>
 </body>
 </html>
