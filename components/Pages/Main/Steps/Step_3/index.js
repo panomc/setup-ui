@@ -196,7 +196,7 @@ Vue.component('Step_3', new Promise(function (resolve) {
                         })
                             .then(response => {
                                 if (response.data.result === "ok") {
-                                    alert("done pnpppppp!!!!")
+                                    window.location.assign("/panel")
 
                                 } else if (response.data.result === "error") {
                                     const errorCode = response.data.error
