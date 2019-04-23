@@ -202,8 +202,10 @@ Vue.component('Step_3', new Promise(function (resolve) {
                                     const errorCode = response.data.error
 
                                     this.showError(errorCode)
-                                } else
+                                } else {
                                     this.showError(NETWORK_ERROR)
+                                    console.log(response)
+                                }
                             })
                             .catch(error => {
                                 if (error.response) {
