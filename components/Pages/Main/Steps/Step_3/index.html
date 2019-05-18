@@ -17,17 +17,17 @@
             <button :aria-disabled="connectPanoAccountButtonStatus === 'LOADING'"
                     :disabled="connectPanoAccountButtonStatus === 'LOADING'" @click="connectPanoAccount"
                     class="btn text-primary"
-                    target="_blank" v-if="panoAccountAccessToken === '' || savingPanoAccount">
-            <span aria-hidden="true"
-                  class="spinner-border spinner-border text-primary mx-4"
-                  role="status"
-                  v-if="connectPanoAccountButtonStatus === 'LOADING'"></span>
+                    target="_blank" type="button" v-if="panoAccountAccessToken === '' || savingPanoAccount">
+                <span aria-hidden="true"
+                      class="spinner-border spinner-border text-primary mx-4"
+                      role="status"
+                      v-if="connectPanoAccountButtonStatus === 'LOADING'"></span>
 
                 <span v-if="connectPanoAccountButtonStatus !== 'LOADING'">
-                  <i aria-hidden="true" class="fas fa-arrow-right"></i>
+                      <i aria-hidden="true" class="fas fa-arrow-right"></i>
 
-                  Pano Hesabımı Platforma Bağla (Önerilir)
-            </span>
+                      Pano Hesabımı Platforma Bağla (Önerilir)
+                </span>
             </button>
 
             <div class="alert alert-success" v-if="panoAccountAccessToken !== '' && !savingPanoAccount">
