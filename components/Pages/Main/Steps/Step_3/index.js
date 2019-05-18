@@ -50,7 +50,8 @@ Vue.component('Step_3', new Promise(function (resolve) {
                             platform: {
                                 websiteName: this.websiteName,
                                 websiteDescription: this.websiteDescription,
-                                host: this.ip
+                                host: this.host,
+                                ip: this.ip
                             }
                         }, "http://localhost:8080");
                     },
@@ -257,6 +258,10 @@ Vue.component('Step_3', new Promise(function (resolve) {
 
                     websiteDescription() {
                         return this.$store.state.data.websiteDescription
+                    },
+
+                    host() {
+                        return this.$store.state.data.host
                     },
 
                     ip() {
