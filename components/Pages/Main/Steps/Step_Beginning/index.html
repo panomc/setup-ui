@@ -1,24 +1,24 @@
 <div>
-    <h3 class="text-muted pb-3">Pano Kurulumuna Hoş Geldiniz</h3>
-    <p>Pano Platformunuzu Web sunucunuza ayarladıktan sonra kullanmaya başlayabileceksiniz. Platformun doğru şekilde
-        çalışabilmesi için aşağıda listelenen bilgiler gerekmekte.</p>
-    <ul>
-        <li>Website Adı ve Açıklaması</li>
-        <li>Veritabanı Bilgileri <a class="ml-1" data-placement="right" data-toggle="tooltip" href="#"
-                                    title="Bu bilgileri web sunucunuzu sağlayan firma ile iletişime geçerek öğrenebilirsiniz.">(?)</a>
-        </li>
-        <li>Yönetici Hesabı Bilgileri</li>
-    </ul>
-    <div class="pt-3 d-block m-auto">
-        <button :aria-disabled="nextButtonLoading"
-                :disabled="nextButtonLoading" @click="start" class="btn btn-primary" type="button">
+  <h3 class="text-muted pb-3">Pano Kurulumuna Hoş Geldiniz</h3>
+  <p>Pano Platformunuzu Web sunucunuza ayarladıktan sonra kullanmaya başlayabileceksiniz. Platformun doğru şekilde
+    çalışabilmesi için aşağıda listelenen bilgiler gerekmekte.</p>
+  <ul>
+    <li>Website Adı ve Açıklaması</li>
+    <li>Veritabanı Bilgileri <a class="ml-1" data-placement="right" data-toggle="tooltip" href="#"
+                                title="Bu bilgileri web sunucunuzu sağlayan firma ile iletişime geçerek öğrenebilirsiniz.">(?)</a>
+    </li>
+    <li>Yönetici Hesabı Bilgileri</li>
+  </ul>
+  <div class="pt-3 d-block m-auto">
+    <button :aria-disabled="nextButtonLoading"
+            :disabled="nextButtonLoading" @click="start" class="btn btn-primary" type="button">
             <span aria-hidden="true"
                   class="spinner-border spinner-border-sm text-light mx-4"
                   role="status"
                   v-if="nextButtonLoading"></span>
-            <a v-if="!nextButtonLoading">
-                <i class="fas fa-arrow-alt-circle-right"></i> Başlayalım
-            </a>
-        </button>
-    </div>
+      <a v-if="!nextButtonLoading">
+        <i class="fas fa-arrow-alt-circle-right"></i> Başlayalım
+      </a>
+    </button>
+  </div>
 </div>
