@@ -1,9 +1,14 @@
 <div>
   <h3 class="text-muted pb-3">Adım - 2/3</h3>
 
-  <p>Pano, farklı Veri Tabanı türlerinde ve farklı olanaklarda çalışaiblir.</p>
+  <p>Platform verilerinin web sunucunuzda kayıt edilmesi için veritabanı bilgileri gerekmekte. Bu bilgileri bilmiyorsanız veya emin değilseniz sunucunuzu sağlayan firmanız ile iletişime geçiniz.</p>
 
   <h5 class="text-muted">Veri Tabanı Bilgileri</h5>
+
+  <!-- <div class="alert alert-primary mb-0">
+    <i aria-hidden="true" class="fa fa-info mr-2"></i>
+    Pano, farklı veritabanı türlerine göre farklı ve şekillerde çalışabilir.
+  </div> -->
 
   <div class="alert alert-dismissible text-danger text-left font-weight-bold p-2"
        id="databaseError" style="display: none;">
@@ -18,7 +23,7 @@
   </div>
 
   <div class="py-3">
-    <nav class="nav nav-tabs flex-nowrap text-lg-left text-center" id="databaseTabs" role="tablist">
+    <nav class="nav nav-pills flex-nowrap text-lg-left text-center" id="databaseTabs" role="tablist">
       <a aria-controls="mysql" aria-selected="true" class="nav-link active" data-toggle="tab" href="#mysql"
          id="mysql-tab"
          role="tab">
@@ -34,11 +39,6 @@
   <form @submit.prevent="submit">
     <div class="tab-content">
       <div aria-labelledby="mysql-tab" class="tab-pane fade show active" id="mysql" role="tabpanel">
-        <div class="alert alert-primary"><i aria-hidden="true" class="fa fa-info mr-2"></i> Lorem ipsum dolor
-          sit
-          amet
-          consectetur adipisicing elit. Vitae iste quam, a nesciunt porro perspiciatis.
-        </div>
         <div class="form-group">
           <label for="databaseAddress">Veri Tabanı Adresi:</label>
           <input class="form-control" id="databaseAddress" placeholder="localhost:80" type="text"
