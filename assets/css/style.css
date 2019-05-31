@@ -4452,9 +4452,9 @@ input[type="button"].btn-block {
 }
 
 .dropdown-item.active, .dropdown-item:active {
-  color: #fff;
+  color: #1976d2;
   text-decoration: none;
-  background-color: #1976d2;
+  background-color: rgba(25, 118, 210, 0.075);
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
@@ -12359,7 +12359,7 @@ a.text-aqua:hover, a.text-aqua:focus {
 }
 
 .setup-bg {
-  background: url("../img/logo-blue.svg");
+  background: url("../assets/img/logo-blue.svg");
   background-position: right -16px bottom -32px;
   background-repeat: no-repeat;
   background-size: 128px;
