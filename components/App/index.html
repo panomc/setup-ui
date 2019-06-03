@@ -1,25 +1,22 @@
 <div id='MainComponent'>
   <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css"
-        integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B"
-        rel="stylesheet">
+    integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B" rel="stylesheet">
   <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css"
-        integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+"
-        rel="stylesheet">
+    integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" rel="stylesheet">
 
   <div class="container d-block m-auto min-vh-100 py-3">
-    
-    <div class="dropdown mb-1" v-show="!langLoading">
-      <button aria-expanded="false" aria-haspopup="true"
-              class="btn btn-link icon-link dropdown-toggle d-block ml-auto"
-              data-toggle="dropdown" id="selectLanguage" type="button">
+
+    <div class="dropdown text-right" v-show="!langLoading">
+      <a href="javascript:void(0);" aria-expanded="false" aria-haspopup="true"
+        class="nav-link icon-link dropdown-toggle d-inline-block" data-toggle="dropdown" id="selectLanguage"
+        role="button">
         {{$t("Common.Language.current-language-symbol")}}
-      </button>
+      </a>
       <div aria-labelledby="selectLanguage" class="dropdown-menu dropdown-menu-right">
         <h6 class="dropdown-header">Dil Seçimi</h6>
         <div class="dropdown-divider"></div>
         <a :key="index" @click='setLang(language.symbol)' class="dropdown-item" href="javascript:void(0);"
-            v-for="(language, index) in $t('Common.Language.languages')"
-            v-text="language.name"></a>
+          v-for="(language, index) in $t('Common.Language.languages')" v-text="language.name"></a>
       </div>
     </div>
 
