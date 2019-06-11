@@ -7,27 +7,23 @@
 
   <form @submit.prevent="finish">
     <div class="py-2">
-      <div class="alert alert-primary" v-if="panoAccountAccessToken === '' || savingPanoAccount"><i
-        aria-hidden="true"
-        class="fa fa-info mr-2"></i>Pano
+      <div class="alert alert-primary" v-if="panoAccountAccessToken === '' || savingPanoAccount"><i aria-hidden="true"
+          class="fa fa-info mr-2"></i>Pano
         hesabınızı
         bağladığınızda temalar ve eklentiler için gerekli alışveriş işlemlerini kullanabilirsiniz.
       </div>
 
       <button :aria-disabled="connectPanoAccountButtonStatus === 'LOADING'"
-              :disabled="connectPanoAccountButtonStatus === 'LOADING'" @click="connectPanoAccount"
-              class="btn text-primary"
-              target="_blank" type="button" v-if="panoAccountAccessToken === '' || savingPanoAccount">
-                <span aria-hidden="true"
-                      class="spinner-border spinner-border text-primary mx-4"
-                      role="status"
-                      v-if="connectPanoAccountButtonStatus === 'LOADING'"></span>
+        :disabled="connectPanoAccountButtonStatus === 'LOADING'" @click="connectPanoAccount" class="btn text-primary"
+        target="_blank" type="button" v-if="panoAccountAccessToken === '' || savingPanoAccount">
+        <span aria-hidden="true" class="spinner-border spinner-border text-primary mx-4" role="status"
+          v-if="connectPanoAccountButtonStatus === 'LOADING'"></span>
 
         <span v-if="connectPanoAccountButtonStatus !== 'LOADING'">
-                      <i aria-hidden="true" class="fas fa-arrow-right"></i>
+          <i aria-hidden="true" class="fas fa-arrow-right"></i>
 
-                      Pano Hesabımı Platforma Bağla (Önerilir)
-                </span>
+          Pano Hesabımı Platforma Bağla (Önerilir)
+        </span>
       </button>
 
       <div class="alert alert-success" v-if="panoAccountAccessToken !== '' && !savingPanoAccount">
@@ -36,20 +32,14 @@
         <strong>@{{ panoAccountUsername }}</strong> hesabı başarıyla platforma bağlandı.
         <br>
         <br>
-        <a @click="disconnectPanoAccount"
-           class="alert-link text-danger"
-           href="javascript:void(0);">Bağlantıyı Kes
+        <a @click="disconnectPanoAccount" class="alert-link text-danger" href="javascript:void(0);">Bağlantıyı Kes
         </a>
       </div>
 
-      <div class="alert alert-dismissible text-danger text-left font-weight-bold p-2"
-           id="finishError" style="display: none;">
+      <div class="alert alert-dismissible text-danger text-left font-weight-bold p-2" id="finishError"
+        style="display: none;">
         {{ $t("Common.Error") }}: {{ $t("Errors." + errorCode) }}
-        <button
-          :aria-label="$t('Finish.close')"
-          @click="dismissErrorBox"
-          class="close p-1"
-          type="button">
+        <button :aria-label="$t('Finish.close')" @click="dismissErrorBox" class="close p-1" type="button">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -74,25 +64,18 @@
 
     <div class="pt-3 d-block m-auto">
       <button :aria-disabled="disableFinishButton || finishButtonLoading"
-              :disabled="disableFinishButton || finishButtonLoading"
-              class="btn btn-success text-white" type="submit">
-            <span aria-hidden="true"
-                  class="spinner-border spinner-border-sm text-light mx-4"
-                  role="status"
-                  v-if="finishButtonLoading">
-            </span>
+        :disabled="disableFinishButton || finishButtonLoading" class="btn btn-secondary text-white" type="submit">
+        <span aria-hidden="true" class="spinner-border spinner-border-sm text-light mx-4" role="status"
+          v-if="finishButtonLoading">
+        </span>
         <span v-if="!finishButtonLoading">
-                <i class="fas fa-check"></i> Tamamla
-            </span>
+          <i class="fas fa-check"></i> Tamamla
+        </span>
       </button>
-      <button :aria-disabled="backButtonLoading"
-              :disabled="backButtonLoading" @click="back"
-              class="btn btn-outline-primary"
-              type="button">
-            <span aria-hidden="true"
-                  class="spinner-border spinner-border-sm text-primary mx-4"
-                  role="status"
-                  v-if="backButtonLoading"></span>
+      <button :aria-disabled="backButtonLoading" :disabled="backButtonLoading" @click="back"
+        class="btn btn-outline-primary" type="button">
+        <span aria-hidden="true" class="spinner-border spinner-border-sm text-primary mx-4" role="status"
+          v-if="backButtonLoading"></span>
         <a v-if="!backButtonLoading">
           <i class="fas fa-arrow-alt-circle-left"></i> Geri
         </a>
