@@ -4,25 +4,25 @@ const router = new VueRouter({
     {
       path: '/',
       component: function (resolve, reject) {
-        loadComponent('Step_Beginning', '/src/pages/Steps/Step_Beginning').then(resolve, reject);
+        loadComponent('Step_Beginning', '/src/pages/Step_Beginning').then(resolve, reject);
       }
     },
     {
       path: '/step-1',
       component: function (resolve, reject) {
-        loadComponent('Step_1', '/src/pages/Steps/Step_1').then(resolve, reject);
+        loadComponent('Step_1', '/src/pages/Step_1').then(resolve, reject);
       }
     },
     {
       path: '/step-2',
       component: function (resolve, reject) {
-        loadComponent('Step_2', '/src/pages/Steps/Step_2').then(resolve, reject);
+        loadComponent('Step_2', '/src/pages/Step_2').then(resolve, reject);
       }
     },
     {
       path: '/step-3',
       component: function (resolve, reject) {
-        loadComponent('Step_3', '/src/pages/Steps/Step_3').then(resolve, reject);
+        loadComponent('Step_3', '/src/pages/Step_3').then(resolve, reject);
       }
     }
   ]
