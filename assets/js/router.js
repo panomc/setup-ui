@@ -8,19 +8,19 @@ const router = new VueRouter({
       }
     },
     {
-      path: 'Step-1',
+      path: '/step-1',
       component: function (resolve, reject) {
         loadComponent('Step_1', '/src/pages/Steps/Step_1').then(resolve, reject);
       }
     },
     {
-      path: 'Step-2',
+      path: '/step-2',
       component: function (resolve, reject) {
         loadComponent('Step_2', '/src/pages/Steps/Step_2').then(resolve, reject);
       }
     },
     {
-      path: 'Step-3',
+      path: '/step-3',
       component: function (resolve, reject) {
         loadComponent('Step_3', '/src/pages/Steps/Step_3').then(resolve, reject);
       }
