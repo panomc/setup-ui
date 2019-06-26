@@ -1,28 +1,26 @@
 <div id='MainComponent' class="min-vh-100">
   <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css"
-    integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B" rel="stylesheet">
+        integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B" rel="stylesheet">
   <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css"
-    integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" rel="stylesheet">
+        integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+" rel="stylesheet">
 
-  <header>
-    <div class="container pt-4 mt-4 text-center">
-      <a href="https://panomc.com" target="_blank" title="Pano resmi web sitesini ziyaret edin." class="d-inline-block">
-        <img src="/assets/img/logo-blue.svg" class="d-inline-block m-auto" width="24" alt="Pano Logo">
-      </a>
-    </div>
-  </header>
+  <div class="container pt-4 mt-4 text-center">
+    <a class="d-inline-block" href="https://panomc.com" target="_blank" title="Pano resmi web sitesini ziyaret edin.">
+      <img alt="Pano Logo" class="d-inline-block m-auto" src="/assets/img/logo-blue.svg" width="24">
+    </a>
+  </div>
 
   <div class="container d-block m-auto py-3">
 
     <div class="dropdown text-right" v-show="!langLoading">
       <a href="javascript:void(0);" aria-expanded="false" aria-haspopup="true"
-        class="nav-link icon-link dropdown-toggle d-inline-block" data-toggle="dropdown" id="selectLanguage"
-        role="button">
+         class="nav-link icon-link dropdown-toggle d-inline-block" data-toggle="dropdown" id="selectLanguage"
+         role="button">
         {{$t("Common.Language.current-language-symbol")}}
       </a>
       <div aria-labelledby="selectLanguage" class="dropdown-menu dropdown-menu-right">
         <a :key="index" @click='setLang(language.symbol)' class="dropdown-item" href="javascript:void(0);"
-          v-for="(language, index) in $t('Common.Language.languages')" v-text="language.name"></a>
+           v-for="(language, index) in $t('Common.Language.languages')" v-text="language.name"></a>
       </div>
     </div>
 
@@ -42,9 +40,7 @@
     </div>
   </div>
 
-  <footer>
-    <div class="container py-4 text-center">
-      <small>Pano v.1.0</small>
-    </div>
-  </footer>
+  <div class="container py-4 text-center">
+    <small>Pano v.1.0</small>
+  </div>
 </div>
