@@ -1,4 +1,4 @@
-const NETWORK_ERROR = "NETWORK_ERROR"
+const NETWORK_ERROR = "NETWORK_ERROR";
 
 const config = {
   headers: {
@@ -39,19 +39,19 @@ const ApiUtil = {
     axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
   },
 
-  get(resource) {
+  get(resource, config = this.config) {
     return axios.get(resource, config)
   },
 
-  post(resource, data) {
+  post(resource, data, config = this.config) {
     return axios.post(resource, data, config)
   },
 
-  put(resource, data) {
+  put(resource, data, config = this.config) {
     return axios.put(resource, data, config)
   },
 
-  delete(resource) {
+  delete(resource, config = this.config) {
     return axios.delete(resource, config)
   },
 
@@ -69,4 +69,4 @@ const ApiUtil = {
   customRequest(data) {
     return axios(data)
   }
-}
+};
