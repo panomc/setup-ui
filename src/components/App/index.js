@@ -29,7 +29,7 @@ function LoadCSS(cssURL) {
   });
 }
 
-loadScript("/panel/assets/js/md5.min.js", function () {
+loadMainJSFiles(function () {
   requirejs.config({
     paths: {
       'router': '/assets/js/router',
