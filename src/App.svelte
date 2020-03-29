@@ -8,5 +8,5 @@
 </main>
 
 <style lang="scss">
-@import "commons/css/main.scss";
+  @import "commons/scss/main.scss";
 </style>
