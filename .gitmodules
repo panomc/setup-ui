@@ -1,3 +1,0 @@
-[submodule "commons"]
-	path = commons
-	url = https://gitlab.com/defio-workshop/pano/platform-ui/pano-common.git
