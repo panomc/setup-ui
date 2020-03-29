@@ -1,9 +1,0 @@
-{
-  "post-scripts": [
-    "assets/js/router.js",
-    "assets/js/api.util.js",
-    "assets/js/storage.util.js",
-    "assets/js/vuex-store.js",
-    "assets/js/i18n.js"
-  ]
-}
