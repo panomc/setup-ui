@@ -1,6 +1,10 @@
-<style lang="scss">
-  @import "commons/scss/main.scss";
-</style>
+<script>
+  import jQuery from 'jquery'
+
+  jQuery(function () {
+    jQuery('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
 
 <div id='MainComponent' class="min-vh-100">
 
@@ -45,3 +49,7 @@
   </div>
 
 </div>
+
+<style lang="scss" global>
+  @import "commons/scss/main";
+</style>

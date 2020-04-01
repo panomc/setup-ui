@@ -2,10 +2,17 @@ import svelte from "rollup-plugin-svelte";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
-import { terser } from "rollup-plugin-terser";
 import autoPreprocess from "svelte-preprocess";
+import {terser} from "rollup-plugin-terser";
 
 const production = !process.env.ROLLUP_WATCH;
+
+const preprocess = autoPreprocess({
+  scss: {},
+  postcss: {
+    plugins: [require('autoprefixer')],
+  },
+});
 
 export default {
   input: "src/main.js",
@@ -24,9 +31,8 @@ export default {
       css: css => {
         css.write("public/build/bundle.css");
       },
-      preprocess: autoPreprocess()
+      preprocess
     }),
-
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
     // some cases you'll need additional configuration -
@@ -36,7 +42,12 @@ export default {
       browser: true,
       dedupe: ["svelte"]
     }),
-    commonjs(),
+    commonjs({
+      namedExports: {
+        'node_modules/jquery/dist/jquery.min.js': ['jquery'],
+        'node_modules/bootstrap/dist/js/bootstrap.min.js': ['bootstrap']
+      }
+    }),
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated
