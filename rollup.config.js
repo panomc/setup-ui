@@ -16,6 +16,12 @@ const preprocess = autoPreprocess({
   },
 });
 
+const input = ["src/main.js"];
+
+const watch = {
+  clearScreen: false
+};
+
 const plugins = [
   copyTo({
     assets: [
@@ -43,6 +49,7 @@ const plugins = [
     },
     preprocess
   }),
+
   // If you have external dependencies installed from
   // npm, you'll most likely need these plugins. In
   // some cases you'll need additional configuration -
@@ -52,6 +59,7 @@ const plugins = [
     browser: true,
     dedupe: ["svelte"]
   }),
+
   commonjs({
     namedExports: {
       'node_modules/jquery/dist/jquery.min.js': ['jquery'],
@@ -73,7 +81,7 @@ const plugins = [
 ];
 
 const esExport = {
-  input: "src/main.js",
+  input: input,
   output: [
     {
       sourcemap: true,
@@ -83,13 +91,11 @@ const esExport = {
     }
   ],
   plugins: plugins,
-  watch: {
-    clearScreen: false
-  }
+  watch: watch
 };
 
 const systemExport = {
-  input: "src/main.js",
+  input: input,
   output: [
     {
       sourcemap: true,
@@ -99,9 +105,7 @@ const systemExport = {
     }
   ],
   plugins: plugins,
-  watch: {
-    clearScreen: false
-  }
+  watch: watch
 };
 
 export default [
