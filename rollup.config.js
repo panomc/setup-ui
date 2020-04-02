@@ -5,6 +5,7 @@ import livereload from "rollup-plugin-livereload";
 import autoPreprocess from "svelte-preprocess";
 import copyTo from 'rollup-plugin-copy-assets-to';
 import replace from '@rollup/plugin-replace';
+import cleaner from 'rollup-plugin-cleaner';
 import {terser} from "rollup-plugin-terser";
 
 const production = !process.env.ROLLUP_WATCH;
@@ -80,6 +81,13 @@ const plugins = [
   production && terser()
 ];
 
+const esExportPlugins = plugins.concat(cleaner({
+  targets: [
+    './public/assets/',
+    './public/commons/'
+  ]
+}));
+
 const esExport = {
   input: input,
   output: [
@@ -90,7 +98,7 @@ const esExport = {
       dir: "public/assets/js/es/"
     }
   ],
-  plugins: plugins,
+  plugins: esExportPlugins,
   watch: watch
 };
 
