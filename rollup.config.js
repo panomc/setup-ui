@@ -116,7 +116,11 @@ const systemExport = {
   watch: watch
 };
 
-export default [
-  esExport,
-  systemExport
+const listExports = [
+  esExport
 ];
+
+if (production)
+  listExports.push(systemExport);
+
+export default listExports;
