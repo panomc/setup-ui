@@ -1,12 +1,23 @@
 <div>
   <h3 class="pb-3">Pano Kurulumuna Hoş Geldiniz!</h3>
-  <p>Platformunuzu sunucunuza kurduktan sonra kullanmaya başlayabileceksiniz. Pano'nun doğru şekilde
-    çalışabilmesi için aşağıda listelenen bilgiler gerekmekte:</p>
+  <p>
+    Platformunuzu sunucunuza kurduktan sonra kullanmaya başlayabileceksiniz.
+    Pano'nun doğru şekilde çalışabilmesi için aşağıda listelenen bilgiler
+    gerekmekte:
+  </p>
   <ul>
     <li>Websitenizin Adı ve Açıklaması</li>
-    <li>Kurulumu Yapacağınız Sunucunun Veritabanı Bilgileri <a class="ml-1" data-placement="right" data-toggle="tooltip"
-                                                               href="#"
-                                                               title="Bu bilgileri web sunucunuzu sağlayan kurum ile iletişime geçerek öğrenebilirsiniz.">(?)</a>
+    <li>
+      Kurulumu Yapacağınız Sunucunun Veritabanı Bilgileri
+      <a
+        class="ml-1"
+        data-placement="right"
+        data-toggle="tooltip"
+        href="javascript:void(0)"
+        title="Bu bilgileri web sunucunuzu sağlayan kurum ile iletişime geçerek
+        öğrenebilirsiniz.">
+        (?)
+      </a>
     </li>
     <li>Platforma Erişeceğiniz Yönetici Hesabı Bilgileri</li>
   </ul>
@@ -16,7 +27,8 @@
       <!--                  class="spinner-border spinner-border-sm text-light mx-4"-->
       <!--                  role="status"></span>-->
       <!--      <a v-if="!nextButtonLoading">-->
-      <i class="fas fa-arrow-alt-circle-right"></i> Başlayalım
+      <i class="fas fa-arrow-alt-circle-right" />
+      Başlayalım
       <!--      </a>-->
     </button>
   </div>
