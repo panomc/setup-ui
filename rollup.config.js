@@ -4,6 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import autoPreprocess from "svelte-preprocess";
 import copyTo from 'rollup-plugin-copy-assets-to';
 import replace from '@rollup/plugin-replace';
+import livereload from "rollup-plugin-livereload";
 import cleaner from 'rollup-plugin-cleaner';
 import {terser} from "rollup-plugin-terser";
 
@@ -77,7 +78,7 @@ const plugins = [
 
   // Watch the `public` directory and refresh the
   // browser on changes when not in production
-  // !production && livereload("public"),
+  !production && livereload("public"),
 
   // If we're building for production (npm run build
   // instead of npm run dev), minify
