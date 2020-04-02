@@ -10,7 +10,7 @@
 
   <div class="container pt-4 mt-4 text-center">
     <a class="d-inline-block" href="https://panomc.com" target="_blank" title="Pano resmi web sitesini ziyaret edin.">
-      <img alt="Pano Logo" class="d-inline-block m-auto" src="/img/logo-blue.svg" width="24">
+      <img alt="Pano Logo" class="d-inline-block m-auto" src="/assets/img/logo-blue.svg" width="24">
     </a>
   </div>
 

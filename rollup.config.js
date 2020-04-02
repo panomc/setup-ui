@@ -3,6 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
 import autoPreprocess from "svelte-preprocess";
+import copyTo from 'rollup-plugin-copy-assets-to';
 import {terser} from "rollup-plugin-terser";
 
 const production = !process.env.ROLLUP_WATCH;
@@ -20,16 +21,32 @@ export default {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: "public/build/bundle.js"
+    file: "public/assets/js/bundle.js"
   },
   plugins: [
+    copyTo({
+      assets: [
+        './src/commons/favicon',
+        './src/commons/fonts',
+        './src/commons/img',
+      ],
+      outputDir: 'public/commons'
+    }),
+
+    copyTo({
+      assets: [
+        './src/assets',
+      ],
+      outputDir: 'public'
+    }),
+
     svelte({
       // enable run-time checks when not in production
       dev: !production,
       // we'll extract any component CSS out into
       // a separate file - better for performance
       css: css => {
-        css.write("public/build/bundle.css");
+        css.write("public/assets/css/bundle.css");
       },
       preprocess
     }),
