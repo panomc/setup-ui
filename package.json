@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public"
+    "watch": "rollup -c -w",
+    "dev": "npm-run-all --parallel start watch",
+    "start": "serve public"
   },
   "devDependencies": {
+    "npm-run-all": "^4.1.2",
     "@rollup/plugin-commonjs": "^11.0.0",
     "@rollup/plugin-node-resolve": "^7.0.0",
+    "@rollup/plugin-replace": "^2.3.0",
     "autoprefixer": "^9.7.5",
     "bootstrap": "^4.4.1",
     "rollup": "^1.20.0",
@@ -24,8 +27,11 @@
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "jquery": "^3.4.1",
+    "navaid": "^1.1.0",
     "popper.js": "^1.16.1",
-    "sirv-cli": "^0.4.4",
-    "svelte-awesome": "^2.2.1"
+    "serve": "^11.3.0",
+    "svelte-awesome": "^2.2.1",
+    "svelte-loadable": "^1.4.0",
+    "svelte-routing": "^1.4.2"
   }
 }

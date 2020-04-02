@@ -9,7 +9,15 @@
   <link href='/assets/img/favicon.png' rel='icon' type='image/png'>
   <link href='/assets/css/bundle.css' rel='stylesheet'>
 
-  <script defer src='/assets/js/bundle.js'></script>
+  <!-- for modern browsers -->
+  <script src='/assets/js/es/main.js' type='module'></script>
+
+  <!-- for older browsers -->
+  <script nomodule src='https://unpkg.com/systemjs@0.21.0/dist/system-production.js'></script>
+
+  <script nomodule>
+    System.import('/assets/js/system/main.js');
+  </script>
 </head>
 
 <body>
