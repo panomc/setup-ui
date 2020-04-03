@@ -1,6 +1,6 @@
 <script context="module">
-  import { register } from "svelte-loadable";
-  import Loading from "./components/Loading.svelte";
+  import {register} from "svelte-loadable";
+  import PageLoading from "./components/PageLoading.svelte";
 
   const BeginningLoader = register({
     loader: () => import("./pages/Beginning.svelte"),
@@ -9,11 +9,11 @@
 </script>
 
 <script>
-  import { Router, Link, Route } from "svelte-routing";
+  import {Router, Link, Route} from "svelte-routing";
   import Loadable from "svelte-loadable";
   import jQuery from "jquery";
 
-  jQuery(function() {
+  jQuery(function () {
     jQuery('[data-toggle="tooltip"]').tooltip();
   });
 </script>
@@ -61,16 +61,16 @@
         <Route path="*">
           <Loadable loader={BeginningLoader}>
             <div slot="loading">
-              <Loading />
+              <PageLoading/>
             </div>
           </Loadable>
         </Route>
 
-        <Route path="/step-1" />
+        <Route path="/step-1"/>
 
-        <Route path="/step-2" />
+        <Route path="/step-2"/>
 
-        <Route path="/step-3" />
+        <Route path="/step-3"/>
       </Router>
     </div>
   </div>
