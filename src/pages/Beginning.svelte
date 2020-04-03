@@ -1,14 +1,14 @@
 <div>
   <h3 class="pb-3">Pano Kurulumuna Hoş Geldiniz!</h3>
   <p>
-    Platformunuzu sunucunuza kurduktan sonra kullanmaya başlayabileceksiniz.
+    Platformu sunucunuza kurduktan sonra kullanmaya başlayabileceksiniz.
     Pano'nun doğru şekilde çalışabilmesi için aşağıda listelenen bilgiler
     gerekmekte:
   </p>
   <ul>
-    <li>Websitenizin Adı ve Açıklaması</li>
+    <li>Web sitenizin adı ve açıklaması</li>
     <li>
-      Kurulumu Yapacağınız Sunucunun Veritabanı Bilgileri
+      Veritabanı bilgileri
       <a
         class="ml-1"
         data-placement="right"
@@ -19,7 +19,7 @@
         (?)
       </a>
     </li>
-    <li>Platforma Erişeceğiniz Yönetici Hesabı Bilgileri</li>
+    <li>Yönetim paneli için hesap bilgileri</li>
   </ul>
   <div class="pt-3 d-block m-auto">
     <button class="btn btn-primary" type="button">
