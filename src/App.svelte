@@ -1,32 +1,54 @@
-<script context="module">
-  import {register} from "svelte-loadable";
-  import PageLoading from "./components/PageLoading.svelte";
-
-  const BeginningLoader = register({
-    loader: () => import("./pages/Beginning.svelte"),
-    resolve: () => import("./pages/Beginning.svelte")
-  });
-</script>
-
-<script>
-  import {Router, Link, Route} from "svelte-routing";
-  import Loadable from "svelte-loadable";
-  import jQuery from "jquery";
-
-  jQuery(function () {
-    jQuery('[data-toggle="tooltip"]').tooltip();
-  });
-</script>
-
 <style lang="scss" global>
   @import "commons/scss/main";
 </style>
+
+<script>
+  import router from 'page';
+  import {ChunkGenerator} from 'svelte-spa-chunk'
+  import jQuery from "jquery";
+
+  import ChunkComponent from './Chunk.svelte'
+  import {isPageLoading} from './ChunkStore'
+
+  import PageLoading from "./components/PageLoading.svelte";
+
+  const Chunk = ChunkGenerator(ChunkComponent);
+
+  let props = {
+    component: PageLoading,
+  };
+
+  router('/', () => {
+    props = {
+      component: Chunk(() => import('./pages/Beginning.svelte'))
+    };
+  });
+
+  router('/step-2', () => {
+    props = {
+      component: Chunk(() => import('./pages/Step-2.svelte'))
+    };
+  });
+
+  router.start();
+
+
+  let isPageLoadingValue;
+
+  const unsubscribe = isPageLoading.subscribe(value => {
+    isPageLoadingValue = value;
+  });
+
+  jQuery(window).on("load", function () {
+    jQuery('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
 
 <div class="container py-5">
   <div class="row align-items-center justify-content-between">
     <div class="col-12 text-center">
       <a href="https://panomc.com" target="_blank" title="Pano">
-        <img alt="Pano Logo" src="/assets/img/logo-blue.svg" width="24" />
+        <img alt="Pano Logo" src="/assets/img/logo-blue.svg" width="24"/>
       </a>
     </div>
     <div class="col-auto">
@@ -35,21 +57,21 @@
     <div class="col-auto">
       <div class="dropdown">
         <a
-          href="javascript:void(0);"
-          class="nav-link icon-link dropdown-toggle d-inline-block"
+                href="javascript:void(0);"
+                class="nav-link icon-link dropdown-toggle d-inline-block"
           data-toggle="dropdown"
           id="selectLanguage">
           TR
         </a>
         <div
-          aria-labelledby="selectLanguage"
-          class="dropdown-menu dropdown-menu-right">
+                aria-labelledby="selectLanguage"
+                class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="javascript:void(0);">Türkçe (TR)</a>
           <a class="dropdown-item" href="javascript:void(0);">English (US)</a>
         </div>
         <div
-          class="spinner-border spinner-border-sm text-primary"
-          role="status" />
+                class="spinner-border spinner-border-sm text-primary"
+                role="status"/>
       </div>
     </div>
   </div>
@@ -57,21 +79,11 @@
   <!-- Main Content Card -->
   <div class="card">
     <div class="card-body py-5 col-md-8 m-auto">
-      <Router>
-        <Route path="*">
-          <Loadable loader={BeginningLoader}>
-            <div slot="loading">
-              <PageLoading/>
-            </div>
-          </Loadable>
-        </Route>
+      {#if isPageLoadingValue}
+        <PageLoading/>
+      {/if}
 
-        <Route path="/step-1"/>
-
-        <Route path="/step-2"/>
-
-        <Route path="/step-3"/>
-      </Router>
+      <svelte:component this={props.component} {...props}/>
     </div>
   </div>
 </div>
