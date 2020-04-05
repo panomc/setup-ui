@@ -2,19 +2,20 @@ import svelte from "rollup-plugin-svelte";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import autoPreprocess from "svelte-preprocess";
-import copyTo from 'rollup-plugin-copy-assets-to';
-import replace from '@rollup/plugin-replace';
+import copyTo from "rollup-plugin-copy-assets-to";
+import replace from "@rollup/plugin-replace";
 import livereload from "rollup-plugin-livereload";
-import cleaner from 'rollup-plugin-cleaner';
-import {terser} from "rollup-plugin-terser";
+import cleaner from "rollup-plugin-cleaner";
+import { terser } from "rollup-plugin-terser";
+import babel from "rollup-plugin-babel";
 
 const production = !process.env.ROLLUP_WATCH;
 
 const preprocess = autoPreprocess({
   scss: {},
   postcss: {
-    plugins: [require('autoprefixer')],
-  },
+    plugins: [require("autoprefixer")]
+  }
 });
 
 const input = ["src/main.js"];
@@ -30,14 +31,18 @@ const plugins = [
       './src/commons/fonts',
       './src/commons/img',
     ],
-    outputDir: 'public/commons'
+    outputDir: "public/commons"
   }),
 
   copyTo({
     assets: [
-      './src/assets',
+      "./src/assets"
     ],
-    outputDir: 'public'
+    outputDir: "public"
+  }),
+
+  babel({
+    runtimeHelpers: true
   }),
 
   svelte({
