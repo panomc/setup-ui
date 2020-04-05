@@ -14,19 +14,17 @@
 
   const Chunk = ChunkGenerator(ChunkComponent);
 
-  let props = {
-    component: PageLoading,
-  };
-
-  router('/', () => {
-    props = {
-      component: Chunk(() => import('./pages/Beginning.svelte'))
-    };
-  });
+  let props = {};
 
   router('/step-2', () => {
     props = {
       component: Chunk(() => import('./pages/Step-2.svelte'))
+    };
+  });
+
+  router('*', () => {
+    props = {
+      component: Chunk(() => import('./pages/Beginning.svelte'))
     };
   });
 
