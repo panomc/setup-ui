@@ -1,3 +1,12 @@
+<script>
+  import { onMount } from "svelte";
+  import jQuery from "jquery";
+
+  onMount(async () => {
+    jQuery("[data-toggle=\"tooltip\"]").tooltip();
+  });
+</script>
+
 <div>
   <h3 class="pb-3">Pano Kurulumuna Hoş Geldiniz!</h3>
   <p>

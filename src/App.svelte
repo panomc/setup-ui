@@ -5,10 +5,9 @@
 <script>
   import router from 'page';
   import {ChunkGenerator} from 'svelte-spa-chunk'
-  import jQuery from "jquery";
 
-  import ChunkComponent from './Chunk.svelte'
-  import {isPageLoading} from './ChunkStore'
+  import ChunkComponent from "./Chunk.svelte";
+  import { isPageLoading } from "./ChunkStore";
 
   import PageLoading from "./components/PageLoading.svelte";
 
@@ -16,29 +15,36 @@
 
   let props = {};
 
-  router('/step-2', () => {
+  router("/step-1", () => {
     props = {
-      component: Chunk(() => import('./pages/Step-2.svelte'))
+      component: Chunk(() => import("./pages/Step-1.svelte"))
     };
   });
 
-  router('*', () => {
+  router("/step-2", () => {
     props = {
-      component: Chunk(() => import('./pages/Beginning.svelte'))
+      component: Chunk(() => import("./pages/Step-2.svelte"))
+    };
+  });
+
+  router("/step-3", () => {
+    props = {
+      component: Chunk(() => import("./pages/Step-3.svelte"))
+    };
+  });
+
+  router("*", () => {
+    props = {
+      component: Chunk(() => import("./pages/Beginning.svelte"))
     };
   });
 
   router.start();
 
-
   let isPageLoadingValue;
 
   const unsubscribe = isPageLoading.subscribe(value => {
     isPageLoadingValue = value;
-  });
-
-  jQuery(window).on("load", function () {
-    jQuery('[data-toggle="tooltip"]').tooltip();
   });
 </script>
 
