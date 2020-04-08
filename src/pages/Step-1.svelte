@@ -1,11 +1,53 @@
-<a href="/">
-  <button class="btn btn-primary" type="button">
-    <!--            <span aria-hidden="true"-->
-    <!--                  class="spinner-border spinner-border-sm text-light mx-4"-->
-    <!--                  role="status"></span>-->
-    <!--      <a v-if="!nextButtonLoading">-->
-    <i class="fas fa-arrow-alt-circle-right"/>
-    Geri Dön
-    <!--      </a>-->
-  </button>
-</a>
+<div>
+  <h3 class="pb-3">Adım - 1/3</h3>
+  <p>Websitenizin adını ve açıklamasını belirleyin. Bunlar arama motorlarında görünecektir.
+    Websiteniz hakkında diğer özelleştirmeleri kurulumdan sonra Kontrol Paneli üzerinden yapabilirsiniz.</p>
+
+  <h5 class="text-primary">Website Adı ve Açıklaması</h5>
+
+  <!--  @submit.prevent="submit"-->
+  <form>
+    <div class="pt-3">
+      <div class="form-group">
+        <label for="test2">Website Adı:</label>
+        <input class="form-control" id="test2" placeholder="Panocraft" type="text" v-model="websiteName">
+      </div>
+      <div class="form-group">
+        <label for="test3">Açıklama:</label>
+        <textarea class="form-control" id="test3" placeholder="Benim Minecraft sunucu websitem." rows="2"
+                  style="min-height: 60px;" v-model="websiteDescription"></textarea>
+      </div>
+    </div>
+
+    <div class="pt-3 d-block m-auto">
+      <!--      :aria-disabled="disableNextButton || nextButtonLoading"-->
+      <!--      :disabled="disableNextButton || nextButtonLoading"-->
+      <button
+        class="btn btn-primary"
+        type="submit">
+                <span aria-hidden="true"
+                      class="spinner-border spinner-border-sm text-light mx-4"
+                      role="status"
+                      v-if="nextButtonLoading"></span>
+        <a v-if="!nextButtonLoading">
+          <i class="fas fa-arrow-alt-circle-right"></i>
+          Devam Et
+        </a>
+      </button>
+      <!--      :aria-disabled="backButtonLoading"-->
+      <!--      :disabled="backButtonLoading"-->
+      <button
+        class="btn btn-outline-primary"
+        type="button">
+        <!--        @click="back"-->
+        <span aria-hidden="true"
+              class="spinner-border spinner-border-sm text-primary mx-4"
+              role="status"
+              v-if="backButtonLoading"></span>
+        <a v-if="!backButtonLoading">
+          <i class="fas fa-arrow-alt-circle-left"></i> Geri
+        </a>
+      </button>
+    </div>
+  </form>
+</div>

@@ -31,7 +31,7 @@
     <li>Yönetim paneli için hesap bilgileri</li>
   </ul>
   <div class="pt-3 d-block m-auto">
-    <a href="/step-2">
+    <a href="/step-1">
       <button class="btn btn-primary" type="button">
         <!--            <span aria-hidden="true"-->
         <!--                  class="spinner-border spinner-border-sm text-light mx-4"-->
