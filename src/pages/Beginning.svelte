@@ -8,10 +8,16 @@
     jQuery("[data-toggle=\"tooltip\"]").tooltip();
   });
 
+  let nextButtonLoading = false;
+
   function start() {
-    nextStep({
-      step: 0
-    });
+    if (!nextButtonLoading) {
+      nextButtonLoading = true;
+
+      nextStep({
+        step: 0
+      });
+    }
   }
 </script>
 
@@ -35,4 +41,5 @@
   </li>
   <li>Yönetim paneli için hesap bilgileri</li>
 </ul>
-<a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={start}>Başlayalım</a>
+
+<a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={start} class:disabled="{nextButtonLoading}">Başlayalım</a>
