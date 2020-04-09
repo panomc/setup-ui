@@ -5,8 +5,8 @@ import page from "page";
 export const stepState = writable(0);
 export const stepChecked = writable(false);
 
-export const websiteName = writable(false);
-export const websiteDescription = writable(false);
+export const websiteName = writable("");
+export const websiteDescription = writable("");
 
 export const db = writable({
   host: "",
