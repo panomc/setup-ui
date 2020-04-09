@@ -25,6 +25,12 @@ export const panoAccount = writable({
   access_token: ""
 });
 
+export const account = writable({
+  username: "",
+  email: "",
+  password: ""
+});
+
 function initializeCurrentStep(response) {
   const step = response.data.step;
 

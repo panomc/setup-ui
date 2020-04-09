@@ -1,8 +1,9 @@
 <script>
+  import jQuery from "jquery";
+
   import { onDestroy } from "svelte";
   import { nextStep, backStep, db } from "../Store";
   import { ApiUtil, NETWORK_ERROR } from "../util/api.util";
-  import jQuery from "jquery";
 
   let buttonsLoading = false;
   let nextButtonDisabled = true;
@@ -185,7 +186,8 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary" class:disabled={buttonsLoading || nextButtonDisabled} disabled={buttonsLoading || nextButtonDisabled}>Devam Et
+  <button type="submit" class="btn btn-primary" class:disabled={buttonsLoading || nextButtonDisabled}
+          disabled={buttonsLoading || nextButtonDisabled}>Devam Et
   </button>
   <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back}
      class:disabled={buttonsLoading} disabled={buttonsLoading}>Geri</a>

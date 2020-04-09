@@ -1,24 +1,21 @@
 <script>
   import jQuery from "jquery";
 
-  import { backStep, panoAccount } from "../Store";
+  import { onDestroy } from "svelte";
+  import { backStep, account } from "../Store";
   import { ApiUtil, NETWORK_ERROR } from "../util/api.util";
 
   let buttonsLoading = false;
   let finishButtonDisabled = true;
   let errorCode;
 
-  let username;
-  let email;
-  let password;
-
   function submit() {
     buttonsLoading = true;
 
     ApiUtil.post("setup/finish", {
-      username: username,
-      email: email,
-      password: password
+      username: $account.username,
+      email: $account.email,
+      password: $account.password
     })
       .then(response => {
         if (response.data.result === "ok") {
@@ -58,6 +55,16 @@
 
   function dismissErrorBox() {
     jQuery("#error").fadeOut("slow");
+  }
+
+  const accountUnsubscribe = account.subscribe(() => {
+    checkForm();
+  });
+
+  onDestroy(accountUnsubscribe);
+
+  function checkForm() {
+    finishButtonDisabled = !($account.username !== "" && $account.email !== "" && $account.password !== "");
   }
 </script>
 
@@ -103,16 +110,16 @@
     <button class="close" type="button" on:click={dismissErrorBox}>
       <span aria-hidden="true">&times;</span>
     </button>
-    {errorCode}
+      {errorCode}
   </div>
 
   <div class="form-group">
     <label for="admin-username">Minecraft Kullanıcı Adı:</label>
-    <input class="form-control" id="admin-username" type="text"/>
+    <input class="form-control" id="admin-username" type="text" bind:value={$account.username}/>
   </div>
   <div class="form-group">
     <label for="admin-email">E-Posta:</label>
-    <input class="form-control" id="admin-email" type="email"/>
+    <input class="form-control" id="admin-email" type="email" bind:value={$account.email}/>
   </div>
   <div class="form-group">
     <label for="admin-password">Şifre:</label>
@@ -120,11 +127,13 @@
       class="form-control"
       id="admin-password"
       placeholder="************"
+      bind:value={$account.password}
       type="password"/>
     <small>Minimum: 6 karakter.</small>
   </div>
 
-  <button type="submit" class="btn btn-secondary" class:disabled={buttonsLoading || finishButtonDisabled} disabled={buttonsLoading || finishButtonDisabled}>
+  <button type="submit" class="btn btn-secondary" class:disabled={buttonsLoading || finishButtonDisabled}
+          disabled={buttonsLoading || finishButtonDisabled}>
     Tamamla
   </button>
   <a

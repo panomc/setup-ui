@@ -42,4 +42,5 @@
   <li>Yönetim paneli için hesap bilgileri</li>
 </ul>
 
-<a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={start} class:disabled={nextButtonLoading} disabled={nextButtonLoading}>Başlayalım</a>
+<a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={start} class:disabled={nextButtonLoading}
+   disabled={nextButtonLoading}>Başlayalım</a>
