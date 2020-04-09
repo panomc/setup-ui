@@ -66,9 +66,9 @@
     <textarea id="websiteDescription" class="form-control" rows="2" bind:value={$websiteDescription}></textarea>
   </div>
 
-  <button type="submit" class="btn btn-primary" role="button" class:disabled="{buttonsLoading || nextButtonDisabled}">
+  <button type="submit" class="btn btn-primary" role="button" class:disabled={buttonsLoading || nextButtonDisabled} disabled={buttonsLoading || nextButtonDisabled}>
     Devam Et
   </button>
   <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back}
-     class:disabled="{buttonsLoading}">Geri</a>
+     class:disabled={buttonsLoading} disabled={buttonsLoading}>Geri</a>
 </form>

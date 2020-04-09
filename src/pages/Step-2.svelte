@@ -37,11 +37,11 @@
 
     errorCode = error;
 
-    jQuery("#databaseError").fadeIn();
+    jQuery("#error").fadeIn();
   }
 
   function dismissErrorBox() {
-    jQuery("#databaseError").fadeOut("slow");
+    jQuery("#error").fadeOut("slow");
   }
 
   function next() {
@@ -86,7 +86,7 @@
 </p>
 <h5 class="text-primary">Veri Tabanı Bilgileri</h5>
 
-<div class="alert alert-dismissible text-danger" id="databaseError" style="display: none;">
+<div class="alert alert-dismissible text-danger" id="error" style="display: none;">
   <button class="close" type="button" on:click={dismissErrorBox}>
     <span aria-hidden="true">&times;</span>
   </button>
@@ -185,8 +185,8 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary" class:disabled="{buttonsLoading || nextButtonDisabled}">Devam Et
+  <button type="submit" class="btn btn-primary" class:disabled={buttonsLoading || nextButtonDisabled} disabled={buttonsLoading || nextButtonDisabled}>Devam Et
   </button>
   <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back}
-     class:disabled="{buttonsLoading}">Geri</a>
+     class:disabled={buttonsLoading} disabled={buttonsLoading}>Geri</a>
 </form>
