@@ -38,11 +38,13 @@ function initializeCurrentStep(response) {
 
     page.redirect("/step-1");
   } else if (step === 2) {
-    db.host.set(response.data.db.host);
-    db.dbName.set(response.data.db.dbName);
-    db.username.set(response.data.db.username);
-    db.password.set(response.data.db.password);
-    db.prefix.set(response.data.db.prefix);
+    db.set({
+      host: response.data.db.host,
+      dbName: response.data.db.dbName,
+      username: response.data.db.username,
+      password: response.data.db.password,
+      prefix: response.data.db.prefix
+    });
 
     page.redirect("/step-2");
   } else if (step === 3) {
@@ -52,9 +54,11 @@ function initializeCurrentStep(response) {
     host.set(response.data.host);
     ip.set(response.data.ip);
 
-    panoAccount.username.set(response.data.panoAccount.username);
-    panoAccount.email.set(response.data.panoAccount.email);
-    panoAccount.access_token.set(response.data.panoAccount.access_token);
+    panoAccount.set({
+      username: response.data.panoAccount.username,
+      email: response.data.panoAccount.email,
+      access_token: response.data.panoAccount.access_token
+    });
 
     page.redirect("/step-3");
   } else {
