@@ -1,5 +1,5 @@
 <script>
-  import { onDestroy } from 'svelte';
+  import { onDestroy } from "svelte";
   import { nextStep, backStep, websiteName, websiteDescription } from "../Store";
 
   let buttonsLoading = false;
@@ -18,7 +18,7 @@
   }
 
   function back() {
-    if(!buttonsLoading) {
+    if (!buttonsLoading) {
       buttonsLoading = true;
 
       backStep({
@@ -28,18 +28,18 @@
   }
 
   const websiteNameUnsubscribe = websiteName.subscribe(() => {
-    checkForm()
+    checkForm();
   });
 
   const websiteDescriptionUnsubscribe = websiteName.subscribe(() => {
-    checkForm()
+    checkForm();
   });
 
   onDestroy(websiteNameUnsubscribe);
   onDestroy(websiteDescriptionUnsubscribe);
 
   function checkForm() {
-    nextButtonDisabled = !($websiteName !== "" && $websiteDescription !== "")
+    nextButtonDisabled = !($websiteName !== "" && $websiteDescription !== "");
   }
 </script>
 
@@ -66,6 +66,8 @@
     <textarea id="websiteDescription" class="form-control" rows="2" bind:value={$websiteDescription}></textarea>
   </div>
 
-  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={next} class:disabled="{buttonsLoading || nextButtonDisabled}">Devam Et</a>
-  <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back} class:disabled="{buttonsLoading}">Geri</a>
+  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={next}
+     class:disabled="{buttonsLoading || nextButtonDisabled}">Devam Et</a>
+  <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back}
+     class:disabled="{buttonsLoading}">Geri</a>
 </form>
