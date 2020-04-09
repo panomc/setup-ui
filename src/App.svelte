@@ -47,7 +47,7 @@
 <div class="container">
   <div class="text-center py-4">
     <a href="https://panomc.com" target="_blank" title="Pano">
-      <img alt="Pano Logo" src="/assets/img/logo-blue.svg" width="24" />
+      <img alt="Pano Logo" src="/assets/img/logo-blue.svg" width="24"/>
     </a>
   </div>
   <ul class="nav justify-content-between align-items-center">
@@ -73,19 +73,19 @@
         </div>
         <div
           class="spinner-border spinner-border-sm text-primary"
-          role="status" />
+          role="status"></div>
       </div>
     </li>
   </ul>
   <div class="card">
     <div class="card-body py-5 col-md-8 m-auto">
-      {#if $isPageLoading || !$stepChecked}
-        <PageLoading />
-      {/if}
+        {#if $isPageLoading || !$stepChecked}
+          <PageLoading/>
+        {/if}
 
-      {#if $stepChecked}
-        <svelte:component this={props.component} {...props} />
-      {/if}
+        {#if $stepChecked}
+          <svelte:component this={props.component} {...props}/>
+        {/if}
     </div>
   </div>
   <div class="text-center py-4">
