@@ -8,22 +8,22 @@ export const stepChecked = writable(false);
 export const websiteName = writable(false);
 export const websiteDescription = writable(false);
 
-export const db = {
-  host: writable(""),
-  dbName: writable(""),
-  username: writable(""),
-  password: writable(""),
-  prefix: writable("pano_")
-};
+export const db = writable({
+  host: "",
+  dbName: "",
+  username: "",
+  password: "",
+  prefix: "pano_"
+});
 
 export const host = writable("");
 export const ip = writable("");
 
-export const panoAccount = {
-  username: writable(""),
-  email: writable(""),
-  access_token: writable("")
-};
+export const panoAccount = writable({
+  username: "",
+  email: "",
+  access_token: ""
+});
 
 function initializeCurrentStep(response) {
   const step = response.data.step;
