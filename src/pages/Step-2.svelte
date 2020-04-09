@@ -1,21 +1,60 @@
 <script>
+  import { onDestroy } from "svelte";
   import { nextStep, backStep, db } from "../Store";
+  import { ApiUtil, NETWORK_ERROR } from "../util/api.util";
+  import jQuery from "jquery";
 
   let buttonsLoading = false;
+  let nextButtonDisabled = true;
+  let errorCode;
+
+  function submit() {
+    buttonsLoading = true;
+
+    ApiUtil.post("setup/dbConnectionTest", {
+      host: $db.host,
+      dbName: $db.dbName,
+      username: $db.username,
+      password: $db.password
+    })
+      .then(response => {
+        if (response.data.result === "ok") {
+          next();
+        } else if (response.data.result === "error") {
+          const errorCode = response.data.error;
+
+          showError(errorCode);
+        } else
+          showError(NETWORK_ERROR);
+      })
+      .catch(() => {
+        showError(NETWORK_ERROR);
+      });
+  }
+
+  function showError(error) {
+    buttonsLoading = false;
+
+    errorCode = error;
+
+    jQuery("#databaseError").fadeIn();
+  }
+
+  function dismissErrorBox() {
+    jQuery("#databaseError").fadeOut("slow");
+  }
 
   function next() {
-    if (!buttonsLoading) {
-      buttonsLoading = true;
+    buttonsLoading = true;
 
-      nextStep({
-        step: 2,
-        host: $db.host,
-        dbName: $db.dbName,
-        username: $db.username,
-        password: $db.password,
-        prefix: $db.prefix
-      });
-    }
+    nextStep({
+      step: 2,
+      host: $db.host,
+      dbName: $db.dbName,
+      username: $db.username,
+      password: $db.password,
+      prefix: $db.prefix
+    });
   }
 
   function back() {
@@ -27,6 +66,16 @@
       });
     }
   }
+
+  const dbUnsubscribe = db.subscribe(() => {
+    checkForm();
+  });
+
+  onDestroy(dbUnsubscribe);
+
+  function checkForm() {
+    nextButtonDisabled = !($db.host !== "" && $db.dbName !== "" && $db.username !== "");
+  }
 </script>
 
 <h3>Adım - 2/3</h3>
@@ -37,11 +86,11 @@
 </p>
 <h5 class="text-primary">Veri Tabanı Bilgileri</h5>
 
-<div class="alert alert-dismissible text-danger" id="databaseError">
-  <button class="close" type="button">
+<div class="alert alert-dismissible text-danger" id="databaseError" style="display: none;">
+  <button class="close" type="button" on:click={dismissErrorBox}>
     <span aria-hidden="true">&times;</span>
   </button>
-  Hata mesajı
+    {errorCode}
 </div>
 
 <form>
@@ -136,7 +185,8 @@
     </div>
   </div>
 
-  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={next} class:disabled="{buttonsLoading}">Devam
+  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={submit}
+     class:disabled="{buttonsLoading || nextButtonDisabled}">Devam
     Et</a>
   <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back}
      class:disabled="{buttonsLoading}">Geri</a>
