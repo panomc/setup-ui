@@ -38,7 +38,12 @@
   </div>
 
   <div class="alert alert-success">
-    <strong>???</strong>
+    <a
+      class="alert-link"
+      href="https://panomc.com/user/username"
+      target="_blank">
+      ???
+    </a>
     hesabı başarıyla platforma bağlandı.
     <br />
     <br />
