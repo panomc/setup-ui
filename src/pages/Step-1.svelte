@@ -1,7 +1,9 @@
 <script>
+  import { onDestroy } from 'svelte';
   import { nextStep, backStep, websiteName, websiteDescription } from "../Store";
 
   let buttonsLoading = false;
+  let nextButtonDisabled = true;
 
   function next() {
     if (!buttonsLoading) {
@@ -23,6 +25,21 @@
         step: 1
       });
     }
+  }
+
+  const websiteNameUnsubscribe = websiteName.subscribe(() => {
+    checkForm()
+  });
+
+  const websiteDescriptionUnsubscribe = websiteName.subscribe(() => {
+    checkForm()
+  });
+
+  onDestroy(websiteNameUnsubscribe);
+  onDestroy(websiteDescriptionUnsubscribe);
+
+  function checkForm() {
+    nextButtonDisabled = !($websiteName !== "" && $websiteDescription !== "")
   }
 </script>
 
@@ -49,6 +66,6 @@
     <textarea id="websiteDescription" class="form-control" rows="2" bind:value={$websiteDescription}></textarea>
   </div>
 
-  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={next} class:disabled="{buttonsLoading}">Devam Et</a>
+  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={next} class:disabled="{buttonsLoading || nextButtonDisabled}">Devam Et</a>
   <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back} class:disabled="{buttonsLoading}">Geri</a>
 </form>
