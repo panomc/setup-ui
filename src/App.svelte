@@ -3,11 +3,13 @@
 </style>
 
 <script>
-  import router from 'page';
-  import {ChunkGenerator} from 'svelte-spa-chunk'
+  import router from "page";
+  import { ChunkGenerator } from "svelte-spa-chunk";
 
   import ChunkComponent from "./Chunk.svelte";
   import { isPageLoading } from "./ChunkStore";
+
+  import { stepChecked } from "./Store";
 
   import PageLoading from "./components/PageLoading.svelte";
 
@@ -40,12 +42,6 @@
   });
 
   router.start();
-
-  let isPageLoadingValue;
-
-  const unsubscribe = isPageLoading.subscribe(value => {
-    isPageLoadingValue = value;
-  });
 </script>
 
 <div class="container py-5">
@@ -63,8 +59,8 @@
         <a
                 href="javascript:void(0);"
                 class="nav-link icon-link dropdown-toggle d-inline-block"
-          data-toggle="dropdown"
-          id="selectLanguage">
+                data-toggle="dropdown"
+                id="selectLanguage">
           TR
         </a>
         <div
@@ -83,11 +79,13 @@
   <!-- Main Content Card -->
   <div class="card">
     <div class="card-body py-5 col-md-8 m-auto">
-      {#if isPageLoadingValue}
+      {#if $isPageLoading || !$stepChecked }
         <PageLoading/>
       {/if}
 
-      <svelte:component this={props.component} {...props}/>
+      {#if $stepChecked }
+        <svelte:component this={props.component} {...props}/>
+      {/if}
     </div>
   </div>
 </div>
