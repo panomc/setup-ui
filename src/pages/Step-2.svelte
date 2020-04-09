@@ -93,7 +93,7 @@
     {errorCode}
 </div>
 
-<form>
+<form on:submit|preventDefault={submit}>
   <div class="form-group">
     <nav
       class="nav nav-pills flex-nowrap text-lg-left text-center"
@@ -185,9 +185,8 @@
     </div>
   </div>
 
-  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={submit}
-     class:disabled="{buttonsLoading || nextButtonDisabled}">Devam
-    Et</a>
+  <button type="submit" class="btn btn-primary" class:disabled="{buttonsLoading || nextButtonDisabled}">Devam Et
+  </button>
   <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back}
      class:disabled="{buttonsLoading}">Geri</a>
 </form>
