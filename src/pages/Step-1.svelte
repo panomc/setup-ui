@@ -31,7 +31,7 @@
     checkForm();
   });
 
-  const websiteDescriptionUnsubscribe = websiteName.subscribe(() => {
+  const websiteDescriptionUnsubscribe = websiteDescription.subscribe(() => {
     checkForm();
   });
 
