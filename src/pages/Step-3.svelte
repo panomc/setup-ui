@@ -26,24 +26,23 @@
   <div class="alert alert-primary">
     Pano hesabınızı bağladığınızda temalar ve eklentiler için gerekli alışveriş
     işlemlerini kullanabilirsiniz.
+    <br />
+    <br />
+    <a
+      class="btn btn-outline-primary"
+      target="_blank"
+      href="javascript:void(0);"
+      role="button">
+      Pano Hesabımı Platforma Bağla (Önerilir)
+    </a>
   </div>
 
-  <a
-    class="btn text-primary"
-    target="_blank"
-    href="javascript:void(0);"
-    role="button">
-    Pano Hesabımı Platforma Bağla (Önerilir)
-  </a>
-
   <div class="alert alert-success">
-    <h5>Başarılı!</h5>
-    <hr />
     <strong>???</strong>
     hesabı başarıyla platforma bağlandı.
     <br />
     <br />
-    <a class="alert-link text-danger" href="javascript:void(0);">
+    <a class="btn btn-outline-success" href="javascript:void(0);">
       Bağlantıyı Kes
     </a>
   </div>
@@ -65,19 +64,23 @@
   </div>
   <div class="form-group">
     <label for="admin-password">Şifre:</label>
-    <input class="form-control" id="admin-password" type="password" />
+    <input
+      class="form-control"
+      id="admin-password"
+      placeholder="************"
+      type="password" />
     <small>Minimum: 6 karakter.</small>
   </div>
 </form>
 
-<a href="javascript:void(0);" on:click={back} class:disabled={buttonsLoading}>
-  <button class="btn btn-primary" type="button">
-    <!--            <span aria-hidden="true"-->
-    <!--                  class="spinner-border spinner-border-sm text-light mx-4"-->
-    <!--                  role="status"></span>-->
-    <!--      <a v-if="!nextButtonLoading">-->
-    <i class="fas fa-arrow-alt-circle-right" />
-    Geri Dön
-    <!--      </a>-->
-  </button>
+<a class="btn btn-secondary" role="button" href="javascript:void(0);">
+  Tamamla
+</a>
+<a
+  class="btn btn-outline-primary"
+  role="button"
+  href="javascript:void(0);"
+  on:click={back}
+  class:disabled={buttonsLoading}>
+  Geri
 </a>
