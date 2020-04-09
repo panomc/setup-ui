@@ -7,10 +7,10 @@
 <h5 class="text-primary">Veri Tabanı Bilgileri</h5>
 
 <div class="alert alert-dismissible text-danger" id="databaseError">
-  Hata mesajı
   <button class="close" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
+  Hata mesajı
 </div>
 
 <form>
@@ -28,17 +28,13 @@
         id="mysql-tab"
         role="tab"
         title="Veritabanı Türü">
-        <img
-          alt="MySQL"
-          class="rounded"
-          src="/assets/img/mysql.png"
-          width="24" />
+        <img alt="MySQL" src="/assets/img/mysql.png" width="24" height="24" />
         MySQL -
         <img
           alt="MariaDB"
-          class="rounded"
           src="/assets/img/mariadb.png"
-          width="24" />
+          width="24"
+          height="24" />
         MariaDB
       </a>
     </nav>
