@@ -25,10 +25,10 @@
   <li>
     Veritabanı bilgileri
     <a
-            data-placement="right"
-            data-toggle="tooltip"
-            href="javascript:void(0)"
-            title="Bu bilgileri web sunucunuzu sağlayan kurum ile iletişime geçerek
+      data-placement="right"
+      data-toggle="tooltip"
+      href="javascript:void(0)"
+      title="Bu bilgileri web sunucunuzu sağlayan kurum ile iletişime geçerek
       öğrenebilirsiniz.">
       (?)
     </a>
