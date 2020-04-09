@@ -1,18 +1,28 @@
 <script>
   import { nextStep, backStep, websiteName, websiteDescription } from "../Store";
 
+  let buttonsLoading = false;
+
   function next() {
-    nextStep({
-      step: 1,
-      websiteName: $websiteName,
-      websiteDescription: $websiteDescription
-    });
+    if (!buttonsLoading) {
+      buttonsLoading = true;
+
+      nextStep({
+        step: 1,
+        websiteName: $websiteName,
+        websiteDescription: $websiteDescription
+      });
+    }
   }
 
   function back() {
-    backStep({
-      step: 1
-    });
+    if(!buttonsLoading) {
+      buttonsLoading = true;
+
+      backStep({
+        step: 1
+      });
+    }
   }
 </script>
 
@@ -39,6 +49,6 @@
     <textarea id="websiteDescription" class="form-control" rows="2" bind:value={$websiteDescription}></textarea>
   </div>
 
-  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={next}>Devam Et</a>
-  <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back}>Geri</a>
+  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={next} class:disabled="{buttonsLoading}">Devam Et</a>
+  <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back} class:disabled="{buttonsLoading}">Geri</a>
 </form>

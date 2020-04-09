@@ -1,14 +1,20 @@
 <script>
   import { nextStep, backStep } from "../Store";
 
+  let buttonsLoading = false;
+
   function back() {
-    backStep({
-      step: 3
-    });
+    if (!buttonsLoading) {
+      buttonsLoading = true;
+
+      backStep({
+        step: 3
+      });
+    }
   }
 </script>
 
-<a href="javascript:void(0);" on:click={back}>
+<a href="javascript:void(0);" on:click={back} class:disabled="{buttonsLoading}">
   <button class="btn btn-primary" type="button">
     <!--            <span aria-hidden="true"-->
     <!--                  class="spinner-border spinner-border-sm text-light mx-4"-->
