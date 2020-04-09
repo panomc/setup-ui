@@ -1,7 +1,3 @@
-<style lang="scss" global>
-  @import "commons/scss/main";
-</style>
-
 <script>
   import router from "page";
   import { ChunkGenerator } from "svelte-spa-chunk";
@@ -44,48 +40,55 @@
   router.start();
 </script>
 
-<div class="container py-5">
-  <div class="row align-items-center justify-content-between">
-    <div class="col-12 text-center">
-      <a href="https://panomc.com" target="_blank" title="Pano">
-        <img alt="Pano Logo" src="/assets/img/logo-blue.svg" width="24"/>
+<style lang="scss" global>
+  @import "commons/scss/main";
+</style>
+
+<div class="container">
+  <div class="text-center py-4">
+    <a href="https://panomc.com" target="_blank" title="Pano">
+      <img alt="Pano Logo" src="/assets/img/logo-blue.svg" width="24" />
+    </a>
+  </div>
+  <ul class="nav justify-content-between align-items-center">
+    <li class="nav-item">
+      <a class="nav-link text-muted" href="https://panomc.com" target="_blank">
+        Yardım
       </a>
-    </div>
-    <div class="col-auto">
-      <small class="m-0">Pano v.1.0</small>
-    </div>
-    <div class="col-auto">
+    </li>
+    <li class="nav-item">
       <div class="dropdown">
         <a
-                href="javascript:void(0);"
-                class="nav-link icon-link dropdown-toggle d-inline-block"
-                data-toggle="dropdown"
-                id="selectLanguage">
+          href="javascript:void(0);"
+          class="nav-link text-muted dropdown-toggle d-inline-block"
+          data-toggle="dropdown"
+          id="selectLanguage">
           TR
         </a>
         <div
-                aria-labelledby="selectLanguage"
-                class="dropdown-menu dropdown-menu-right">
+          aria-labelledby="selectLanguage"
+          class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="javascript:void(0);">Türkçe (TR)</a>
           <a class="dropdown-item" href="javascript:void(0);">English (US)</a>
         </div>
         <div
-                class="spinner-border spinner-border-sm text-primary"
-                role="status"/>
+          class="spinner-border spinner-border-sm text-primary"
+          role="status" />
       </div>
-    </div>
-  </div>
-
-  <!-- Main Content Card -->
+    </li>
+  </ul>
   <div class="card">
     <div class="card-body py-5 col-md-8 m-auto">
-      {#if $isPageLoading || !$stepChecked }
-        <PageLoading/>
+      {#if $isPageLoading || !$stepChecked}
+        <PageLoading />
       {/if}
 
-      {#if $stepChecked }
-        <svelte:component this={props.component} {...props}/>
+      {#if $stepChecked}
+        <svelte:component this={props.component} {...props} />
       {/if}
     </div>
+  </div>
+  <div class="text-center py-4">
+    <small class="text-muted">Pano v.1.0</small>
   </div>
 </div>
