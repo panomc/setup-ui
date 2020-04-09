@@ -83,7 +83,6 @@ export function checkCurrentStep() {
       initializeCurrentStep(response);
     })
     .catch(() => {
-      console.log("hello amk");
       stepChecked.set(true);
     });
 }
