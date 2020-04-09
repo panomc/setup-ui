@@ -52,8 +52,7 @@
           class="form-control"
           id="databaseAddress"
           placeholder="localhost:80"
-          type="text"
-          v-model="host" />
+          type="text" />
       </div>
 
       <div class="form-group">
