@@ -5,7 +5,7 @@
   let buttonsLoading = false;
   let nextButtonDisabled = true;
 
-  function next() {
+  function submit() {
     if (!buttonsLoading) {
       buttonsLoading = true;
 
@@ -50,7 +50,7 @@
   Kontrol Paneli üzerinden yapabilirsiniz.
 </p>
 <h5 class="text-primary">Website Adı ve Açıklaması</h5>
-<form>
+<form on:submit|preventDefault={submit}>
   <div class="form-group">
     <label for="websiteName">Website Adı:</label>
     <input
@@ -66,8 +66,9 @@
     <textarea id="websiteDescription" class="form-control" rows="2" bind:value={$websiteDescription}></textarea>
   </div>
 
-  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={next}
-     class:disabled="{buttonsLoading || nextButtonDisabled}">Devam Et</a>
+  <button type="submit" class="btn btn-primary" role="button" class:disabled="{buttonsLoading || nextButtonDisabled}">
+    Devam Et
+  </button>
   <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back}
      class:disabled="{buttonsLoading}">Geri</a>
 </form>
