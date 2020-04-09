@@ -2,9 +2,17 @@
   import { onMount } from "svelte";
   import jQuery from "jquery";
 
+  import { nextStep } from "../Store";
+
   onMount(async () => {
-    jQuery('[data-toggle="tooltip"]').tooltip();
+    jQuery("[data-toggle=\"tooltip\"]").tooltip();
   });
+
+  function start() {
+    nextStep({
+      step: 0
+    });
+  }
 </script>
 
 <h3>Pano Kurulumuna Hoş Geldiniz!</h3>
@@ -17,14 +25,14 @@
   <li>
     Veritabanı bilgileri
     <a
-      data-placement="right"
-      data-toggle="tooltip"
-      href="javascript:void(0)"
-      title="Bu bilgileri web sunucunuzu sağlayan kurum ile iletişime geçerek
+            data-placement="right"
+            data-toggle="tooltip"
+            href="javascript:void(0)"
+            title="Bu bilgileri web sunucunuzu sağlayan kurum ile iletişime geçerek
       öğrenebilirsiniz.">
       (?)
     </a>
   </li>
   <li>Yönetim paneli için hesap bilgileri</li>
 </ul>
-<a href="/step-1" class="btn btn-primary" role="button">Başlayalım</a>
+<a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={start}>Başlayalım</a>
