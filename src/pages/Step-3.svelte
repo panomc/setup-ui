@@ -1,4 +1,14 @@
-<a href="/">
+<script>
+  import { nextStep, backStep } from "../Store";
+
+  function back() {
+    backStep({
+      step: 3
+    });
+  }
+</script>
+
+<a href="javascript:void(0);" on:click={back}>
   <button class="btn btn-primary" type="button">
     <!--            <span aria-hidden="true"-->
     <!--                  class="spinner-border spinner-border-sm text-light mx-4"-->

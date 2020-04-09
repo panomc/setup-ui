@@ -1,3 +1,24 @@
+<script>
+  import { nextStep, backStep, db } from "../Store";
+
+  function next() {
+    nextStep({
+      step: 2,
+      host: $db.host,
+      dbName: $db.dbName,
+      username: $db.username,
+      password: $db.password,
+      prefix: $db.prefix,
+    });
+  }
+
+  function back() {
+    backStep({
+      step: 2
+    });
+  }
+</script>
+
 <h3>Adım - 2/3</h3>
 <p>
   Platform verilerinin web sunucunuzda kayıt edilmesi için veritabanına
@@ -28,13 +49,13 @@
         id="mysql-tab"
         role="tab"
         title="Veritabanı Türü">
-        <img alt="MySQL" src="/assets/img/mysql.png" width="24" height="24" />
+        <img alt="MySQL" src="/assets/img/mysql.png" width="24" height="24"/>
         MySQL -
         <img
           alt="MariaDB"
           src="/assets/img/mariadb.png"
           width="24"
-          height="24" />
+          height="24"/>
         MariaDB
       </a>
     </nav>
@@ -52,7 +73,8 @@
           class="form-control"
           id="databaseAddress"
           placeholder="localhost:80"
-          type="text" />
+          bind:value={$db.host}
+          type="text"/>
       </div>
 
       <div class="form-group">
@@ -61,7 +83,8 @@
           class="form-control"
           id="databaseName"
           placeholder="pano"
-          type="text" />
+          bind:value={$db.dbName}
+          type="text"/>
       </div>
       <div class="form-group">
         <label for="databaseUserName">Veri Tabanı Kullanıcı Adı:</label>
@@ -69,7 +92,8 @@
           class="form-control"
           id="databaseUserName"
           placeholder="admin"
-          type="text" />
+          bind:value={$db.username}
+          type="text"/>
       </div>
 
       <div class="form-group">
@@ -78,7 +102,8 @@
           class="form-control"
           id="databaseUserPassword"
           placeholder="****************"
-          type="password" />
+          bind:value={$db.password}
+          type="password"/>
       </div>
 
       <div class="form-group">
@@ -87,7 +112,8 @@
           class="form-control"
           id="databaseTablePrefix"
           placeholder="pano_"
-          type="text" />
+          bind:value={$db.prefix}
+          type="text"/>
       </div>
     </div>
 
@@ -100,6 +126,6 @@
     </div>
   </div>
 
-  <a href="/step-2" class="btn btn-primary" role="button">Devam Et</a>
-  <a href="/" class="btn btn-outline-primary" role="button">Geri</a>
+  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={next}>Devam Et</a>
+  <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back}>Geri</a>
 </form>
