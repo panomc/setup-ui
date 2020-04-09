@@ -19,8 +19,6 @@
     <textarea id="websiteDescription" class="form-control" rows="2" />
   </div>
 
-  <div class="form-group">
-    <a href="/step-2" class="btn btn-primary" role="button">Devam Et</a>
-    <a href="/" class="btn btn-outline-primary" role="button">Geri</a>
-  </div>
+  <a href="/step-2" class="btn btn-primary" role="button">Devam Et</a>
+  <a href="/" class="btn btn-outline-primary" role="button">Geri</a>
 </form>
