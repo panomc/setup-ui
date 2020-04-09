@@ -1,21 +1,31 @@
 <script>
   import { nextStep, backStep, db } from "../Store";
 
+  let buttonsLoading = false;
+
   function next() {
-    nextStep({
-      step: 2,
-      host: $db.host,
-      dbName: $db.dbName,
-      username: $db.username,
-      password: $db.password,
-      prefix: $db.prefix,
-    });
+    if (!buttonsLoading) {
+      buttonsLoading = true;
+
+      nextStep({
+        step: 2,
+        host: $db.host,
+        dbName: $db.dbName,
+        username: $db.username,
+        password: $db.password,
+        prefix: $db.prefix
+      });
+    }
   }
 
   function back() {
-    backStep({
-      step: 2
-    });
+    if (!buttonsLoading) {
+      buttonsLoading = true;
+
+      backStep({
+        step: 2
+      });
+    }
   }
 </script>
 
@@ -126,6 +136,8 @@
     </div>
   </div>
 
-  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={next}>Devam Et</a>
-  <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back}>Geri</a>
+  <a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={next} class:disabled="{buttonsLoading}">Devam
+    Et</a>
+  <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back}
+     class:disabled="{buttonsLoading}">Geri</a>
 </form>
