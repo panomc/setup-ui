@@ -1,5 +1,5 @@
 import { ApiUtil } from "./util/api.util";
-import { writable } from "svelte/store";
+import { get, writable } from "svelte/store";
 import page from "page";
 
 export const stepState = writable(4);
@@ -31,9 +31,7 @@ export const account = writable({
   password: ""
 });
 
-function redirect(response) {
-  const step = response.data.step;
-
+function redirect(step) {
   if (step === 0) {
     page.redirect("/");
   } else if (step === 1) {
@@ -87,10 +85,11 @@ export function checkCurrentStep() {
     .then(response => {
 
       initializeCurrentStep(response);
-      redirect(response);
+      redirect(response.data.step);
     })
     .catch(() => {
       stepChecked.set(true);
+      redirect(get(stepState));
     });
 }
 
