@@ -31,19 +31,31 @@ export const account = writable({
   password: ""
 });
 
+function redirect(response) {
+  const step = response.data.step;
+
+  if (step === 0) {
+    page.redirect("/");
+  } else if (step === 1) {
+    page.redirect("/step-1");
+  } else if (step === 2) {
+    page.redirect("/step-2");
+  } else if (step === 3) {
+    page.redirect("/step-3");
+  } else {
+    page.redirect("/");
+  }
+}
+
 function initializeCurrentStep(response) {
   const step = response.data.step;
 
-  if (typeof step !== 'undefined') {
+  if (typeof step !== "undefined") {
     stepState.set(step);
 
-    if (step === 0) {
-      page.redirect("/");
-    } else if (step === 1) {
+    if (step === 1) {
       websiteName.set(response.data.websiteName);
       websiteDescription.set(response.data.websiteDescription);
-
-      page.redirect("/step-1");
     } else if (step === 2) {
       db.set({
         host: response.data.db.host,
@@ -52,8 +64,6 @@ function initializeCurrentStep(response) {
         password: response.data.db.password,
         prefix: response.data.db.prefix
       });
-
-      page.redirect("/step-2");
     } else if (step === 3) {
       websiteName.set(response.data.websiteName);
       websiteDescription.set(response.data.websiteDescription);
@@ -66,10 +76,6 @@ function initializeCurrentStep(response) {
         email: response.data.panoAccount.email,
         access_token: response.data.panoAccount.access_token
       });
-
-      page.redirect("/step-3");
-    } else {
-      page.redirect("/");
     }
   }
 
@@ -81,6 +87,7 @@ export function checkCurrentStep() {
     .then(response => {
 
       initializeCurrentStep(response);
+      redirect(response);
     })
     .catch(() => {
       stepChecked.set(true);
