@@ -34,7 +34,7 @@
 
   router.start();
 
-  let hidden;
+  export let hidden;
 </script>
 
 <div hidden={hidden}>
