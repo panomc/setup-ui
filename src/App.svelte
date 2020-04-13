@@ -8,12 +8,13 @@
 
 <style lang="scss" global>
   @import "commons/scss/main";
+  @import "styles/style";
 </style>
 
 <div class="container">
-  <div class="text-center py-4">
+  <div class="text-center pt-5">
     <a href="https://panomc.com" target="_blank" title="Pano">
-      <img alt="Pano Logo" src="/assets/img/logo-blue.svg" width="24"/>
+      <img alt="Pano Logo" src="/assets/img/logo-blue.svg" width="24" />
     </a>
   </div>
   <ul class="nav justify-content-between align-items-center">
@@ -39,19 +40,19 @@
         </div>
         <div
           class="spinner-border spinner-border-sm text-primary"
-          role="status"></div>
+          role="status" />
       </div>
     </li>
   </ul>
-  <div class="card">
+  <div class="card setup-bg">
     <div class="card-body py-5 col-md-8 m-auto">
-        {#if $isPageLoading || !$stepChecked}
-          <PageLoading/>
-        {/if}
+      {#if $isPageLoading || !$stepChecked}
+        <PageLoading />
+      {/if}
 
-        {#if $stepChecked}
-          <Router hidden={$isPageLoading}/>
-        {/if}
+      {#if $stepChecked}
+        <Router hidden={$isPageLoading} />
+      {/if}
     </div>
   </div>
   <div class="text-center py-4">
