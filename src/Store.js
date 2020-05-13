@@ -1,6 +1,6 @@
 import { ApiUtil } from "./util/api.util";
 import { get, writable } from "svelte/store";
-import page from "page";
+import { route } from "routve";
 
 export const stepState = writable(4);
 export const stepChecked = writable(false);
@@ -13,7 +13,7 @@ export const db = writable({
   dbName: "",
   username: "",
   password: "",
-  prefix: "pano_"
+  prefix: "pano_",
 });
 
 export const host = writable("");
@@ -22,26 +22,26 @@ export const ip = writable("");
 export const panoAccount = writable({
   username: "",
   email: "",
-  access_token: ""
+  access_token: "",
 });
 
 export const account = writable({
   username: "",
   email: "",
-  password: ""
+  password: "",
 });
 
 function redirect(step) {
   if (step === 0) {
-    page.redirect("/");
+    route("/");
   } else if (step === 1) {
-    page.redirect("/step-1");
+    route("/step-1");
   } else if (step === 2) {
-    page.redirect("/step-2");
+    route("/step-2");
   } else if (step === 3) {
-    page.redirect("/step-3");
+    route("/step-3");
   } else {
-    page.redirect("/");
+    route("/");
   }
 }
 
@@ -60,7 +60,7 @@ function initializeCurrentStep(response) {
         dbName: response.data.db.dbName,
         username: response.data.db.username,
         password: response.data.db.password,
-        prefix: response.data.db.prefix
+        prefix: response.data.db.prefix,
       });
     } else if (step === 3) {
       websiteName.set(response.data.websiteName);
@@ -72,7 +72,7 @@ function initializeCurrentStep(response) {
       panoAccount.set({
         username: response.data.panoAccount.username,
         email: response.data.panoAccount.email,
-        access_token: response.data.panoAccount.access_token
+        access_token: response.data.panoAccount.access_token,
       });
     }
   }
@@ -82,8 +82,7 @@ function initializeCurrentStep(response) {
 
 export function checkCurrentStep() {
   ApiUtil.get("setup/step/check")
-    .then(response => {
-
+    .then((response) => {
       initializeCurrentStep(response);
       redirect(response.data.step);
     })
@@ -94,15 +93,13 @@ export function checkCurrentStep() {
 }
 
 export function nextStep(data) {
-  ApiUtil.post("setup/step/nextStep", data)
-    .then(() => {
-      checkCurrentStep();
-    });
+  ApiUtil.post("setup/step/nextStep", data).then(() => {
+    checkCurrentStep();
+  });
 }
 
 export function backStep(data) {
-  ApiUtil.post("setup/step/backStep", data)
-    .then(() => {
-      checkCurrentStep();
-    });
+  ApiUtil.post("setup/step/backStep", data).then(() => {
+    checkCurrentStep();
+  });
 }
