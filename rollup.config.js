@@ -140,7 +140,22 @@ function serve() {
       if (!started) {
         started = true;
 
-        require("child_process").spawn("npm", ["run", "start", "--", "--dev"], {
+        const fs = require("fs");
+        const configPath = "./config.js";
+
+        let config = {
+          port: 5000,
+        };
+
+        try {
+          if (fs.existsSync(configPath)) {
+            config = require(configPath);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+
+        require("child_process").spawn("npm", ["run", "start", "--", "--dev", "-p", config.port], {
           stdio: ["ignore", "inherit", "inherit"],
           shell: true
         });
