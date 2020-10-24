@@ -32,7 +32,7 @@
     "@fullhuman/postcss-purgecss": "^3.0.0",
     "postcss-load-config": "^3.0.0",
     "cssnano": "^4.1.10",
-    "routve": "^1.1.10",
+    "routve": "^1.1.11",
     "sass": "^1.27.0",
     "sirv-cli": "^1.0.8",
     "svelte": "^3.29.3",
