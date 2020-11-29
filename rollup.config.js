@@ -92,7 +92,8 @@ const plugins = [
           const newOutputMap = sensibleOutputDir + "/" + cssFileName + ".map";
 
           if (fs.existsSync(outputCSS) && fs.existsSync(outputMap)) {
-            fs.mkdirSync(sensibleOutputDir);
+            if (!fs.existsSync(sensibleOutputDir))
+              fs.mkdirSync(sensibleOutputDir);
 
             fs.renameSync(outputCSS, newOutputCSS);
             fs.renameSync(outputMap, newOutputMap);
