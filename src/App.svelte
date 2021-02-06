@@ -70,7 +70,7 @@
     <div class="card-body py-5 col-md-8 m-auto">
       <PageLoading hidden="{!$isPageLoading}" />
 
-      <Router hidden="{$isPageLoading}" routerConfig="{RouterConfig}" />
+      <Router hidden="{$isPageLoading}" config="{RouterConfig}" />
     </div>
   </div>
   <div class="text-center py-4">
