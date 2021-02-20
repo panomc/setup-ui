@@ -1,6 +1,11 @@
 <script>
   import { onDestroy } from "svelte";
-  import { nextStep, backStep, websiteName, websiteDescription } from "../Store";
+  import {
+    nextStep,
+    backStep,
+    websiteName,
+    websiteDescription,
+  } from "../Store";
 
   let buttonsLoading = false;
   let nextButtonDisabled = true;
@@ -12,7 +17,7 @@
       nextStep({
         step: 1,
         websiteName: $websiteName,
-        websiteDescription: $websiteDescription
+        websiteDescription: $websiteDescription,
       });
     }
   }
@@ -22,7 +27,7 @@
       buttonsLoading = true;
 
       backStep({
-        step: 1
+        step: 1,
       });
     }
   }
@@ -43,14 +48,12 @@
   }
 </script>
 
-<h3>Adım - 1/3</h3>
+<h3>Adım: 1-3</h3>
 <p>
-  Websitenizin adını ve açıklamasını belirleyin. Bunlar arama motorlarında
-  görünecektir. Websiteniz hakkında diğer özelleştirmeleri kurulumdan sonra
-  Kontrol Paneli üzerinden yapabilirsiniz.
+  Websitenizin adı ve açıklaması arama motorlarında görünecektir. Kurulumdan
+  sonra bu bilgileri değiştirebilirsiniz.
 </p>
-<h5 class="text-primary">Website Adı ve Açıklaması</h5>
-<form on:submit|preventDefault={submit}>
+<form on:submit|preventDefault="{submit}">
   <div class="form-group">
     <label for="websiteName">Website Adı:</label>
     <input
@@ -58,18 +61,34 @@
       class="form-control"
       placeholder="Panocraft"
       type="text"
-      bind:value={$websiteName}
-    />
+      bind:value="{$websiteName}" />
   </div>
   <div class="form-group">
     <label for="websiteDescription">Açıklama:</label>
-    <textarea id="websiteDescription" class="form-control" rows="2" bind:value={$websiteDescription}></textarea>
+    <textarea
+      id="websiteDescription"
+      class="form-control"
+      rows="2"
+      bind:value="{$websiteDescription}"></textarea>
   </div>
 
-  <button type="submit" class="btn btn-primary" role="button" class:disabled={buttonsLoading || nextButtonDisabled}
-          disabled={buttonsLoading || nextButtonDisabled}>
-    Devam Et
-  </button>
-  <a href="javascript:void(0);" class="btn btn-outline-primary" role="button" on:click={back}
-     class:disabled={buttonsLoading} disabled={buttonsLoading}>Geri</a>
+  <hr />
+
+  <div class="w-100 d-flex justify-content-end">
+    <a
+      href="javascript:void(0);"
+      class="btn btn-link"
+      role="button"
+      on:click="{back}"
+      class:disabled="{buttonsLoading}"
+      disabled="{buttonsLoading}">Geri</a>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      role="button"
+      class:disabled="{buttonsLoading || nextButtonDisabled}"
+      disabled="{buttonsLoading || nextButtonDisabled}">
+      Devam Et
+    </button>
+  </div>
 </form>

@@ -9,7 +9,7 @@
   let nextButtonDisabled = false;
 
   onMount(async () => {
-    jQuery("[data-toggle=\"tooltip\"]").tooltip();
+    jQuery('[data-toggle="tooltip"]').tooltip();
 
     if ($stepState === 4) {
       showError("PLATFORM_ALREADY_INSTALLED");
@@ -23,7 +23,7 @@
       nextButtonLoading = true;
 
       nextStep({
-        step: 0
+        step: 0,
       });
     }
   }
@@ -41,20 +41,23 @@
   }
 </script>
 
-<div class="alert alert-dismissible text-danger" id="error" style="display: none;">
-  <button class="close" type="button" on:click={dismissErrorBox}>
+<div
+  class="alert alert-dismissible text-danger"
+  id="error"
+  style="display: none;">
+  <button class="close" type="button" on:click="{dismissErrorBox}">
     <span aria-hidden="true">&times;</span>
   </button>
-    {errorCode}
+  {errorCode}
 </div>
 
-<h3>Pano Kurulumuna Hoş Geldiniz!</h3>
+<h3>Pano kurulumuna hoş geldiniz!</h3>
 <p>
-  Platformu sunucunuza kurduktan sonra kullanmaya başlayabileceksiniz. Pano'nun
-  doğru şekilde çalışabilmesi için aşağıda listelenen bilgiler gerekmekte:
+  Pano'nun web sunucunuzda doğru şekilde çalışabilmesi için aşağıda listelenen
+  bilgileri belirlemeniz gerekmekte:
 </p>
 <ul>
-  <li>Web sitenizin adı ve açıklaması</li>
+  <li>Web site adı ve açıklaması</li>
   <li>
     Veritabanı bilgileri
     <a
@@ -66,9 +69,17 @@
       (?)
     </a>
   </li>
-  <li>Yönetim paneli için hesap bilgileri</li>
+  <li>Yönetim paneli hesap bilgileri</li>
 </ul>
 
-<a href="javascript:void(0);" class="btn btn-primary" role="button" on:click={start}
-   class:disabled={nextButtonLoading || nextButtonDisabled}
-   disabled={nextButtonLoading || nextButtonDisabled}>Başlayalım</a>
+<hr />
+
+<div class="w-100 d-flex justify-content-end">
+  <a
+    href="javascript:void(0);"
+    class="btn btn-primary"
+    role="button"
+    on:click="{start}"
+    class:disabled="{nextButtonLoading || nextButtonDisabled}"
+    disabled="{nextButtonLoading || nextButtonDisabled}">Başlayalım</a>
+</div>
