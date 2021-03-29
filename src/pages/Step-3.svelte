@@ -1,76 +1,3 @@
-<script>
-  import jQuery from "jquery";
-
-  import { onDestroy } from "svelte";
-  import { backStep, account } from "../Store";
-  import { ApiUtil, NETWORK_ERROR } from "../util/api.util";
-
-  let buttonsLoading = false;
-  let finishButtonDisabled = true;
-  let errorCode;
-
-  function submit() {
-    buttonsLoading = true;
-
-    ApiUtil.post("setup/finish", {
-      username: $account.username,
-      email: $account.email,
-      password: $account.password,
-    })
-      .then((response) => {
-        if (response.data.result === "ok") {
-          window.location.assign("/panel");
-        } else if (response.data.result === "error") {
-          const errorCode = response.data.error;
-
-          showError(errorCode);
-        } else {
-          showError(NETWORK_ERROR);
-          console.log(response);
-        }
-      })
-      .catch(() => {
-        showError(NETWORK_ERROR);
-      });
-  }
-
-  function back() {
-    if (!buttonsLoading) {
-      buttonsLoading = true;
-
-      backStep({
-        step: 3,
-      });
-    }
-  }
-
-  function showError(error) {
-    buttonsLoading = false;
-
-    errorCode = error;
-
-    jQuery("#error").fadeIn();
-  }
-
-  function dismissErrorBox() {
-    jQuery("#error").fadeOut("slow");
-  }
-
-  const accountUnsubscribe = account.subscribe(() => {
-    checkForm();
-  });
-
-  onDestroy(accountUnsubscribe);
-
-  function checkForm() {
-    finishButtonDisabled = !(
-      $account.username !== "" &&
-      $account.email !== "" &&
-      $account.password !== ""
-    );
-  }
-</script>
-
 <h3>Adım: 3-3</h3>
 <p>
   Çevrimiçi Pano hesabınızı kullanabilir veya yerel bir hesap
@@ -169,3 +96,76 @@
     </button>
   </div>
 </form>
+
+<script>
+  import jQuery from "jquery";
+
+  import { onDestroy } from "svelte";
+  import { backStep, account } from "../Store";
+  import { ApiUtil, NETWORK_ERROR } from "../util/api.util";
+
+  let buttonsLoading = false;
+  let finishButtonDisabled = true;
+  let errorCode;
+
+  function submit() {
+    buttonsLoading = true;
+
+    ApiUtil.post("setup/finish", {
+      username: $account.username,
+      email: $account.email,
+      password: $account.password,
+    })
+      .then((response) => {
+        if (response.data.result === "ok") {
+          window.location.assign("/panel");
+        } else if (response.data.result === "error") {
+          const errorCode = response.data.error;
+
+          showError(errorCode);
+        } else {
+          showError(NETWORK_ERROR);
+          console.log(response);
+        }
+      })
+      .catch(() => {
+        showError(NETWORK_ERROR);
+      });
+  }
+
+  function back() {
+    if (!buttonsLoading) {
+      buttonsLoading = true;
+
+      backStep({
+        step: 3,
+      });
+    }
+  }
+
+  function showError(error) {
+    buttonsLoading = false;
+
+    errorCode = error;
+
+    jQuery("#error").fadeIn();
+  }
+
+  function dismissErrorBox() {
+    jQuery("#error").fadeOut("slow");
+  }
+
+  const accountUnsubscribe = account.subscribe(() => {
+    checkForm();
+  });
+
+  onDestroy(accountUnsubscribe);
+
+  function checkForm() {
+    finishButtonDisabled = !(
+      $account.username !== "" &&
+      $account.email !== "" &&
+      $account.password !== ""
+    );
+  }
+</script>

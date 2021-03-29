@@ -1,87 +1,3 @@
-<script>
-  import jQuery from "jquery";
-
-  import { onDestroy } from "svelte";
-  import { nextStep, backStep, db } from "../Store";
-  import { ApiUtil, NETWORK_ERROR } from "../util/api.util";
-
-  let buttonsLoading = false;
-  let nextButtonDisabled = true;
-  let errorCode;
-
-  function submit() {
-    buttonsLoading = true;
-
-    ApiUtil.post("setup/dbConnectionTest", {
-      host: $db.host,
-      dbName: $db.dbName,
-      username: $db.username,
-      password: $db.password,
-    })
-      .then((response) => {
-        if (response.data.result === "ok") {
-          next();
-        } else if (response.data.result === "error") {
-          const errorCode = response.data.error;
-
-          showError(errorCode);
-        } else showError(NETWORK_ERROR);
-      })
-      .catch(() => {
-        showError(NETWORK_ERROR);
-      });
-  }
-
-  function showError(error) {
-    buttonsLoading = false;
-
-    errorCode = error;
-
-    jQuery("#error").fadeIn();
-  }
-
-  function dismissErrorBox() {
-    jQuery("#error").fadeOut("slow");
-  }
-
-  function next() {
-    buttonsLoading = true;
-
-    nextStep({
-      step: 2,
-      host: $db.host,
-      dbName: $db.dbName,
-      username: $db.username,
-      password: $db.password,
-      prefix: $db.prefix,
-    });
-  }
-
-  function back() {
-    if (!buttonsLoading) {
-      buttonsLoading = true;
-
-      backStep({
-        step: 2,
-      });
-    }
-  }
-
-  const dbUnsubscribe = db.subscribe(() => {
-    checkForm();
-  });
-
-  onDestroy(dbUnsubscribe);
-
-  function checkForm() {
-    nextButtonDisabled = !(
-      $db.host !== "" &&
-      $db.dbName !== "" &&
-      $db.username !== ""
-    );
-  }
-</script>
-
 <h3>Adım: 2-3</h3>
 <p>
   Veritabanı bilgilerini bilmiyorsanız sunucunuzu sağlayan kurum ile iletişime
@@ -212,3 +128,87 @@
     </button>
   </div>
 </form>
+
+<script>
+  import jQuery from "jquery";
+
+  import { onDestroy } from "svelte";
+  import { nextStep, backStep, db } from "../Store";
+  import { ApiUtil, NETWORK_ERROR } from "../util/api.util";
+
+  let buttonsLoading = false;
+  let nextButtonDisabled = true;
+  let errorCode;
+
+  function submit() {
+    buttonsLoading = true;
+
+    ApiUtil.post("setup/dbConnectionTest", {
+      host: $db.host,
+      dbName: $db.dbName,
+      username: $db.username,
+      password: $db.password,
+    })
+      .then((response) => {
+        if (response.data.result === "ok") {
+          next();
+        } else if (response.data.result === "error") {
+          const errorCode = response.data.error;
+
+          showError(errorCode);
+        } else showError(NETWORK_ERROR);
+      })
+      .catch(() => {
+        showError(NETWORK_ERROR);
+      });
+  }
+
+  function showError(error) {
+    buttonsLoading = false;
+
+    errorCode = error;
+
+    jQuery("#error").fadeIn();
+  }
+
+  function dismissErrorBox() {
+    jQuery("#error").fadeOut("slow");
+  }
+
+  function next() {
+    buttonsLoading = true;
+
+    nextStep({
+      step: 2,
+      host: $db.host,
+      dbName: $db.dbName,
+      username: $db.username,
+      password: $db.password,
+      prefix: $db.prefix,
+    });
+  }
+
+  function back() {
+    if (!buttonsLoading) {
+      buttonsLoading = true;
+
+      backStep({
+        step: 2,
+      });
+    }
+  }
+
+  const dbUnsubscribe = db.subscribe(() => {
+    checkForm();
+  });
+
+  onDestroy(dbUnsubscribe);
+
+  function checkForm() {
+    nextButtonDisabled = !(
+      $db.host !== "" &&
+      $db.dbName !== "" &&
+      $db.username !== ""
+    );
+  }
+</script>

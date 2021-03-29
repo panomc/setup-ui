@@ -1,46 +1,3 @@
-<script>
-  import { onMount } from "svelte";
-  import jQuery from "jquery";
-
-  import { nextStep, stepState } from "../Store";
-
-  let nextButtonLoading = false;
-  let errorCode;
-  let nextButtonDisabled = false;
-
-  onMount(async () => {
-    jQuery('[data-toggle="tooltip"]').tooltip();
-
-    if ($stepState === 4) {
-      showError("PLATFORM_ALREADY_INSTALLED");
-
-      nextButtonDisabled = true;
-    }
-  });
-
-  function start() {
-    if (!nextButtonLoading) {
-      nextButtonLoading = true;
-
-      nextStep({
-        step: 0,
-      });
-    }
-  }
-
-  function showError(error) {
-    nextButtonLoading = false;
-
-    errorCode = error;
-
-    jQuery("#error").fadeIn();
-  }
-
-  function dismissErrorBox() {
-    jQuery("#error").fadeOut("slow");
-  }
-</script>
-
 <div
   class="alert alert-dismissible text-danger"
   id="error"
@@ -83,3 +40,46 @@
     class:disabled="{nextButtonLoading || nextButtonDisabled}"
     disabled="{nextButtonLoading || nextButtonDisabled}">Başlayalım</a>
 </div>
+
+<script>
+  import { onMount } from "svelte";
+  import jQuery from "jquery";
+
+  import { nextStep, stepState } from "../Store";
+
+  let nextButtonLoading = false;
+  let errorCode;
+  let nextButtonDisabled = false;
+
+  onMount(async () => {
+    jQuery('[data-toggle="tooltip"]').tooltip();
+
+    if ($stepState === 4) {
+      showError("PLATFORM_ALREADY_INSTALLED");
+
+      nextButtonDisabled = true;
+    }
+  });
+
+  function start() {
+    if (!nextButtonLoading) {
+      nextButtonLoading = true;
+
+      nextStep({
+        step: 0,
+      });
+    }
+  }
+
+  function showError(error) {
+    nextButtonLoading = false;
+
+    errorCode = error;
+
+    jQuery("#error").fadeIn();
+  }
+
+  function dismissErrorBox() {
+    jQuery("#error").fadeOut("slow");
+  }
+</script>
