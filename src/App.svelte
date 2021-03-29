@@ -1,5 +1,5 @@
 <style lang="scss" global>
-  @import "pano/scss/main";
+  @import "pano-ui/scss/main";
   @import "styles/style";
 </style>
 
