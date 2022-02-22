@@ -10,8 +10,13 @@ import postcss from "rollup-plugin-postcss";
 import fsExtra from "fs-extra";
 import fs from "fs";
 
-fs.rmdirSync("public/assets", { recursive: true });
-fs.rmdirSync("public/commons", { recursive: true });
+if (fs.existsSync("public/assets")){
+  fs.rmdirSync("public/assets", { recursive: true });
+}
+
+if (fs.existsSync("public/commons")){
+  fs.rmdirSync("public/commons", { recursive: true });
+}
 
 fsExtra.copySync("src/pano-ui/favicon", "public/commons/favicon");
 fsExtra.copySync("src/pano-ui/fonts", "public/commons/fonts");
