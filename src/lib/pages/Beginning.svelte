@@ -34,7 +34,6 @@
 <div class="w-100 d-flex justify-content-end">
   <button
     class="btn btn-primary"
-    role="button"
     on:click="{start}"
     class:disabled="{loading || disabled}"
     disabled="{loading || disabled}"
