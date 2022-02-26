@@ -1,5 +1,10 @@
 import * as api from "$lib/api.util.server";
 import { CSRF_HEADER } from "$lib/variables";
+import { NETWORK_ERROR } from "../../pano-ui/js/api.util.js";
+
+const returnError = () => {
+  return { result: "error", error: NETWORK_ERROR };
+}
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 async function handle({
@@ -15,23 +20,23 @@ async function handle({
     CSRFToken &&
     headers.get(CSRF_HEADER) !== CSRFToken
   ) {
-    return null;
+    return returnError();
   }
 
   if (method === "GET") {
-    response = await api.get(path, jwt);
+    response = await api.get(path, jwt).catch(returnError);
   }
 
   if (method === "DELETE") {
-    response = await api.del(path, jwt);
+    response = await api.del(path, jwt).catch(returnError);
   }
 
   if (method === "POST") {
-    response = await api.post(path, await request.text(), jwt);
+    response = await api.post(path, await request.text(), jwt).catch(returnError);
   }
 
   if (method === "PUT") {
-    response = await api.put(path, await request.text(), jwt);
+    response = await api.put(path, await request.text(), jwt).catch(returnError);
   }
 
   return { body: response };
