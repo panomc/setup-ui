@@ -4,12 +4,7 @@
   geçin.
 </p>
 
-<div
-  class="alert alert-danger alert-dismissible"
-  style="display: none;"
-  id="error">
-  {errorCode}
-</div>
+<ErrorAlert error="{error}" />
 
 <form on:submit|preventDefault="{submit}">
   <div class="mb-3">
@@ -141,9 +136,10 @@
 <script>
   import { backStep, nextStep } from "$lib/Store.js";
   import ApiUtil, { NETWORK_ERROR } from "$lib/api.util.js";
+  import ErrorAlert from "$lib/components/ErrorAlert.svelte";
 
   let loading = false;
-  let errorCode = "";
+  let error = null;
 
   export let db = {
     host: "",
@@ -157,6 +153,7 @@
 
   function submit() {
     loading = true;
+    error = null;
 
     ApiUtil.post({
       path: "/api/setup/dbConnectionTest",
@@ -166,9 +163,7 @@
         if (body.result === "ok") {
           next();
         } else if (body.error) {
-          const errorCode = body.error;
-
-          showError(errorCode);
+          showError(body.error);
         } else showError(NETWORK_ERROR);
       })
       .catch(() => {
@@ -188,6 +183,7 @@
   function back() {
     if (!loading) {
       loading = true;
+      error = null;
 
       backStep({
         step: 2,
@@ -195,12 +191,9 @@
     }
   }
 
-  function showError(error) {
+  function showError(errorCode) {
     loading = false;
 
-    errorCode = error;
-
-    window.$("#error").fadeOut("slow");
-    window.$("#error").fadeIn();
+    error = errorCode;
   }
 </script>

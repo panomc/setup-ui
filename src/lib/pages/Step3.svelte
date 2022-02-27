@@ -32,9 +32,7 @@
     </button>
   </div>
 
-  <div class="alert alert-danger" id="setupError" style="display: none;">
-    {errorCode}
-  </div>
+  <ErrorAlert error="{error}" />
 
   <div class="mb-3">
     <label for="admin-email">E-Posta:</label>
@@ -113,8 +111,11 @@
   import ApiUtil, { NETWORK_ERROR } from "$lib/api.util.js";
   import { PANEL_URL } from "$lib/variables.js";
 
+  import ErrorAlert from "$lib/components/ErrorAlert.svelte";
+  import { tick } from "svelte";
+
   let loading = false;
-  let errorCode = "";
+  let error = null;
 
   export let account = {
     username: "",
@@ -127,6 +128,7 @@
 
   function submit() {
     loading = true;
+    error = null;
 
     ApiUtil.post({
       path: "/api/setup/finish",
@@ -136,9 +138,7 @@
         if (body.result === "ok") {
           window.location.assign(PANEL_URL + "/panel");
         } else if (body.error) {
-          const errorCode = body.error;
-
-          showError(errorCode);
+          showError(body.error);
         } else {
           showError(NETWORK_ERROR);
           console.log(body);
@@ -152,6 +152,7 @@
   function back() {
     if (!loading) {
       loading = true;
+      error = null;
 
       backStep({
         step: 3,
@@ -159,12 +160,9 @@
     }
   }
 
-  function showError(error) {
+  async function showError(errorCode) {
     loading = false;
 
-    errorCode = error;
-
-    window.$("#setupError").fadeOut("slow");
-    window.$("#setupError").fadeIn();
+    error = errorCode;
   }
 </script>

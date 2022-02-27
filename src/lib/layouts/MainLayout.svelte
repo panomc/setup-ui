@@ -42,11 +42,8 @@
   </div>
 
   <div class="container pt-lg-5 px-3">
-    {#if $session.stepInfo.error}
-      <div class="alert alert-danger">
-        {$session.stepInfo.error}
-      </div>
-    {/if}
+    <ErrorAlert
+      error="{$session.stepInfo.error}" />
 
     <div class="card setup-bg">
       <div class="card-body py-5 col-md-8 m-auto">
@@ -62,4 +59,5 @@
   import { session } from "$app/stores";
 
   import App from "$lib/components/App.svelte";
+  import ErrorAlert from "$lib/components/ErrorAlert.svelte";
 </script>
