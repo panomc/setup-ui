@@ -82,7 +82,7 @@
   }
 
   function back() {
-    if (!loading && !disabled) {
+    if (!loading) {
       loading = true;
 
       backStep({
