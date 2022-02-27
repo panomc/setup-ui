@@ -9,11 +9,8 @@
     <li>
       Veritabanı bilgileri
       <a
-        data-placement="right"
-        data-toggle="tooltip"
         href="javascript:void(0)"
-        title="Bu bilgileri web sunucunuzu sağlayan kurum ile iletişime geçerek
-      öğrenebilirsiniz.">
+        use:tooltip="{['Bu bilgileri web sunucunuzu sağlayan kurum ile iletişime geçerek öğrenebilirsiniz.', { placement: 'right' }]}">
         (?)
       </a>
     </li>
@@ -38,6 +35,8 @@
 <script>
   import { page, session } from "$app/stores";
   import { nextStep } from "$lib/Store.js";
+
+  import tooltip from "$lib/tooltip.util"
 
   let loading = false;
   $: disabled = !!!!$session.stepInfo.error;
