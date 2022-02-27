@@ -96,9 +96,7 @@
     </div>
   </div>
 
-  <hr />
-
-  <div class="row">
+  <div class="row pt-3">
     <div class="col-6">
       <a
         href="javascript:void(0);"

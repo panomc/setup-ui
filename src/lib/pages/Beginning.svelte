@@ -18,9 +18,7 @@
   </ul>
 </div>
 
-<hr />
-
-<div class="row">
+<div class="row pt-3">
   <div class="col-6">
     <button
       class="btn btn-primary btn-lg w-100"
