@@ -15,6 +15,7 @@
     "@sveltejs/adapter-node": "^1.0.0-next.70",
     "@sveltejs/kit": "^1.0.0-next.287",
     "bootstrap": "^4.6.1",
+    "cookie": "^0.4.2",
     "csrf": "^3.1.0",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.4.0",
@@ -28,5 +29,6 @@
     "svelte": "^3.46.4",
     "svelte-preprocess": "^4.10.4"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {}
 }
