@@ -1,25 +1,25 @@
 <h3>Adım: 3-3</h3>
-<p>
+<p class="text-muted">
   Çevrimiçi Pano hesabınızı kullanabilir veya yerel bir hesap
   oluşturabilirsiniz.
 </p>
 
 <form on:submit|preventDefault="{submit}">
   <div class="alert alert-primary">
-    Pano hesabınızı bağladığınızda temalar ve eklentiler için gerekli alışveriş
-    işlemlerini kullanabilirsiniz.
-    <br />
-    <br />
+    <p>
+      Pano hesabınızı bağladığınızda temalar ve eklentiler için gerekli
+      alışveriş işlemlerini kullanabilirsiniz.
+    </p>
     <a
       class="btn btn-outline-primary"
       target="_blank"
       href="javascript:void(0);"
       role="button">
-      Pano Hesabımı Platforma Bağla (Önerilir)
+      Pano Hesabı Bağla
     </a>
   </div>
 
-  <div class="alert alert-success">
+  <div class="alert alert-success" style="display: none;">
     <a
       class="alert-link"
       href="https://panomc.com/user/username"
@@ -27,24 +27,16 @@
       ???
     </a>
     hesabı başarıyla platforma bağlandı.
-    <br />
-    <br />
-    <a class="btn btn-outline-danger" href="javascript:void(0);">
+    <button class="btn d-block btn-outline-danger" href="javascript:void(0);">
       Bağlantıyı Kes
-    </a>
+    </button>
   </div>
 
-  <div
-    class="alert alert-dismissible text-danger"
-    id="error"
-    style="display: none;">
-    <button class="close" type="button" on:click="{dismissErrorBox}">
-      <span aria-hidden="true">&times;</span>
-    </button>
+  <div class="alert alert-danger" id="setupError" style="display: none;">
     {errorCode}
   </div>
 
-  <div class="form-group">
+  <div class="mb-3">
     <label for="admin-email">E-Posta:</label>
     <input
       class="form-control"
@@ -54,7 +46,7 @@
   </div>
   <div class="row">
     <div class="col-6">
-      <div class="form-group">
+      <div class="mb-3">
         <label for="admin-username">Minecraft Kullanıcı Adı:</label>
         <input
           class="form-control"
@@ -64,7 +56,7 @@
       </div>
     </div>
     <div class="col-6">
-      <div class="form-group">
+      <div class="mb-3">
         <label for="admin-password">Şifre:</label>
         <input
           class="form-control"
@@ -77,23 +69,29 @@
     </div>
   </div>
 
-  <div class="w-100 d-flex justify-content-end">
-    <a
-      class="btn btn-link"
-      role="button"
-      href="javascript:void(0);"
-      on:click="{back}"
-      class:disabled="{loading}"
-      disabled="{loading}">
-      Geri
-    </a>
-    <button
-      type="submit"
-      class="btn btn-secondary text-white"
-      class:disabled="{loading || disabled}"
-      disabled="{loading || disabled}">
-      Tamamla
-    </button>
+  <hr />
+
+  <div class="row">
+    <div class="col-6">
+      <a
+        class="btn btn-link w-100"
+        role="button"
+        href="javascript:void(0);"
+        on:click="{back}"
+        class:disabled="{loading}"
+        disabled="{loading}">
+        Geri
+      </a>
+    </div>
+    <div class="col-6">
+      <button
+        type="submit"
+        class="btn btn-secondary w-100"
+        class:disabled="{loading || disabled}"
+        disabled="{loading || disabled}">
+        Tamamla
+      </button>
+    </div>
   </div>
 </form>
 
@@ -166,10 +164,7 @@
 
     errorCode = error;
 
-    window.$("#error").fadeIn();
-  }
-
-  function dismissErrorBox() {
-    window.$("#error").fadeOut("slow");
+    window.$("#setupError").fadeOut("slow");
+    window.$("#setupError").fadeIn();
   }
 </script>

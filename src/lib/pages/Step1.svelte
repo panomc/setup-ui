@@ -1,20 +1,19 @@
 <h3>Adım: 1-3</h3>
-<p>
+<p class="text-muted">
   Websitenizin adı ve açıklaması arama motorlarında görünecektir. Kurulumdan
   sonra bu bilgileri değiştirebilirsiniz.
 </p>
 <form on:submit|preventDefault="{submit}">
-  <div class="form-group">
+  <div class="mb-3">
     <label for="websiteName">Website Adı:</label>
     <input
       id="websiteName"
       class="form-control"
       placeholder="Panocraft"
       type="text"
-      bind:value="{websiteName}"
-    />
+      bind:value="{websiteName}" />
   </div>
-  <div class="form-group">
+  <div class="mb-3">
     <label for="websiteDescription">Açıklama:</label>
     <textarea
       id="websiteDescription"
@@ -25,24 +24,25 @@
 
   <hr />
 
-  <div class="w-100 d-flex justify-content-end">
-    <a
-      href="javascript:void(0);"
-      class="btn btn-link"
-      role="button"
-      class:disabled="{loading}"
-      disabled="{loading}"
-      on:click="{back}">Geri</a
-    >
-
-    <button
-      type="submit"
-      class="btn btn-primary"
-      class:disabled="{loading || disabled}"
-      disabled="{loading || disabled}"
-    >
-      Devam Et
-    </button>
+  <div class="row">
+    <div class="col-6">
+      <a
+        href="javascript:void(0);"
+        class="btn btn-link w-100"
+        role="button"
+        class:disabled="{loading}"
+        disabled="{loading}"
+        on:click="{back}">Geri</a>
+    </div>
+    <div class="col-6">
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        class:disabled="{loading || disabled}"
+        disabled="{loading || disabled}">
+        Devam Et
+      </button>
+    </div>
   </div>
 </form>
 

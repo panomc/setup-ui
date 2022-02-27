@@ -1,109 +1,92 @@
 <h3>Adım: 2-3</h3>
-<p>
+<p class="text-muted">
   Veritabanı bilgilerini bilmiyorsanız sunucunuzu sağlayan kurum ile iletişime
   geçin.
 </p>
 
 <div
-  class="alert alert-dismissible text-danger"
-  id="error"
+  class="alert alert-danger alert-dismissible"
   style="display: none;"
->
-  <button class="close" type="button" on:click="{dismissErrorBox}">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  id="error">
   {errorCode}
 </div>
 
 <form on:submit|preventDefault="{submit}">
-  <div class="form-group">
-    <nav
-      class="nav nav-pills flex-nowrap text-lg-left text-center"
-      id="databaseTabs"
-      role="tablist"
-    >
-      <a
-        aria-controls="mysql"
-        aria-selected="true"
-        class="nav-link bg-lightprimary text-primary"
-        data-toggle="tab"
-        href="#mysql"
-        id="mysql-tab"
-        role="tab"
-        title="Veritabanı Türü"
-      >
+  <div class="mb-3">
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="dbMysqlMariaDB"
+        id="dbMysqlMariaDB"
+        checked />
+      <label class="form-check-label" for="dbMysqlMariaDB">
         MySQL veya MariaDB
-      </a>
-    </nav>
+      </label>
+    </div>
   </div>
 
-  <div class="form-group tab-content">
+  <div class="mb-3 tab-content">
     <div
       aria-labelledby="mysql-tab"
       class="tab-pane fade show active"
       id="mysql"
-      role="tabpanel"
-    >
+      role="tabpanel">
       <div class="row">
         <div class="col-6">
-          <div class="form-group">
+          <div class="mb-3">
             <label for="databaseAddress">Veri Tabanı Adresi</label>
             <input
               class="form-control"
               id="databaseAddress"
               placeholder="localhost:80"
               bind:value="{db.host}"
-              type="text"
-            />
+              type="text" />
           </div>
         </div>
         <div class="col-6">
-          <div class="form-group">
+          <div class="mb-3">
             <label for="databaseName">Veri Tabanı Adı</label>
             <input
               class="form-control"
               id="databaseName"
               placeholder="pano"
               bind:value="{db.dbName}"
-              type="text"
-            />
+              type="text" />
           </div>
         </div>
         <div class="w-100"></div>
         <div class="col-6">
-          <div class="form-group">
+          <div class="mb-3">
             <label for="databaseUserName">Veri Tabanı Kullanıcı Adı</label>
             <input
               class="form-control"
               id="databaseUserName"
               placeholder="admin"
               bind:value="{db.username}"
-              type="text"
-            />
+              type="text" />
           </div>
         </div>
         <div class="col-6">
-          <div class="form-group">
+          <div class="mb-3">
             <label for="databaseUserPassword">Veri Tabanı Şifresi</label>
             <input
               class="form-control"
               id="databaseUserPassword"
               placeholder="****************"
               bind:value="{db.password}"
-              type="password"
-            />
+              type="password" />
           </div>
         </div>
         <div class="col-12">
-          <div class="form-group">
+          <div class="mb-3">
             <label for="databaseTablePrefix">Veri Tabanı Tablo Öneki</label>
             <input
               class="form-control"
               id="databaseTablePrefix"
               placeholder="pano_"
               bind:value="{db.prefix}"
-              type="text"
-            />
+              type="text" />
           </div>
         </div>
       </div>
@@ -113,30 +96,32 @@
       aria-labelledby="sqlite-tab"
       class="tab-pane fade show"
       id="sqlite"
-      role="tabpanel"
-    >
+      role="tabpanel">
       sqlite
     </div>
   </div>
 
   <hr />
 
-  <div class="w-100 d-flex justify-content-end">
-    <a
-      href="javascript:void(0);"
-      class="btn btn-link"
-      role="button"
-      on:click="{back}"
-      class:disabled="{loading}"
-      disabled="{loading}">Geri</a
-    >
-    <button
-      type="submit"
-      class="btn btn-primary"
-      class:disabled="{loading || disabled}"
-      disabled="{loading || disabled}"
-      >Devam Et
-    </button>
+  <div class="row">
+    <div class="col-6">
+      <a
+        href="javascript:void(0);"
+        class="btn btn-link w-100"
+        role="button"
+        on:click="{back}"
+        class:disabled="{loading}"
+        disabled="{loading}">Geri</a>
+    </div>
+    <div class="col-6">
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        class:disabled="{loading || disabled}"
+        disabled="{loading || disabled}"
+        >Devam Et
+      </button>
+    </div>
   </div>
 </form>
 
@@ -215,10 +200,7 @@
 
     errorCode = error;
 
-    window.$("#error").fadeIn();
-  }
-
-  function dismissErrorBox() {
     window.$("#error").fadeOut("slow");
+    window.$("#error").fadeIn();
   }
 </script>

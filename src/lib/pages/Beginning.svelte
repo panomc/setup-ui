@@ -1,45 +1,38 @@
-{#if $session.stepInfo.error}
-  <div class="alert alert-dismissible text-danger" id="error">
-    <button class="close" type="button" on:click="{dismissErrorBox}">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    {$session.stepInfo.error}
-  </div>
-{/if}
-
-<h3>Pano kurulumuna hoş geldiniz!</h3>
-<p>
-  Pano'nun web sunucunuzda doğru şekilde çalışabilmesi için aşağıda listelenen
-  bilgileri belirlemeniz gerekmekte:
-</p>
-<ul>
-  <li>Web site adı ve açıklaması</li>
-  <li>
-    Veritabanı bilgileri
-    <a
-      data-placement="right"
-      data-toggle="tooltip"
-      href="javascript:void(0)"
-      title="Bu bilgileri web sunucunuzu sağlayan kurum ile iletişime geçerek
-      öğrenebilirsiniz."
-    >
-      (?)
-    </a>
-  </li>
-  <li>Yönetim paneli hesap bilgileri</li>
-</ul>
+<div class:opacity-75="{disabled}">
+  <h3>Pano kurulumuna hoş geldiniz!</h3>
+  <p class="text-muted">
+    Pano'nun web sunucunuzda doğru şekilde çalışabilmesi için aşağıda listelenen
+    bilgileri belirlemeniz gerekmekte:
+  </p>
+  <ul>
+    <li>Web site adı ve açıklaması</li>
+    <li>
+      Veritabanı bilgileri
+      <a
+        data-placement="right"
+        data-toggle="tooltip"
+        href="javascript:void(0)"
+        title="Bu bilgileri web sunucunuzu sağlayan kurum ile iletişime geçerek
+      öğrenebilirsiniz.">
+        (?)
+      </a>
+    </li>
+    <li>Yönetim paneli hesap bilgileri</li>
+  </ul>
+</div>
 
 <hr />
 
-<div class="w-100 d-flex justify-content-end">
-  <button
-    class="btn btn-primary"
-    on:click="{start}"
-    class:disabled="{loading || disabled}"
-    disabled="{loading || disabled}"
-  >
-    Başlayalım
-  </button>
+<div class="row">
+  <div class="col-6">
+    <button
+      class="btn btn-primary btn-lg w-100"
+      on:click="{start}"
+      class:disabled="{loading || disabled}"
+      disabled="{loading || disabled}">
+      Başlayalım
+    </button>
+  </div>
 </div>
 
 <script>
@@ -58,9 +51,5 @@
         path: $page.url.pathname,
       });
     }
-  }
-
-  function dismissErrorBox() {
-    window.$("#error").fadeOut("slow");
   }
 </script>
