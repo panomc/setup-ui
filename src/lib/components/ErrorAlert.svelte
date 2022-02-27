@@ -1,4 +1,4 @@
-{#if error}
+{#if error || alwaysVisible}
   <div class="alert alert-danger" in:fade out:fade>
     {error}
   </div>
@@ -8,4 +8,6 @@
   import { fade } from "svelte/transition";
 
   export let error;
+
+  const alwaysVisible = false;
 </script>
