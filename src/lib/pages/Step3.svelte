@@ -14,8 +14,7 @@
       class="btn btn-outline-primary"
       target="_blank"
       href="javascript:void(0);"
-      role="button"
-    >
+      role="button">
       Pano Hesabımı Platforma Bağla (Önerilir)
     </a>
   </div>
@@ -24,8 +23,7 @@
     <a
       class="alert-link"
       href="https://panomc.com/user/username"
-      target="_blank"
-    >
+      target="_blank">
       ???
     </a>
     hesabı başarıyla platforma bağlandı.
@@ -39,8 +37,7 @@
   <div
     class="alert alert-dismissible text-danger"
     id="error"
-    style="display: none;"
-  >
+    style="display: none;">
     <button class="close" type="button" on:click="{dismissErrorBox}">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -53,8 +50,7 @@
       class="form-control"
       id="admin-email"
       type="email"
-      bind:value="{account.email}"
-    />
+      bind:value="{account.email}" />
   </div>
   <div class="row">
     <div class="col-6">
@@ -64,8 +60,7 @@
           class="form-control"
           id="admin-username"
           type="text"
-          bind:value="{account.username}"
-        />
+          bind:value="{account.username}" />
       </div>
     </div>
     <div class="col-6">
@@ -76,8 +71,7 @@
           id="admin-password"
           placeholder="************"
           bind:value="{account.password}"
-          type="password"
-        />
+          type="password" />
         <small>Minimum: 6 karakter.</small>
       </div>
     </div>
@@ -90,16 +84,14 @@
       href="javascript:void(0);"
       on:click="{back}"
       class:disabled="{loading}"
-      disabled="{loading}"
-    >
+      disabled="{loading}">
       Geri
     </a>
     <button
       type="submit"
       class="btn btn-secondary text-white"
       class:disabled="{loading || disabled}"
-      disabled="{loading || disabled}"
-    >
+      disabled="{loading || disabled}">
       Tamamla
     </button>
   </div>
@@ -121,6 +113,7 @@
 <script>
   import { backStep } from "$lib/Store.js";
   import ApiUtil, { NETWORK_ERROR } from "$lib/api.util.js";
+  import { PANEL_URL } from "$lib/variables.js";
 
   let loading = false;
   let errorCode = "";
@@ -143,7 +136,7 @@
     })
       .then((body) => {
         if (body.result === "ok") {
-          window.location.assign("/panel");
+          window.location.assign(PANEL_URL + "/panel");
         } else if (body.error) {
           const errorCode = body.error;
 
