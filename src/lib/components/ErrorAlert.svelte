@@ -1,5 +1,5 @@
 {#if error}
-  <div class="alert alert-danger" transition:fade>
+  <div class="alert alert-danger" in:fade out:fade>
     {error}
   </div>
 {/if}
