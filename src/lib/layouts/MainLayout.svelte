@@ -19,7 +19,7 @@
             <a
               href="javascript:void(0);"
               class="nav-link text-muted dropdown-toggle d-inline-block"
-              data-toggle="dropdown"
+              data-bs-toggle="dropdown"
               id="selectLanguage">
               Türkçe
             </a>
@@ -47,8 +47,6 @@
 
     <div class="card setup-bg">
       <div class="card-body py-5 col-md-8 m-auto">
-        <!--      <PageLoading hidden="{!$isPageLoading}" />-->
-
         <slot />
       </div>
     </div>
