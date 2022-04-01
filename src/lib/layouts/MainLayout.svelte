@@ -45,7 +45,7 @@
     <ErrorAlert
       error="{$session.stepInfo.error}" />
 
-    <div class="card setup-bg">
+    <div class="card card-logomark">
       <div class="card-body py-5 col-md-8 m-auto">
         <slot />
       </div>
