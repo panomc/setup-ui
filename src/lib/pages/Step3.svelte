@@ -26,7 +26,7 @@
       target="_blank">
       ???
     </a>
-    hesabı başarıyla platforma bağlandı.
+    hesabı başarıyla bağlandı.
     <button class="btn d-block btn-outline-danger" href="javascript:void(0);">
       Bağlantıyı Kes
     </button>
@@ -35,7 +35,7 @@
   <ErrorAlert error="{error}" />
 
   <div class="mb-3">
-    <label for="admin-email">E-Posta:</label>
+    <label for="admin-email">E-Posta</label>
     <input
       class="form-control"
       id="admin-email"
@@ -45,7 +45,7 @@
   <div class="row">
     <div class="col-6">
       <div class="mb-3">
-        <label for="admin-username">Minecraft Kullanıcı Adı:</label>
+        <label for="admin-username">Minecraft Kullanıcı Adı</label>
         <input
           class="form-control"
           id="admin-username"
@@ -55,14 +55,14 @@
     </div>
     <div class="col-6">
       <div class="mb-3">
-        <label for="admin-password">Şifre:</label>
+        <label for="admin-password">Şifre</label>
         <input
           class="form-control"
           id="admin-password"
           placeholder="************"
           bind:value="{account.password}"
           type="password" />
-        <small>Minimum: 6 karakter.</small>
+        <small>Minimum 6 karakter.</small>
       </div>
     </div>
   </div>

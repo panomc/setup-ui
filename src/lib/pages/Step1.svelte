@@ -4,23 +4,18 @@
   sonra bu bilgileri değiştirebilirsiniz.
 </p>
 <form on:submit|preventDefault="{submit}">
-  <div class="mb-3">
-    <label for="websiteName">Website Adı:</label>
-    <input
-      id="websiteName"
-      class="form-control"
-      placeholder="Panocraft"
-      type="text"
-      bind:value="{websiteName}" />
-  </div>
-  <div class="mb-3">
-    <label for="websiteDescription">Açıklama:</label>
-    <textarea
-      id="websiteDescription"
-      class="form-control"
-      rows="2"
-      bind:value="{websiteDescription}"></textarea>
-  </div>
+  <input
+    id="websiteName"
+    class="form-control mb-3"
+    placeholder="Website Adı"
+    type="text"
+    bind:value="{websiteName}" />
+  <textarea
+    id="websiteDescription"
+    class="form-control"
+    rows="2"
+    placeholder="Açıklama"
+    bind:value="{websiteDescription}"></textarea>
 
   <div class="row pt-3">
     <div class="col-6">

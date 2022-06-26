@@ -1,7 +1,7 @@
 <h3>Adım: 2-3</h3>
 <p class="text-muted">
-  Veritabanı bilgilerini bilmiyorsanız sunucunuzu sağlayan kurum ile iletişime
-  geçin.
+  Veri tabanı bilgilerini bilmiyorsanız sunucu sağlayıcınız ile iletişime
+  geçebilirsiniz.
 </p>
 
 <ErrorAlert error="{error}" />
@@ -34,7 +34,7 @@
             <input
               class="form-control"
               id="databaseAddress"
-              placeholder="localhost:80"
+              placeholder="localhost:3306"
               bind:value="{db.host}"
               type="text" />
           </div>
@@ -57,7 +57,7 @@
             <input
               class="form-control"
               id="databaseUserName"
-              placeholder="admin"
+              placeholder="root"
               bind:value="{db.username}"
               type="text" />
           </div>
