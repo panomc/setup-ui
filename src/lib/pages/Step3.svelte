@@ -1,91 +1,25 @@
-<h3>Adım: 3-3</h3>
+<h3>Adım: 3-4</h3>
 <p class="text-muted">
-  Çevrimiçi Pano hesabınızı kullanabilir veya yerel bir hesap
-  oluşturabilirsiniz.
+  Bla bla mail
 </p>
-
 <form on:submit|preventDefault="{submit}">
-  <div class="alert alert-primary">
-    <p>
-      Pano hesabınızı bağladığınızda temalar ve eklentiler için gerekli
-      alışveriş işlemlerini kullanabilirsiniz.
-    </p>
-    <a
-      class="btn btn-outline-primary"
-      target="_blank"
-      href="javascript:void(0);"
-      role="button">
-      Pano Hesabı Bağla
-    </a>
-  </div>
-
-  <div class="alert alert-success" style="display: none;">
-    <a
-      class="alert-link"
-      href="https://panomc.com/user/username"
-      target="_blank">
-      ???
-    </a>
-    hesabı başarıyla bağlandı.
-    <button class="btn d-block btn-outline-danger" href="javascript:void(0);">
-      Bağlantıyı Kes
-    </button>
-  </div>
-
-  <ErrorAlert error="{error}" />
-
-  <div class="mb-3">
-    <label for="admin-email">E-Posta</label>
-    <input
-      class="form-control"
-      id="admin-email"
-      type="email"
-      bind:value="{account.email}" />
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <div class="mb-3">
-        <label for="admin-username">Minecraft Kullanıcı Adı</label>
-        <input
-          class="form-control"
-          id="admin-username"
-          type="text"
-          bind:value="{account.username}" />
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-3">
-        <label for="admin-password">Şifre</label>
-        <input
-          class="form-control"
-          id="admin-password"
-          placeholder="************"
-          bind:value="{account.password}"
-          type="password" />
-        <small>Minimum 6 karakter.</small>
-      </div>
-    </div>
-  </div>
-
   <div class="row pt-3">
     <div class="col-6">
       <a
+        href="javascript:void(0);"
         class="btn btn-link w-100"
         role="button"
-        href="javascript:void(0);"
-        on:click="{back}"
         class:disabled="{loading}"
-        disabled="{loading}">
-        Geri
-      </a>
+        disabled="{loading}"
+        on:click="{back}">Geri</a>
     </div>
     <div class="col-6">
       <button
         type="submit"
-        class="btn btn-secondary w-100"
+        class="btn btn-primary w-100"
         class:disabled="{loading || disabled}"
         disabled="{loading || disabled}">
-        Tamamla
+        Devam Et
       </button>
     </div>
   </div>
@@ -105,46 +39,23 @@
 </script>
 
 <script>
-  import { backStep } from "$lib/Store.js";
-  import ApiUtil, { NETWORK_ERROR } from "$lib/api.util.js";
-  import { PANEL_URL } from "$lib/variables.js";
-
-  import ErrorAlert from "$lib/components/ErrorAlert.svelte";
-  import { tick } from "svelte";
+  import { backStep, nextStep } from "$lib/Store.js";
 
   let loading = false;
   let error = null;
 
-  export let account = {
-    username: "",
-    password: "",
-    email: "",
-  };
-
-  $: disabled =
-    account.username === "" || account.password === "" || account.email === "";
+  $: disabled = false
 
   function submit() {
-    loading = true;
     error = null;
 
-    ApiUtil.post({
-      path: "/api/setup/finish",
-      body: account,
-    })
-      .then((body) => {
-        if (body.result === "ok") {
-          window.location.assign(PANEL_URL + "/panel");
-        } else if (body.error) {
-          showError(body.error);
-        } else {
-          showError(NETWORK_ERROR);
-          console.log(body);
-        }
-      })
-      .catch(() => {
-        showError(NETWORK_ERROR);
+    if (!loading && !disabled) {
+      loading = true;
+
+      nextStep({
+        step: 3,
       });
+    }
   }
 
   function back() {

@@ -1,4 +1,4 @@
-<h3>Adım: 1-3</h3>
+<h3>Adım: 1-4</h3>
 <p class="text-muted">
   Websitenizin adı ve açıklaması arama motorlarında görünecektir. Kurulumdan
   sonra bu bilgileri değiştirebilirsiniz.

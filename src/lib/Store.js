@@ -1,11 +1,9 @@
-import { get, writable } from "svelte/store";
-
-import { page } from "$app/stores";
+import { writable } from "svelte/store";
 
 import ApiUtil, { NETWORK_ERROR } from "$lib/api.util.js";
 import { goto } from "$app/navigation";
 
-export const stepState = writable(4);
+export const stepState = writable(5);
 export const stepChecked = writable(false);
 
 export const websiteName = writable("");

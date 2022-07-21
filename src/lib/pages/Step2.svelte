@@ -1,4 +1,4 @@
-<h3>Adım: 2-3</h3>
+<h3>Adım: 2-4</h3>
 <p class="text-muted">
   Veri tabanı bilgilerini bilmiyorsanız sunucu sağlayıcınız ile iletişime
   geçebilirsiniz.
