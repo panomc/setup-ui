@@ -1,20 +1,20 @@
-<h3>Adım: 1-4</h3>
+<h5>Adım 1/4 - Web Site Adı ve Açıklaması</h5>
 <p class="text-muted">
-  Websitenizin adı ve açıklaması arama motorlarında görünecektir. Kurulumdan
-  sonra bu bilgileri değiştirebilirsiniz.
+  Web sitenizin adı ve açıklaması arama motorlarında görünecektir.
 </p>
 <form on:submit|preventDefault="{submit}">
+  <label for="websiteName">Website Adı</label>
   <input
     id="websiteName"
     class="form-control mb-3"
-    placeholder="Website Adı"
+    placeholder="Panocraft"
     type="text"
     bind:value="{websiteName}" />
+  <label for="websiteName">Açıklama</label>
   <textarea
     id="websiteDescription"
     class="form-control"
     rows="2"
-    placeholder="Açıklama"
     bind:value="{websiteDescription}"></textarea>
 
   <div class="row pt-3">
@@ -33,7 +33,7 @@
         class="btn btn-primary w-100"
         class:disabled="{loading || disabled}"
         disabled="{loading || disabled}">
-        Devam Et
+        ileri
       </button>
     </div>
   </div>

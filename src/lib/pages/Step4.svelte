@@ -1,23 +1,10 @@
-<h3>Adım: 4-4</h3>
+<h5>Adım 4/4 - Kullanıcı Hesabı Bilgileri</h5>
 <p class="text-muted">
-  Çevrimiçi Pano hesabınızı kullanabilir veya yerel bir hesap
-  oluşturabilirsiniz.
+  Çevrimiçi Pano hesabı kullanabilir veya yerel hesap oluşturabilirsiniz.
 </p>
 
 <form on:submit|preventDefault="{submit}">
-  <div class="alert alert-primary">
-    <p>
-      Pano hesabınızı bağladığınızda temalar ve eklentiler için gerekli
-      alışveriş işlemlerini kullanabilirsiniz.
-    </p>
-    <a
-      class="btn btn-outline-primary"
-      target="_blank"
-      href="javascript:void(0);"
-      role="button">
-      Pano Hesabı Bağla
-    </a>
-  </div>
+  <a target="_blank" href="javascript:void(0);" role="button"> Oturum Aç </a>
 
   <div class="alert alert-success" style="display: none;">
     <a
@@ -27,12 +14,16 @@
       ???
     </a>
     hesabı başarıyla bağlandı.
-    <button class="btn d-block btn-outline-danger" href="javascript:void(0);">
+    <button
+      class="btn d-block btn-link link-danger ps-0"
+      href="javascript:void(0);">
       Bağlantıyı Kes
     </button>
   </div>
 
   <ErrorAlert error="{error}" />
+
+  <p class="my-3 text-muted">veya</p>
 
   <div class="mb-3">
     <label for="admin-email">E-Posta</label>

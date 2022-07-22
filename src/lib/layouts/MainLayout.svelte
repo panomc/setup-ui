@@ -3,17 +3,8 @@
     <div class="container px-3">
       <a href="https://panocms.com" target="_blank" class="navbar-brand">
         <img alt="Pano Logo" src="/assets/img/logo-blue.svg" width="18" />
-        <h5 class="text-black d-inline px-2 m-0">Pano</h5>
       </a>
       <ul class="nav ml-auto">
-        <li class="nav-item">
-          <a
-            class="nav-link text-muted"
-            href="https://panomc.com"
-            target="_blank">
-            Yardım
-          </a>
-        </li>
         <li class="nav-item">
           <div class="dropdown">
             <a
@@ -37,13 +28,20 @@
             </div>
           </div>
         </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-muted"
+            href="https://panomc.com"
+            target="_blank">
+            Yardım
+          </a>
+        </li>
       </ul>
     </div>
   </div>
 
   <div class="container pt-lg-5 px-3">
-    <ErrorAlert
-      error="{$session.stepInfo.error}" />
+    <ErrorAlert error="{$session.stepInfo.error}" />
 
     <div class="card card-logomark">
       <div class="card-body py-5 col-md-8 m-auto">

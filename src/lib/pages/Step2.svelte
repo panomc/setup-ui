@@ -1,6 +1,6 @@
-<h3>Adım: 2-4</h3>
+<h5>Adım 2/4 - Veri Tabanı Bilgileri</h5>
 <p class="text-muted">
-  Veri tabanı bilgilerini bilmiyorsanız sunucu sağlayıcınız ile iletişime
+  Veri tabanı bilgilerini bilmiyorsanız sunucu sağlayıcınızla iletişime
   geçebilirsiniz.
 </p>
 
@@ -112,7 +112,7 @@
         class="btn btn-primary w-100"
         class:disabled="{loading || disabled}"
         disabled="{loading || disabled}"
-        >Devam Et
+        >İleri
       </button>
     </div>
   </div>

@@ -1,12 +1,13 @@
 <div class:opacity-75="{disabled}">
   <h3>Pano kurulumuna hoş geldiniz!</h3>
-  <p class="text-muted">
-    Pano'nun web sunucunuzda çalışabilmesi için aşağıda listelenen
-    bilgileri belirlemeniz gerekmekte:
+  <p class="text-muted mb-0">
+    Pano'nun web sunucunuzda çalışabilmesi için aşağıda listelenen bilgileri
+    belirlemeniz gerekmekte:
   </p>
-  <ul>
+  <ul class="text-muted">
     <li>Web site adı ve açıklaması</li>
     <li>Veri tabanı bilgileri</li>
+    <li>E-Posta yapılandırması</li>
     <li>Kullanıcı hesabı bilgileri</li>
   </ul>
 </div>
@@ -18,7 +19,7 @@
       on:click="{start}"
       class:disabled="{loading || disabled}"
       disabled="{loading || disabled}">
-      Başlayalım
+      Başla
     </button>
   </div>
 </div>
