@@ -2,7 +2,11 @@ import cookie from "cookie";
 
 import * as api from "$lib/api.util.server";
 import generateToken from "$lib/csrf.js";
-import { COOKIE_PREFIX, CSRF_TOKEN_COOKIE_NAME, JWT_COOKIE_NAME } from "$lib/variables.js";
+import {
+  COOKIE_PREFIX,
+  CSRF_TOKEN_COOKIE_NAME,
+  JWT_COOKIE_NAME,
+} from "$lib/variables.js";
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function post({ request }) {

@@ -10,13 +10,15 @@
     <a
       class="alert-link"
       href="https://panomc.com/user/username"
-      target="_blank">
+      target="_blank"
+    >
       ???
     </a>
     hesabı başarıyla bağlandı.
     <button
       class="btn d-block btn-link link-danger ps-0"
-      href="javascript:void(0);">
+      href="javascript:void(0);"
+    >
       Bağlantıyı Kes
     </button>
   </div>
@@ -31,7 +33,8 @@
       class="form-control"
       id="admin-email"
       type="email"
-      bind:value="{account.email}" />
+      bind:value="{account.email}"
+    />
   </div>
   <div class="row">
     <div class="col-6">
@@ -41,7 +44,8 @@
           class="form-control"
           id="admin-username"
           type="text"
-          bind:value="{account.username}" />
+          bind:value="{account.username}"
+        />
       </div>
     </div>
     <div class="col-6">
@@ -52,7 +56,8 @@
           id="admin-password"
           placeholder="************"
           bind:value="{account.password}"
-          type="password" />
+          type="password"
+        />
         <small>Minimum 6 karakter.</small>
       </div>
     </div>
@@ -66,7 +71,8 @@
         href="javascript:void(0);"
         on:click="{back}"
         class:disabled="{loading}"
-        disabled="{loading}">
+        disabled="{loading}"
+      >
         Geri
       </a>
     </div>
@@ -75,7 +81,8 @@
         type="submit"
         class="btn btn-secondary w-100"
         class:disabled="{loading || disabled}"
-        disabled="{loading || disabled}">
+        disabled="{loading || disabled}"
+      >
         Tamamla
       </button>
     </div>

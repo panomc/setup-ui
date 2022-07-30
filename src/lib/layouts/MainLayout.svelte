@@ -11,28 +11,32 @@
               href="javascript:void(0);"
               class="nav-link text-muted dropdown-toggle d-inline-block"
               data-bs-toggle="dropdown"
-              id="selectLanguage">
+              id="selectLanguage"
+            >
               Türkçe
             </a>
             <div
               aria-labelledby="selectLanguage"
-              class="dropdown-menu dropdown-menu-right">
+              class="dropdown-menu dropdown-menu-right"
+            >
+              <a class="dropdown-item" href="javascript:void(0);">Türkçe (TR)</a
+              >
               <a class="dropdown-item" href="javascript:void(0);"
-                >Türkçe (TR)</a>
-              <a class="dropdown-item" href="javascript:void(0);"
-                >English (US)</a>
+                >English (US)</a
+              >
             </div>
             <div
               class="spinner-border spinner-border-sm text-primary d-none"
-              role="status">
-            </div>
+              role="status"
+            ></div>
           </div>
         </li>
         <li class="nav-item">
           <a
             class="nav-link text-muted"
             href="https://panomc.com"
-            target="_blank">
+            target="_blank"
+          >
             Yardım
           </a>
         </li>

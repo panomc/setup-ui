@@ -14,7 +14,8 @@
         type="radio"
         name="dbMysqlMariaDB"
         id="dbMysqlMariaDB"
-        checked />
+        checked
+      />
       <label class="form-check-label" for="dbMysqlMariaDB">
         MySQL veya MariaDB
       </label>
@@ -26,7 +27,8 @@
       aria-labelledby="mysql-tab"
       class="tab-pane fade show active"
       id="mysql"
-      role="tabpanel">
+      role="tabpanel"
+    >
       <div class="row">
         <div class="col-6">
           <div class="mb-3">
@@ -36,7 +38,8 @@
               id="databaseAddress"
               placeholder="localhost:3306"
               bind:value="{db.host}"
-              type="text" />
+              type="text"
+            />
           </div>
         </div>
         <div class="col-6">
@@ -47,7 +50,8 @@
               id="databaseName"
               placeholder="pano"
               bind:value="{db.dbName}"
-              type="text" />
+              type="text"
+            />
           </div>
         </div>
         <div class="w-100"></div>
@@ -59,7 +63,8 @@
               id="databaseUserName"
               placeholder="root"
               bind:value="{db.username}"
-              type="text" />
+              type="text"
+            />
           </div>
         </div>
         <div class="col-6">
@@ -70,7 +75,8 @@
               id="databaseUserPassword"
               placeholder="****************"
               bind:value="{db.password}"
-              type="password" />
+              type="password"
+            />
           </div>
         </div>
         <div class="col-12">
@@ -81,7 +87,8 @@
               id="databaseTablePrefix"
               placeholder="pano_"
               bind:value="{db.prefix}"
-              type="text" />
+              type="text"
+            />
           </div>
         </div>
       </div>
@@ -91,7 +98,8 @@
       aria-labelledby="sqlite-tab"
       class="tab-pane fade show"
       id="sqlite"
-      role="tabpanel">
+      role="tabpanel"
+    >
       sqlite
     </div>
   </div>
@@ -104,7 +112,8 @@
         role="button"
         on:click="{back}"
         class:disabled="{loading}"
-        disabled="{loading}">Geri</a>
+        disabled="{loading}">Geri</a
+      >
     </div>
     <div class="col-6">
       <button
