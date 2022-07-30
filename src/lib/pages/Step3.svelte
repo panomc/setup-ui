@@ -1,6 +1,6 @@
 <h5>Adım 3/4 - E-Posta Yapılandırması</h5>
 <p class="text-muted">
-  Bu adımı atlarsanız Pano e-postaları doğru şekilde gönderilemeyebilir.
+  Bu adımda platformunuz için e-mail bilgilerini yapılandırıyoruz. Pano e-mail gönderebilmek için bazı bilgilere ihtiyaç duyar. Platformun hangi e-mail adresini kullanmasını istiyorsanız onun bilgilerini girin.
 </p>
 
 <div class="mb-3">
