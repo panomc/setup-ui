@@ -58,7 +58,7 @@
 
 <form on:submit|preventDefault="{submit}">
   <div class="row pt-3">
-    <div class="col-4">
+    <div class="col-6">
       <a
         href="javascript:void(0);"
         class="btn btn-link w-100"
@@ -67,10 +67,7 @@
         disabled="{loading}"
         on:click="{back}">Geri</a>
     </div>
-    <div class="col-4">
-      <button class="btn btn-outline-primary w-100"> Atla </button>
-    </div>
-    <div class="col-4">
+    <div class="col-6">
       <button
         type="submit"
         class="btn btn-primary w-100"
