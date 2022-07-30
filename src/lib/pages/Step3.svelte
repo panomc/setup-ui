@@ -5,19 +5,14 @@
   adresini kullanmasını istiyorsanız onun bilgilerini girin.
 </p>
 
-{#if showServices}
-  <button on:click="{() => chooseService(services.GMAIL)}">GMail</button>
-  <button on:click="{() => chooseService(services.YAHOO)}">Yahoo</button>
-  <button on:click="{() => chooseService(services.YANDEX)}">Yandex</button>
-  <button on:click="{() => chooseService(services.MAIL_RU)}">Mail.ru</button>
-  <button on:click="{() => chooseService(services.OUTLOOK)}"
-    >Hotmail / Outlook</button
-  >
-  <button class="btn btn-link" on:click="{() => chooseService(services.OTHER)}"
-    >Diğer</button
-  >
+{#if !chosenService}
+  {#each Object.keys(services) as service, index (service)}
+    <button class="btn" on:click="{() => chooseService(service)}"
+      >{services[service].name}</button
+    >
+  {/each}
 {:else}
-  <button class="btn btn-link" on:click="{() => (showServices = !showServices)}"
+  <button class="btn btn-link" on:click="{() => (chosenService = null)}"
     >← Servisler</button
   >
   <div class="mb-3">
@@ -27,7 +22,7 @@
         type="checkbox"
         role="switch"
         id="flexSwitchCheckChecked"
-        checked
+        bind:checked="{mailConfiguration[chosenService].useSSL}"
       />
       <label class="form-check-label" for="flexSwitchCheckChecked"
         >SSL kullan</label
@@ -40,20 +35,38 @@
       <div class="col-6">
         <div class="mb-3">
           <label for="sendingAdress">Gönderme Adresi</label>
-          <input class="form-control" id="sendingAdress" type="text" />
+          <input
+            class="form-control"
+            id="sendingAdress"
+            type="text"
+            placeholder="no-reply@forexample.com"
+            bind:value="{mailConfiguration[chosenService].address}"
+          />
         </div>
       </div>
       <div class="col-6">
         <div class="mb-3">
           <label for="hostAdress">Sağlayıcı Adresi</label>
-          <input class="form-control" id="hostAdress" type="text" />
+          <input
+            class="form-control"
+            id="hostAdress"
+            type="text"
+            placeholder="smtp.forexample.com"
+            bind:value="{mailConfiguration[chosenService].host}"
+          />
         </div>
       </div>
       <div class="w-100"></div>
       <div class="col-6">
         <div class="mb-3">
           <label for="mailUsername">Kullanıcı Adı</label>
-          <input class="form-control" id="mailUsername" type="text" />
+          <input
+            class="form-control"
+            id="mailUsername"
+            type="text"
+            placeholder="no-reply"
+            bind:value="{mailConfiguration[chosenService].username}"
+          />
         </div>
       </div>
       <div class="col-6">
@@ -64,13 +77,20 @@
             id="mailUserPassword"
             placeholder="****************"
             type="password"
+            bind:value="{mailConfiguration[chosenService].password}"
           />
         </div>
       </div>
       <div class="col-12">
         <div class="mb-3">
           <label for="port">Port</label>
-          <input class="form-control" id="post" placeholder="465" type="text" />
+          <input
+            class="form-control"
+            id="post"
+            placeholder="465"
+            type="text"
+            bind:value="{mailConfiguration[chosenService].port}"
+          />
         </div>
       </div>
     </div>
@@ -103,13 +123,48 @@
 </form>
 
 <script context="module">
+  const defaultMailConfiguration = Object.freeze({
+    useSSL: true,
+    port: 465,
+  });
+
   export const services = Object.freeze({
-    GMAIL: "gmail",
-    YAHOO: "yahoo",
-    YANDEX: "yandex",
-    MAIL_RU: "mail.ru",
-    OUTLOOK: "outlook",
-    OTHER: "other",
+    GMAIL: {
+      name: "GMail",
+      config: {
+        ...defaultMailConfiguration,
+      },
+    },
+    YAHOO: {
+      name: "Yahoo",
+      config: {
+        ...defaultMailConfiguration,
+      },
+    },
+    YANDEX: {
+      name: "Yandex",
+      config: {
+        ...defaultMailConfiguration,
+      },
+    },
+    MAIL_RU: {
+      name: "Mail.ru",
+      config: {
+        ...defaultMailConfiguration,
+      },
+    },
+    OUTLOOK: {
+      name: "Hotmail / Outlook",
+      config: {
+        ...defaultMailConfiguration,
+      },
+    },
+    OTHER: {
+      name: "Diğer",
+      config: {
+        ...defaultMailConfiguration,
+      },
+    },
   });
 
   /**
@@ -129,9 +184,11 @@
 
   let loading = false;
   let error = null;
-  let showServices = true;
+  let chosenService;
 
-  $: disabled = false;
+  let mailConfiguration = {};
+
+  $: disabled = !chosenService || chosenService && (!mailConfiguration[chosenService].port || !mailConfiguration[chosenService].address || !mailConfiguration[chosenService].host || !mailConfiguration[chosenService].username || !mailConfiguration[chosenService].password);
 
   function submit() {
     error = null;
@@ -163,6 +220,10 @@
   }
 
   function chooseService(service) {
-    showServices = false;
+    if (!mailConfiguration[service]) {
+      mailConfiguration[service] = { ...services[service].config };
+    }
+
+    chosenService = service;
   }
 </script>
