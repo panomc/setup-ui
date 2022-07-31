@@ -136,28 +136,28 @@
       name: "GMail",
       config: {
         ...defaultMailConfiguration,
-        host: "smtp.google.com"
+        host: "smtp.google.com",
       },
     },
     YAHOO: {
       name: "Yahoo",
       config: {
         ...defaultMailConfiguration,
-        host: "smtp.mail.yahoo.com"
+        host: "smtp.mail.yahoo.com",
       },
     },
     YANDEX: {
       name: "Yandex",
       config: {
         ...defaultMailConfiguration,
-        host: "smtp.yandex.com"
+        host: "smtp.yandex.com",
       },
     },
     MAIL_RU: {
       name: "Mail.ru",
       config: {
         ...defaultMailConfiguration,
-        host: "smtp.mail.ru"
+        host: "smtp.mail.ru",
       },
     },
     OUTLOOK: {
@@ -165,7 +165,7 @@
       config: {
         ...defaultMailConfiguration,
         host: "smtp-mail.outlook.com",
-        port: 587
+        port: 587,
       },
     },
     OTHER: {
@@ -179,12 +179,30 @@
   /**
    * @type {import("@sveltejs/kit").Load}
    */
-  export async function load({
-    session: {
-      stepInfo: { account },
-    },
-  }) {
-    return { props: { stepInfo: { account } } };
+  export async function load({ session: { stepInfo } }) {
+    const { address, host, username, password, port } = stepInfo;
+
+    let chosenService = null;
+
+    if (address && host && username && password && port) {
+      Object.keys(services).forEach((service) => {
+        const serviceOptions = services[service];
+
+        if (serviceOptions.config.host === host) {
+          chosenService = service;
+        }
+      });
+
+      if (!chosenService) {
+        chosenService = "OTHER"
+      }
+    }
+
+    const mailConfiguration = {
+      [chosenService]: stepInfo,
+    };
+
+    return { props: { stepInfo: { mailConfiguration, chosenService } } };
   }
 </script>
 
@@ -197,9 +215,9 @@
 
   let loading = false;
   let error = null;
-  let chosenService;
+  export let chosenService;
 
-  let mailConfiguration = {};
+  export let mailConfiguration = {};
 
   $: disabled =
     !chosenService ||
