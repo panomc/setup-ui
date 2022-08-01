@@ -108,7 +108,7 @@
   import { PANEL_URL } from "$lib/variables.js";
 
   import ErrorAlert from "$lib/components/ErrorAlert.svelte";
-  import { tick } from "svelte";
+  import { currentLanguage } from "$lib/language.util.js";
 
   let loading = false;
   let error = null;
@@ -128,7 +128,7 @@
 
     ApiUtil.post({
       path: "/api/setup/finish",
-      body: account,
+      body: { ...account, setupLanguage: $currentLanguage.locale },
     })
       .then((body) => {
         if (body.result === "ok") {
