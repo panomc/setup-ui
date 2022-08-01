@@ -9,28 +9,31 @@
 
 <form on:submit|preventDefault="{next}">
   {#if !chosenService}
-    {#each Object.keys(services) as service, index (service)}
-      <button class="btn" on:click="{() => chooseService(service)}" in:fade
-        >{services[service].name}</button
-      >
-    {/each}
+    <div class="list-group">
+      {#each Object.keys(services) as service, index (service)}
+        <a
+          href="javascript:void(0)"
+          class="list-group-item list-group-item-action"
+          on:click="{() => chooseService(service)}"
+          in:fade>
+          {services[service].name}</a>
+      {/each}
+    </div>
   {:else}
     <div in:fade>
       <button class="btn btn-link" on:click="{() => (chosenService = null)}"
         >← Servisler
       </button>
-      <div class="mb-3">
+      <div class="my-3">
         <div class="form-check form-switch">
           <input
             class="form-check-input"
             type="checkbox"
             role="switch"
             id="flexSwitchCheckChecked"
-            bind:checked="{mailConfiguration[chosenService].useSSL}"
-          />
+            bind:checked="{mailConfiguration[chosenService].useSSL}" />
           <label class="form-check-label" for="flexSwitchCheckChecked"
-            >SSL kullan</label
-          >
+            >SSL kullan</label>
         </div>
       </div>
 
@@ -44,8 +47,7 @@
                 id="sendingAdress"
                 type="text"
                 placeholder="no-reply@forexample.com"
-                bind:value="{mailConfiguration[chosenService].address}"
-              />
+                bind:value="{mailConfiguration[chosenService].address}" />
             </div>
           </div>
           <div class="col-6">
@@ -56,8 +58,7 @@
                 id="hostAddress"
                 type="text"
                 placeholder="smtp.forexample.com"
-                bind:value="{mailConfiguration[chosenService].host}"
-              />
+                bind:value="{mailConfiguration[chosenService].host}" />
             </div>
           </div>
           <div class="w-100"></div>
@@ -69,8 +70,7 @@
                 id="mailUsername"
                 type="text"
                 placeholder="no-reply"
-                bind:value="{mailConfiguration[chosenService].username}"
-              />
+                bind:value="{mailConfiguration[chosenService].username}" />
             </div>
           </div>
           <div class="col-6">
@@ -81,8 +81,7 @@
                 id="mailUserPassword"
                 placeholder="****************"
                 type="password"
-                bind:value="{mailConfiguration[chosenService].password}"
-              />
+                bind:value="{mailConfiguration[chosenService].password}" />
             </div>
           </div>
           <div class="col-12">
@@ -93,8 +92,7 @@
                 id="port"
                 placeholder="465"
                 type="text"
-                bind:value="{mailConfiguration[chosenService].port}"
-              />
+                bind:value="{mailConfiguration[chosenService].port}" />
             </div>
           </div>
         </div>
@@ -109,16 +107,14 @@
         role="button"
         class:disabled="{loading}"
         disabled="{loading}"
-        on:click="{back}">Geri</a
-      >
+        on:click="{back}">Geri</a>
     </div>
     <div class="col-6">
       <button
         type="submit"
         class="btn btn-primary w-100"
         class:disabled="{loading || disabled}"
-        disabled="{loading || disabled}"
-      >
+        disabled="{loading || disabled}">
         İleri
       </button>
     </div>
