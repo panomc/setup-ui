@@ -38,8 +38,11 @@ export async function init(session) {
     }
   }
 
-  await loadLanguage(Languages.EN_US);
-  currentLanguage.set(Languages.EN_US);
+  const language = getLanguageByLocale(get(locale))
+  const languageToLoad = language === null ? Languages.EN_US : language
+
+  await loadLanguage(languageToLoad);
+  currentLanguage.set(languageToLoad);
 
   initI18n({
     fallbackLocale: "en-US",
@@ -96,7 +99,7 @@ export async function changeLanguage(language) {
 }
 
 export function getLanguageByLocale(locale) {
-  let foundLanguage;
+  let foundLanguage = null;
 
   Object.keys(Languages).forEach((language) => {
     if (language.locale === locale) {

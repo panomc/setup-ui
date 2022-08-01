@@ -62,7 +62,7 @@
 </App>
 
 <script context="module">
-  import { init as initLanguage } from "$lib/language.util.js";
+  import { init as initLanguage } from "$lib/language.util";
   /**
    * @type {import('@sveltejs/kit').Load}
    */
@@ -78,11 +78,10 @@
 
   import App from "$lib/components/App.svelte";
   import ErrorAlert from "$lib/components/ErrorAlert.svelte";
-  import { _ } from "svelte-i18n";
   import {
     changeLanguage,
     currentLanguage,
     languageLoading,
     Languages,
-  } from "$lib/language.util.js";
+  } from "$lib/language.util";
 </script>
