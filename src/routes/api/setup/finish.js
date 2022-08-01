@@ -9,10 +9,10 @@ import {
 } from "$lib/variables.js";
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export async function post({ request }) {
+export async function POST({ request }) {
   const body = await request.json();
 
-  const response = await api.post("/setup/finish", JSON.stringify(body));
+  const response = await api.POST("/setup/finish", JSON.stringify(body));
 
   const header = {};
 
