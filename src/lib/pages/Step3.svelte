@@ -50,10 +50,10 @@
           </div>
           <div class="col-6">
             <div class="mb-3">
-              <label for="hostAdress">Sağlayıcı Adresi</label>
+              <label for="hostAddress">Sağlayıcı Adresi</label>
               <input
                 class="form-control"
-                id="hostAdress"
+                id="hostAddress"
                 type="text"
                 placeholder="smtp.forexample.com"
                 bind:value="{mailConfiguration[chosenService].host}"
@@ -75,7 +75,7 @@
           </div>
           <div class="col-6">
             <div class="mb-3">
-              <label for="mailUserrPassword">Şifre</label>
+              <label for="mailUserPassword">Şifre</label>
               <input
                 class="form-control"
                 id="mailUserPassword"
@@ -90,7 +90,7 @@
               <label for="port">Port</label>
               <input
                 class="form-control"
-                id="post"
+                id="port"
                 placeholder="465"
                 type="text"
                 bind:value="{mailConfiguration[chosenService].port}"
