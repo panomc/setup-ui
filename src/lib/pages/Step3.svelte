@@ -47,7 +47,8 @@
                 id="sendingAdress"
                 type="text"
                 placeholder="no-reply@forexample.com"
-                bind:value="{mailConfiguration[chosenService].address}" />
+                bind:value="{mailConfiguration[chosenService].address}"
+                on:input="{onAddressChange}" />
             </div>
           </div>
           <div class="col-6">
@@ -274,5 +275,9 @@
       .catch(() => {
         showError(NETWORK_ERROR);
       });
+  }
+
+  function onAddressChange() {
+    mailConfiguration[chosenService].username = mailConfiguration[chosenService].address
   }
 </script>
