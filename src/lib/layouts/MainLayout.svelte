@@ -6,30 +6,36 @@
       </a>
       <ul class="nav ml-auto">
         <li class="nav-item">
-          <div class="dropdown">
+          <div class="dropdown" class:d-none="{$languageLoading}">
             <a
               href="javascript:void(0);"
               class="nav-link text-muted dropdown-toggle d-inline-block"
               data-bs-toggle="dropdown"
               id="selectLanguage"
             >
-              Türkçe
+              {$currentLanguage.name}
             </a>
             <div
               aria-labelledby="selectLanguage"
               class="dropdown-menu dropdown-menu-right"
             >
-              <a class="dropdown-item" href="javascript:void(0);">Türkçe (TR)</a
-              >
-              <a class="dropdown-item" href="javascript:void(0);"
-                >English (US)</a
-              >
+              {#each Object.keys(Languages) as language, index (language)}
+                <a
+                  class="dropdown-item"
+                  href="javascript:void(0);"
+                  on:click="{() => changeLanguage(Languages[language])}"
+                  class:active="{$currentLanguage === Languages[language]}"
+                >
+                  {Languages[language].name}
+                </a>
+              {/each}
             </div>
-            <div
-              class="spinner-border spinner-border-sm text-primary d-none"
-              role="status"
-            ></div>
           </div>
+          <div
+            class="spinner-border spinner-border-sm text-primary"
+            class:d-none="{!$languageLoading}"
+            role="status"
+          ></div>
         </li>
         <li class="nav-item">
           <a
@@ -55,9 +61,28 @@
   </div>
 </App>
 
+<script context="module">
+  import { init as initLanguage } from "$lib/language.util.js";
+  /**
+   * @type {import('@sveltejs/kit').Load}
+   */
+  export async function load({ session }) {
+    await initLanguage(session);
+
+    return {};
+  }
+</script>
+
 <script>
   import { session } from "$app/stores";
 
   import App from "$lib/components/App.svelte";
   import ErrorAlert from "$lib/components/ErrorAlert.svelte";
+  import { _ } from "svelte-i18n";
+  import {
+    changeLanguage,
+    currentLanguage,
+    languageLoading,
+    Languages,
+  } from "$lib/language.util.js";
 </script>

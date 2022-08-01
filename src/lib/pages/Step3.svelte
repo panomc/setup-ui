@@ -194,7 +194,7 @@
       });
 
       if (!chosenService) {
-        chosenService = "OTHER"
+        chosenService = "OTHER";
       }
     }
 

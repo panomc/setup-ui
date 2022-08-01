@@ -4,6 +4,7 @@
 
 <script context="module">
   import { checkCurrentStep, checkRoute } from "$lib/Store.js";
+  import { load as loadLayout } from "$lib/layouts/MainLayout.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -13,6 +14,8 @@
       url: { pathname },
       session,
     } = request;
+
+    await loadLayout(request);
 
     const stepInfo = await checkCurrentStep(request);
     const { step } = stepInfo;
