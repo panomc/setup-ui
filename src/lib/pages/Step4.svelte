@@ -128,7 +128,7 @@
 
     ApiUtil.post({
       path: "/api/setup/finish",
-      body: { ...account, setupLanguage: $currentLanguage.locale },
+      body: { ...account, setupLocale: $currentLanguage.locale },
     })
       .then((body) => {
         if (body.result === "ok") {
