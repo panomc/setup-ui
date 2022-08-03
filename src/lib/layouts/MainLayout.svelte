@@ -11,21 +11,18 @@
               href="javascript:void(0);"
               class="nav-link text-muted dropdown-toggle d-inline-block"
               data-bs-toggle="dropdown"
-              id="selectLanguage"
-            >
+              id="selectLanguage">
               {$currentLanguage.name}
             </a>
             <div
               aria-labelledby="selectLanguage"
-              class="dropdown-menu dropdown-menu-right"
-            >
+              class="dropdown-menu dropdown-menu-right">
               {#each Object.keys(Languages) as language, index (language)}
                 <a
                   class="dropdown-item"
                   href="javascript:void(0);"
                   on:click="{() => changeLanguage(Languages[language])}"
-                  class:active="{$currentLanguage === Languages[language]}"
-                >
+                  class:active="{$currentLanguage === Languages[language]}">
                   {Languages[language].name}
                 </a>
               {/each}
@@ -34,18 +31,18 @@
           <div
             class="spinner-border spinner-border-sm text-primary"
             class:d-none="{!$languageLoading}"
-            role="status"
-          ></div>
+            role="status">
+          </div>
         </li>
         <li class="nav-item">
           <a
             class="nav-link text-muted"
             href="https://panomc.com"
-            target="_blank"
-          >
+            target="_blank">
             Yardım
           </a>
         </li>
+        <span class="navbar-text text-muted">v1.0</span>
       </ul>
     </div>
   </div>
