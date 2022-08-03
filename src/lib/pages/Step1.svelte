@@ -9,8 +9,7 @@
     class="form-control mb-3"
     placeholder="Panocraft"
     type="text"
-    bind:value="{websiteName}"
-  />
+    bind:value="{websiteName}" />
   <label for="websiteName">Açıklama</label>
   <textarea
     id="websiteDescription"
@@ -26,16 +25,14 @@
         role="button"
         class:disabled="{loading}"
         disabled="{loading}"
-        on:click="{back}">Geri</a
-      >
+        on:click="{back}">Geri</a>
     </div>
     <div class="col-6">
       <button
         type="submit"
         class="btn btn-primary w-100"
         class:disabled="{loading || disabled}"
-        disabled="{loading || disabled}"
-      >
+        disabled="{loading || disabled}">
         ileri
       </button>
     </div>

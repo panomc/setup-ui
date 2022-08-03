@@ -38,8 +38,8 @@ export async function init(session) {
     }
   }
 
-  const language = getLanguageByLocale(get(locale))
-  const languageToLoad = language === null ? Languages.EN_US : language
+  const language = getLanguageByLocale(get(locale));
+  const languageToLoad = language === null ? Languages.EN_US : language;
 
   await loadLanguage(languageToLoad);
   currentLanguage.set(languageToLoad);

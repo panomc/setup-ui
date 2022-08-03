@@ -18,8 +18,7 @@
       class="btn btn-primary w-100"
       on:click="{start}"
       class:disabled="{loading || disabled}"
-      disabled="{loading || disabled}"
-    >
+      disabled="{loading || disabled}">
       Başla
     </button>
   </div>

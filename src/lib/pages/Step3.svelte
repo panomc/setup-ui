@@ -278,6 +278,7 @@
   }
 
   function onAddressChange() {
-    mailConfiguration[chosenService].username = mailConfiguration[chosenService].address
+    mailConfiguration[chosenService].username =
+      mailConfiguration[chosenService].address;
   }
 </script>
