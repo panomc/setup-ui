@@ -25,11 +25,13 @@
 </div>
 
 <script>
-  import { page, session } from "$app/stores";
+  import { page } from "$app/stores";
   import { nextStep } from "$lib/Store.js";
 
+  export let stepInfo;
+
   let loading = false;
-  $: disabled = !!!!$session.stepInfo.error;
+  $: disabled = !!stepInfo.error;
 
   function start() {
     if (!disabled) {

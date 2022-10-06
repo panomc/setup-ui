@@ -14,27 +14,27 @@ export async function POST({ request }) {
 
   const response = await api.POST("/setup/finish", JSON.stringify(body));
 
-  const header = {};
+  const headers = new Headers();
 
   if (response.result === "ok") {
     const CSRFToken = generateToken();
 
-    header.headers = {
-      "set-cookie": [
-        cookie.serialize(COOKIE_PREFIX + JWT_COOKIE_NAME, response.jwt, {
-          httpOnly: true,
-          path: "/",
-        }),
-        cookie.serialize(COOKIE_PREFIX + CSRF_TOKEN_COOKIE_NAME, CSRFToken, {
-          httpOnly: true,
-          path: "/",
-        }),
-      ],
-    };
+    headers.append(
+      "set-cookie",
+      cookie.serialize(COOKIE_PREFIX + JWT_COOKIE_NAME, response.jwt, {
+        httpOnly: true,
+        path: "/",
+      })
+    );
+
+    headers.append(
+      "set-cookie",
+      cookie.serialize(COOKIE_PREFIX + CSRF_TOKEN_COOKIE_NAME, CSRFToken, {
+        httpOnly: true,
+        path: "/",
+      })
+    );
   }
 
-  return {
-    ...header,
-    body: response,
-  };
+  return new Response(JSON.stringify(response), { headers });
 }

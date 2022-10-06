@@ -31,6 +31,7 @@
             type="checkbox"
             role="switch"
             id="flexSwitchCheckChecked"
+            aria-checked="{mailConfiguration[chosenService].useSSL}"
             bind:checked="{mailConfiguration[chosenService].useSSL}" />
           <label class="form-check-label" for="flexSwitchCheckChecked"
             >SSL kullan</label>
@@ -173,10 +174,9 @@
     },
   });
 
-  /**
-   * @type {import("@sveltejs/kit").Load}
-   */
-  export async function load({ session: { stepInfo } }) {
+  /**  @type {import('@sveltejs/kit').LayoutLoad} */
+  export async function load({ parent }) {
+    const { stepInfo } = await parent();
     const { address, host, username, password, port } = stepInfo;
 
     let chosenService = null;
@@ -199,7 +199,7 @@
       [chosenService]: stepInfo,
     };
 
-    return { props: { stepInfo: { mailConfiguration, chosenService } } };
+    return { stepInfo: { mailConfiguration, chosenService } };
   }
 </script>
 

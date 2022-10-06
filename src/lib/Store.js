@@ -45,7 +45,7 @@ export function checkRoute(step, pathname) {
 }
 
 export async function checkCurrentStep(request) {
-  return await ApiUtil.get({ path: "/api/setup/step/check", request })
+  return ApiUtil.get({ path: "/api/setup/step/check", request })
     .then((body) => {
       if (body.error) {
         return { ...body, step: 0 };
@@ -53,7 +53,7 @@ export async function checkCurrentStep(request) {
 
       return body;
     })
-    .catch(() => {
+    .catch((err) => {
       return { error: NETWORK_ERROR, step: 0 };
     });
 }

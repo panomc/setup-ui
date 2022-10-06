@@ -48,7 +48,7 @@
   </div>
 
   <div class="container pt-lg-5 px-3">
-    <ErrorAlert error="{$session.stepInfo.error}" />
+    <ErrorAlert error="{stepInfo.error}" />
 
     <div class="card card-logomark">
       <div class="card-body py-5 col-md-8 m-auto">
@@ -63,16 +63,14 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ session }) {
-    await initLanguage(session);
+  export async function load({ data: {acceptedLanguage} }) {
+    await initLanguage(acceptedLanguage);
 
     return {};
   }
 </script>
 
 <script>
-  import { session } from "$app/stores";
-
   import App from "$lib/components/App.svelte";
   import ErrorAlert from "$lib/components/ErrorAlert.svelte";
   import {
@@ -81,4 +79,6 @@
     languageLoading,
     Languages,
   } from "$lib/language.util";
+
+  export let stepInfo
 </script>

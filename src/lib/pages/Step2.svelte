@@ -119,15 +119,13 @@
 </form>
 
 <script context="module">
-  /**
-   * @type {import('@sveltejs/kit').Load}
-   */
-  export async function load({
-    session: {
+  /**  @type {import('@sveltejs/kit').LayoutLoad} */
+  export async function load({ parent }) {
+    const {
       stepInfo: { db },
-    },
-  }) {
-    return { props: { stepInfo: { db } } };
+    } = await parent();
+
+    return { stepInfo: { db } };
   }
 </script>
 

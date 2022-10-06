@@ -1,4 +1,4 @@
-import { browser } from "$app/env";
+import { browser } from "$app/environment";
 import { get, writable } from "svelte/store";
 
 import {
@@ -27,9 +27,7 @@ export const loadedLanguages = writable([]);
 export const languageLoading = writable(false);
 export const currentLanguage = writable({});
 
-export async function init(session) {
-  let initialLocale = session.acceptedLanguage;
-
+export async function init(initialLocale) {
   if (browser) {
     initialLocale = get(locale);
 

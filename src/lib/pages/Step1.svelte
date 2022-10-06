@@ -40,15 +40,13 @@
 </form>
 
 <script context="module">
-  /**
-   * @type {import('@sveltejs/kit').Load}
-   */
-  export async function load({
-    session: {
+  /**  @type {import('@sveltejs/kit').LayoutLoad} */
+  export async function load({ parent }) {
+    const {
       stepInfo: { websiteName, websiteDescription },
-    },
-  }) {
-    return { props: { stepInfo: { websiteName, websiteDescription } } };
+    } = await parent();
+
+    return { stepInfo: { websiteName, websiteDescription } };
   }
 </script>
 
