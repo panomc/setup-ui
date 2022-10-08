@@ -1,6 +1,6 @@
 import cookie from "cookie";
 
-import * as api from "$lib/api.util.server";
+import * as api from "$lib/api-server.util";
 import generateToken from "$lib/csrf.js";
 import {
   COOKIE_PREFIX,
