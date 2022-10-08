@@ -2,7 +2,7 @@ import ApiUtil, { NETWORK_ERROR } from "$lib/api.util.js";
 import { goto } from "$app/navigation";
 import { writable } from "svelte/store";
 
-export const session = writable({})
+export const session = writable({});
 
 export function checkRoute(step, pathname) {
   const stepLocation = "/step-" + step;

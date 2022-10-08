@@ -89,7 +89,7 @@
 
     await initLanguage(acceptedLanguage);
 
-    return data
+    return data;
   }
 </script>
 

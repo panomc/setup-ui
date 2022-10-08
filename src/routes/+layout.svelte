@@ -5,5 +5,5 @@
 <script>
   import MainLayout from "$lib/layouts/MainLayout.svelte";
 
-  export let data
+  export let data;
 </script>

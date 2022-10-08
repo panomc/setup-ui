@@ -3,5 +3,5 @@
 <script>
   import Beginning from "$lib/pages/Beginning.svelte";
 
-  export let data
+  export let data;
 </script>
