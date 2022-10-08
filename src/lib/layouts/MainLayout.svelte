@@ -60,13 +60,36 @@
 
 <script context="module">
   import { init as initLanguage } from "$lib/language.util";
+  import { checkCurrentStep, checkRoute, session } from "$lib/Store.js";
+  import { redirect } from "@sveltejs/kit";
+
+  /**  @type {import('./$types').LayoutServerLoad} */
+  export async function loadServer(input) {
+    const {
+      url: { pathname },
+      locals: { acceptedLanguage, CSRFToken },
+    } = input;
+    const stepInfo = await checkCurrentStep(input);
+    const { step } = stepInfo;
+
+    const route = checkRoute(step, pathname);
+
+    if (route) {
+      throw redirect(302, route);
+    }
+
+    return { stepInfo, acceptedLanguage, CSRFToken };
+  }
+
   /**
-   * @type {import('@sveltejs/kit').Load}
+   * @type {import('@sveltejs/kit').LoadLayout}
    */
-  export async function load({ data: {acceptedLanguage} }) {
+  export async function load({ data, data: { acceptedLanguage, CSRFToken } }) {
+    session.set({ CSRFToken });
+
     await initLanguage(acceptedLanguage);
 
-    return {};
+    return data
   }
 </script>
 
@@ -80,5 +103,5 @@
     Languages,
   } from "$lib/language.util";
 
-  export let stepInfo
+  export let stepInfo;
 </script>

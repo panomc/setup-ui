@@ -40,7 +40,7 @@
 </form>
 
 <script context="module">
-  /**  @type {import('@sveltejs/kit').LayoutLoad} */
+  /** @type {import('./$types').PageLoad} */
   export async function load({ parent }) {
     const {
       stepInfo: { websiteName, websiteDescription },

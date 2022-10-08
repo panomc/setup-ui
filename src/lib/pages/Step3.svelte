@@ -174,7 +174,7 @@
     },
   });
 
-  /**  @type {import('@sveltejs/kit').LayoutLoad} */
+  /** @type {import('./$types').PageLoad} */
   export async function load({ parent }) {
     const { stepInfo } = await parent();
     const { address, host, username, password, port } = stepInfo;
