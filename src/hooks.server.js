@@ -10,10 +10,14 @@ export async function handle({
   event: {
     cookies,
     request: { headers },
+    url: { pathname },
   },
   resolve,
 }) {
-  event.locals.acceptedLanguage = getAcceptedLanguage(headers);
+  if (!pathname.startsWith("/api/")) {
+    event.locals.acceptedLanguage = getAcceptedLanguage(headers);
+  }
+
   event.locals.CSRFToken = cookies.get(COOKIE_PREFIX + CSRF_TOKEN_COOKIE_NAME);
 
   return resolve(event);
