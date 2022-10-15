@@ -123,7 +123,7 @@
     })
       .then((body) => {
         if (body.result === "ok") {
-          window.location.assign(PANEL_URL + "/panel");
+          window.location.assign(PANEL_URL);
         } else if (body.error) {
           showError(body.error);
         } else {
