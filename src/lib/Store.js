@@ -3,6 +3,7 @@ import { goto } from "$app/navigation";
 import { writable } from "svelte/store";
 
 export const session = writable({});
+export const currentStep = writable(0);
 
 export function checkRoute(step, pathname) {
   const stepLocation = "/step-" + step;
@@ -33,6 +34,8 @@ export async function checkCurrentStep(request) {
 function initializeCurrentStep(path) {
   checkCurrentStep().then((stepInfo) => {
     const { step } = stepInfo;
+
+    currentStep.set(step);
 
     const redirect = checkRoute(step, path);
 

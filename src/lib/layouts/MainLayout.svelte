@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Pano Installer{$currentStep !== 0 ? `- ${$currentStep}/4` : "" }</title>
+</svelte:head>
+
 <App>
   <div class="navbar">
     <div class="container px-3">
@@ -60,7 +64,7 @@
 
 <script context="module">
   import { init as initLanguage } from "$lib/language.util";
-  import { checkCurrentStep, checkRoute, session } from "$lib/Store.js";
+  import { checkCurrentStep, checkRoute, currentStep, session } from "$lib/Store.js";
   import { redirect } from "@sveltejs/kit";
 
   /**  @type {import('./$types').LayoutServerLoad} */
@@ -84,8 +88,9 @@
   /**
    * @type {import('@sveltejs/kit').LoadLayout}
    */
-  export async function load({ data, data: { acceptedLanguage, CSRFToken } }) {
+  export async function load({ data, data: { stepInfo: {step}, acceptedLanguage, CSRFToken } }) {
     session.set({ CSRFToken });
+    currentStep.set(step)
 
     await initLanguage(acceptedLanguage);
 
