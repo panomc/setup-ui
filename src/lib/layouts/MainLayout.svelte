@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>Pano Installer{$currentStep !== 0 ? `- ${$currentStep}/4` : "" }</title>
+  <title>Pano Installer{$currentStep !== 0 ? ` ${$currentStep}/4` : "" }</title>
 </svelte:head>
 
 <App>
