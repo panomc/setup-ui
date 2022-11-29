@@ -12,26 +12,26 @@
     "format:prettier": "prettier --write . --config .prettierrc"
   },
   "devDependencies": {
-    "@rollup/plugin-json": "^5.0.0",
-    "@sveltejs/adapter-node": "^1.0.0-next.98",
-    "@sveltejs/kit": "^1.0.0-next.516",
+    "@rollup/plugin-json": "^5.0.2",
+    "@sveltejs/adapter-node": "^1.0.0-next.101",
+    "@sveltejs/kit": "^1.0.0-next.567",
     "cookie": "^0.5.0",
     "csrf": "^3.1.0",
-    "eslint": "^8.25.0",
+    "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.7.1",
-    "prettier-plugin-svelte": "^2.8.0",
-    "sass": "^1.55.0",
-    "svelte": "^3.52.0",
+    "prettier": "^2.8.0",
+    "prettier-plugin-svelte": "^2.8.1",
+    "sass": "^1.56.1",
+    "svelte": "^3.53.1",
     "svelte-preprocess": "^4.10.7",
     "tippy.js": "^6.3.7",
-    "vite": "^3.1.8"
+    "vite": "^3.2.4"
   },
   "type": "module",
   "dependencies": {
-    "bootstrap": "^5.2.2",
-    "svelte-i18n": "^3.4.0"
+    "bootstrap": "^5.2.3",
+    "svelte-i18n": "^3.6.0"
   }
 }
