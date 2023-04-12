@@ -13,7 +13,7 @@
           <div class="dropdown" class:d-none="{$languageLoading}">
             <a
               href="javascript:void(0);"
-              class="nav-link text-muted dropdown-toggle d-inline-block"
+              class="nav-link text-muted d-inline-block"
               data-bs-toggle="dropdown"
               id="selectLanguage">
               {$currentLanguage.name}
@@ -46,7 +46,6 @@
             Yardım
           </a>
         </li>
-        <span class="navbar-text text-muted">v1.0</span>
       </ul>
     </div>
   </div>
