@@ -134,7 +134,7 @@
       name: "GMail",
       config: {
         ...defaultMailConfiguration,
-        host: "smtp.google.com",
+        host: "smtp.gmail.com",
       },
     },
     YAHOO: {
