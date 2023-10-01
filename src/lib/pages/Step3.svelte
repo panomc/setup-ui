@@ -93,7 +93,7 @@
                 class="form-control"
                 id="port"
                 placeholder="465"
-                type="text"
+                type="number"
                 bind:value="{mailConfiguration[chosenService].port}" />
             </div>
           </div>
