@@ -1,26 +1,57 @@
 <svelte:head>
-  <title>Pano Installer{$currentStep !== 0 ? ` ${$currentStep}/4` : "" }</title>
+  <title>Pano Installer{$currentStep !== 0 ? ` ${$currentStep}/4` : ""}</title>
 </svelte:head>
 
 <App>
-  <div class="navbar">
-    <div class="container px-3">
+  <div class="navbar navbar-light my-2 px-4">
+    <div
+      class="d-flex flex-row justify-content-between align-items-start w-100">
       <a href="https://panocms.com" target="_blank" class="navbar-brand">
-        <img alt="Pano Logo" src="/assets/img/logo-blue.svg" width="18" />
+        <img alt="Pano" src="/assets/img/logo-blue.svg" width="18" />
       </a>
+
+      <nav style="--bs-breadcrumb-divider: '';">
+        <ol
+          class="breadcrumb d-flex flex-lg-row flex-column align-items-center justify-content-center mb-0">
+          <li class="breadcrumb-item my-2">
+            <span
+              class="badge bg-success bg-opacity-25 text-success rounded-pill">
+              <i class="fa-solid fa-check-circle text-success me-2"></i> 1. Site
+              Kimliği
+            </span>
+          </li>
+          <li class="breadcrumb-item my-2">
+            <span
+              class="badge bg-primary bg-opacity-25 text-primary rounded-pill">
+              <i class="fa-solid fa-database me-2 text-primary"></i> 2. Veri Tabanı
+            </span>
+          </li>
+          <li class="breadcrumb-item my-2">
+            <span class="badge bg-light text-dark rounded-pill">
+              <i class="fa-solid fa-envelope me-2"></i> 3. E-posta Ayarları
+            </span>
+          </li>
+          <li class="breadcrumb-item my-2">
+            <span class="badge bg-light text-dark rounded-pill">
+              <i class="fa-solid fa-user me-2"></i> 4. Yönetici Hesabı
+            </span>
+          </li>
+        </ol>
+      </nav>
+
       <ul class="nav ml-auto">
         <li class="nav-item">
           <div class="dropdown" class:d-none="{$languageLoading}">
             <a
               href="javascript:void(0);"
-              class="nav-link text-muted d-inline-block"
+              class="nav-link d-inline-block"
               data-bs-toggle="dropdown"
               id="selectLanguage">
-              {$currentLanguage.name}
+              <i class="fa-solid fa-language"></i>
             </a>
             <div
               aria-labelledby="selectLanguage"
-              class="dropdown-menu dropdown-menu-right">
+              class="dropdown-menu dropdown-menu-end">
               {#each Object.keys(Languages) as language, index (language)}
                 <a
                   class="dropdown-item"
@@ -39,31 +70,28 @@
           </div>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link text-muted"
-            href="https://panomc.com"
-            target="_blank">
-            Yardım
+          <a class="nav-link" href="https://panomc.com" target="_blank">
+            <i class="fa-solid fa-circle-question"></i>
           </a>
         </li>
       </ul>
     </div>
   </div>
 
-  <div class="container pt-lg-5 px-3">
+  <div class="container rounded bg-white p-5">
     <ErrorAlert error="{stepInfo.error}" />
-
-    <div class="card card-logomark">
-      <div class="card-body py-5 col-md-8 m-auto">
-        <slot />
-      </div>
-    </div>
+    <slot />
   </div>
 </App>
 
 <script context="module">
   import { init as initLanguage } from "$lib/language.util";
-  import { checkCurrentStep, checkRoute, currentStep, session } from "$lib/Store.js";
+  import {
+    checkCurrentStep,
+    checkRoute,
+    currentStep,
+    session,
+  } from "$lib/Store.js";
   import { redirect } from "@sveltejs/kit";
 
   /**  @type {import('./$types').LayoutServerLoad} */
@@ -87,9 +115,16 @@
   /**
    * @type {import('@sveltejs/kit').LoadLayout}
    */
-  export async function load({ data, data: { stepInfo: {step}, acceptedLanguage, CSRFToken } }) {
+  export async function load({
+    data,
+    data: {
+      stepInfo: { step },
+      acceptedLanguage,
+      CSRFToken,
+    },
+  }) {
     session.set({ CSRFToken });
-    currentStep.set(step)
+    currentStep.set(step);
 
     await initLanguage(acceptedLanguage);
 

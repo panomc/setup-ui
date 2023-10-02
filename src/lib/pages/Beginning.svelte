@@ -1,27 +1,19 @@
 <div class:opacity-75="{disabled}">
-  <h3>Pano kurulumuna hoş geldiniz!</h3>
-  <p class="text-muted mb-0">
-    Pano'nun web sunucunuzda çalışabilmesi için aşağıda listelenen bilgileri
-    belirlemeniz gerekmekte:
+  <h3>Hoş geldiniz</h3>
+  <p class="text-muted">
+    Yukarıda listelenen adımlarla ilgili gereksinimleri belirleyerek Pano'yu ağ
+    sunucunuza kurabilirsiniz.
   </p>
-  <ul class="text-muted">
-    <li>Web site adı ve açıklaması</li>
-    <li>Veri tabanı bilgileri</li>
-    <li>E-Posta yapılandırması</li>
-    <li>Kullanıcı hesabı bilgileri</li>
-  </ul>
 </div>
 
 <div class="row pt-3">
-  <div class="col-6">
-    <button
-      class="btn btn-primary w-100"
-      on:click="{start}"
-      class:disabled="{loading || disabled}"
-      disabled="{loading || disabled}">
-      Başla
-    </button>
-  </div>
+  <button
+    class="btn btn-primary"
+    on:click="{start}"
+    class:disabled="{loading || disabled}"
+    disabled="{loading || disabled}">
+    İleri
+  </button>
 </div>
 
 <script>

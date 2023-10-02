@@ -1,8 +1,13 @@
-<h5>Adım 3/4 - E-Posta Yapılandırması</h5>
+<h4>E-posta Ayarları</h4>
 <p class="text-muted">
-  Bu adımda platformunuz için e-mail bilgilerini yapılandırıyoruz. Pano e-mail
-  gönderebilmek için bazı bilgilere ihtiyaç duyar. Platformun hangi e-mail
-  adresini kullanmasını istiyorsanız onun bilgilerini girin.
+  Pano, e-posta gönderebilmek için bir e-posta sağlayıcısına ihtiyaç duyar.
+  Lütfen kullanmak istediğiniz e-posta adresi ile oturum açarak platforma
+  kaydedin.
+  <br />
+  <a href="#">
+    <i class="fa-solid fa-up-right-from-square me-2"></i>
+    E-posta ayarlama hakkında daha fazla bilgi
+  </a>
 </p>
 
 <ErrorAlert error="{error}" />

@@ -1,9 +1,11 @@
-<h5>Adım 1/4 - Web Site Adı ve Açıklaması</h5>
+<h4>Site Kimliği</h4>
+
 <p class="text-muted">
-  Web sitenizin adı ve açıklaması arama motorlarında görünecektir.
+  Sitenizin başlığı ve açıklaması arama motorlarında yer alacak. Bunları daha
+  sonra düzenleyebilirsiniz.
 </p>
 <form on:submit|preventDefault="{submit}">
-  <label for="websiteName">Website Adı</label>
+  <label for="websiteName">Başlık</label>
   <input
     id="websiteName"
     class="form-control mb-3"

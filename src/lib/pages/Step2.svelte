@@ -1,11 +1,14 @@
-<h5>Adım 2/4 - Veri Tabanı Bilgileri</h5>
+<h4>Veri Tabanı</h4>
 <p class="text-muted">
-  Veri tabanı bilgilerini bilmiyorsanız sunucu sağlayıcınızla iletişime
-  geçebilirsiniz.
+  Pano'nun ağ sunucnuzda bilgi işleyebilmesi için lütfen veri tabanı bilgilerini
+  girin.
+  <br />
+  <a href="#">
+    <i class="fa-solid fa-up-right-from-square me-2"></i>
+    Veri tabanı bilgilerimi nasıl öğrenirim?
+  </a>
 </p>
-
 <ErrorAlert error="{error}" />
-
 <form on:submit|preventDefault="{submit}">
   <div class="mb-3">
     <div class="form-check">

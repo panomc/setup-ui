@@ -1,6 +1,6 @@
-<h5>Adım 4/4 - Kullanıcı Hesabı Bilgileri</h5>
+<h4>Yönetici Hesabı</h4>
 <p class="text-muted">
-  Çevrimiçi Pano hesabı kullanabilir veya yerel hesap oluşturabilirsiniz.
+  Mevcut bir Pano hesabı kullanabilir veya yerel hesap oluşturabilirsiniz.
 </p>
 
 <form on:submit|preventDefault="{submit}">
