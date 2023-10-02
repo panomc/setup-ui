@@ -12,6 +12,7 @@
     "format:prettier": "prettier --write . --config .prettierrc"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.2",
     "@rollup/plugin-json": "^6.0.0",
     "@sveltejs/adapter-node": "^1.2.3",
     "@sveltejs/kit": "^1.15.4",
