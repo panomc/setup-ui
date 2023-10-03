@@ -10,34 +10,29 @@
         <img alt="Pano" src="/assets/img/logo-blue.svg" width="18" />
       </a>
 
-      <nav style="--bs-breadcrumb-divider: '';">
-        <ol
-          class="breadcrumb d-flex flex-lg-row flex-column align-items-center justify-content-center mb-0">
-          <li class="breadcrumb-item my-2">
-            <span
-              class="badge bg-success bg-opacity-25 text-success rounded-pill">
-              <i class="fa-solid fa-check-circle text-success me-2"></i> 1. Site
-              Kimliği
-            </span>
-          </li>
-          <li class="breadcrumb-item my-2">
-            <span
-              class="badge bg-primary bg-opacity-25 text-primary rounded-pill">
-              <i class="fa-solid fa-database me-2 text-primary"></i> 2. Veri Tabanı
-            </span>
-          </li>
-          <li class="breadcrumb-item my-2">
-            <span class="badge bg-light text-dark rounded-pill">
-              <i class="fa-solid fa-envelope me-2"></i> 3. E-posta Ayarları
-            </span>
-          </li>
-          <li class="breadcrumb-item my-2">
-            <span class="badge bg-light text-dark rounded-pill">
-              <i class="fa-solid fa-user me-2"></i> 4. Yönetici Hesabı
-            </span>
-          </li>
-        </ol>
-      </nav>
+      <ul class="nav nav-underline">
+        <li class="nav-item">
+          <a class="nav-link link-success" href="#">
+            <i class="fa-solid fa-i-cursor me-2"></i>
+            <i class="fa-solid fa-check-circle me-2"></i>
+            1. Site Kimliği</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">
+            <i class="fa-solid fa-database me-2"></i>
+            2. Veri Tabanı</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" aria-disabled="true">
+            <i class="fa-solid fa-envelope me-2"></i>
+            3. E-posta Ayarları</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" aria-disabled="true">
+            <i class="fa-solid fa-user me-2"></i>
+            Yönetici Hesabı</a>
+        </li>
+      </ul>
 
       <ul class="nav ml-auto">
         <li class="nav-item">
@@ -47,7 +42,7 @@
               class="nav-link d-inline-block"
               data-bs-toggle="dropdown"
               id="selectLanguage">
-              <i class="fa-solid fa-language"></i>
+              <i class="fa-solid fa-earth-americas"></i>
             </a>
             <div
               aria-labelledby="selectLanguage"
