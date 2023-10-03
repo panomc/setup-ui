@@ -32,7 +32,7 @@
         <i class="fa-solid fa-arrow-left me-1"></i> Servisler
       </button>
 
-      <h5>GMail</h5>
+      <h5>{services[chosenService].name}</h5>
 
       <div class="row">
         <div class="col-6">
@@ -42,7 +42,8 @@
             id="mailUsername"
             type="text"
             placeholder="no-reply"
-            bind:value="{mailConfiguration[chosenService].username}" />
+            bind:value="{mailConfiguration[chosenService].username}"
+            on:input="{onUsernameChange}" />
         </div>
         <div class="col-6">
           <label for="mailUserPassword">Şifre</label>
@@ -65,7 +66,10 @@
                 class="form-check-input"
                 type="checkbox"
                 name="useSSLCheck"
-                id="useSSLCheck" />
+                id="useSSLCheck"
+                aria-checked="{mailConfiguration[chosenService].useSSL}"
+                bind:checked="{mailConfiguration[chosenService].useSSL}"
+              />
               <label class="form-check-label" for="useSSLCheck">
                 SSL kullan
               </label>
@@ -77,9 +81,12 @@
                 class="form-check-input"
                 type="checkbox"
                 name="useTLSCheck"
-                id="useTLSCheck" />
+                id="useTLSCheck"
+                aria-checked="{mailConfiguration[chosenService].useTLS}"
+                bind:checked="{mailConfiguration[chosenService].useTLS}"
+              />
               <label class="form-check-label" for="useTLSCheck">
-                TSL kullan
+                TLS kullan
               </label>
             </div>
           </div>
@@ -94,8 +101,7 @@
                 id="sendingAdress"
                 type="text"
                 placeholder="no-reply@forexample.com"
-                bind:value="{mailConfiguration[chosenService].address}"
-                on:input="{onAddressChange}" />
+                bind:value="{mailConfiguration[chosenService].address}" />
             </div>
           </div>
 
@@ -125,10 +131,10 @@
 
           <div class="col-6">
             <div class="mb-3">
-              <label for="port">Giriş Metodu</label>
-              <select class="form-select">
-                <option selected>PLAIN</option>
-                <option></option>
+              <label for="port">Giriş Metodu:</label>
+              <select class="form-select" bind:value="{mailConfiguration[chosenService].authMethod}">
+                <option value="PLAIN">PLAIN</option>
+                <option value=""></option>
               </select>
             </div>
           </div>
@@ -161,7 +167,9 @@
 <script context="module">
   const defaultMailConfiguration = Object.freeze({
     useSSL: true,
+    useTLS: true,
     port: 465,
+    authMethod: ""
   });
 
   export const services = Object.freeze({
@@ -170,6 +178,10 @@
       config: {
         ...defaultMailConfiguration,
         host: "smtp.gmail.com",
+        port: 587,
+        useSSL: false,
+        useTLS: true,
+        authMethod: "PLAIN"
       },
     },
     YAHOO: {
@@ -184,6 +196,10 @@
       config: {
         ...defaultMailConfiguration,
         host: "smtp.yandex.com",
+        port: 465,
+        useSSL: true,
+        useTLS: false,
+        authMethod: "PLAIN"
       },
     },
     MAIL_RU: {
@@ -294,7 +310,7 @@
     error = null;
 
     ApiUtil.post({
-      path: "/api/setup/mailConfigurationTest",
+      path: "/api/setup/verifyMailConfiguration",
       body: mailConfiguration[chosenService],
     })
       .then((body) => {
@@ -312,8 +328,8 @@
       });
   }
 
-  function onAddressChange() {
-    mailConfiguration[chosenService].username =
-      mailConfiguration[chosenService].address;
+  function onUsernameChange() {
+    mailConfiguration[chosenService].address =
+      mailConfiguration[chosenService].username;
   }
 </script>
