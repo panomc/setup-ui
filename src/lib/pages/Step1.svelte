@@ -8,7 +8,7 @@
   <label for="websiteName">Başlık</label>
   <input
     id="websiteName"
-    class="form-control mb-3"
+    class="form-control form-control-lg mb-3"
     placeholder="Panocraft"
     type="text"
     bind:value="{websiteName}" />
