@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>Pano Installer{$currentStep !== 0 ? ` ${$currentStep}/4` : ""}</title>
+  <title>{$_("title")}{$currentStep !== 0 ? ` ${$currentStep}/4` : ""}</title>
 </svelte:head>
 
 <App>
@@ -83,16 +83,10 @@
 </script>
 
 <script>
-  import {
-    changeLanguage,
-    currentLanguage,
-    languageLoading,
-    Languages,
-  } from "$lib/language.util";
-
   import App from "$lib/components/App.svelte";
   import ErrorAlert from "$lib/components/ErrorAlert.svelte";
   import Navbar from "$lib/components/Navbar.svelte";
+  import { _ } from "svelte-i18n";
 
   export let stepInfo;
 </script>

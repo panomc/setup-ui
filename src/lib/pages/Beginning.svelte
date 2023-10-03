@@ -9,26 +9,22 @@
 <h5>Dil seçin</h5>
 
 <ul class="list-group mb-3">
-  <li class="list-group-item">
-    <input
-      class="form-check-input me-1"
-      type="radio"
-      name="langSelectionRadio"
-      value=""
-      id="langENRadio"
-      aria-checked="true"
-      checked />
-    <label class="form-check-label" for="langENRadio">ingilizce (US)</label>
-  </li>
-  <li class="list-group-item">
-    <input
-      class="form-check-input me-1"
-      type="radio"
-      name="langSelectionRadio"
-      value=""
-      id="langTRRadio" />
-    <label class="form-check-label" for="langTRRadio">Türkçe (TR)</label>
-  </li>
+  {#each Object.keys(Languages) as language, index (language)}
+    <li class="list-group-item">
+      <input
+        class="form-check-input me-1"
+        type="radio"
+        name="langSelectionRadio"
+        value=""
+        id="lang{language}Radio"
+        aria-checked="{$currentLanguage === Languages[language]}"
+        checked="{$currentLanguage === Languages[language]}"
+        on:click="{() => changeLanguage(Languages[language])}"
+        disabled="{$languageLoading}" />
+      <label class="form-check-label" for="lang{language}Radio"
+        >{Languages[language].name}</label>
+    </li>
+  {/each}
 </ul>
 
 <div class="row justify-content-end">
@@ -46,6 +42,13 @@
 <script>
   import { page } from "$app/stores";
   import { nextStep } from "$lib/Store.js";
+
+  import {
+    changeLanguage,
+    currentLanguage,
+    languageLoading,
+    Languages,
+  } from "$lib/language.util";
 
   export let stepInfo;
 
