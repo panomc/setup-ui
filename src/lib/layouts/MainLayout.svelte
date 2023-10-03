@@ -11,26 +11,26 @@
           <img alt="Pano" src="/assets/img/logo.svg" width="18" />
         </a>
 
-        <ul class="navbar-nav nav-underline">
+        <ul class="navbar-nav nav-underline text-center">
           <li class="nav-item">
             <a class="nav-link link-success" href="#">
-              <i class="fa-solid fa-i-cursor me-2"></i>
-              <i class="fa-solid fa-check-circle me-2"></i>
+              <i class="fa-solid fa-i-cursor me-lg-1 d-lg-inline d-block"></i>
+              <i class="fa-solid fa-check-circle me-lg-1 d-lg-inline d-block"></i>
               1. Site Kimliği</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">
-              <i class="fa-solid fa-database me-2"></i>
+              <i class="fa-solid fa-database me-lg-1 d-lg-inline d-block"></i>
               2. Veri Tabanı</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" aria-disabled="true">
-              <i class="fa-solid fa-envelope me-2"></i>
+              <i class="fa-solid fa-envelope me-lg-1 d-lg-inline d-block"></i>
               3. E-posta Ayarları</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" aria-disabled="true">
-              <i class="fa-solid fa-user me-2"></i>
+              <i class="fa-solid fa-user me-lg-1 d-lg-inline d-block"></i>
               Yönetici Hesabı</a>
           </li>
         </ul>
