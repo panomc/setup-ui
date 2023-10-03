@@ -26,24 +26,70 @@
     </div>
   {:else}
     <div in:fade>
-      <button class="btn btn-link" on:click="{() => (chosenService = null)}"
-        >← Servisler
+      <button
+        class="btn btn-link ps-0"
+        on:click="{() => (chosenService = null)}">
+        <i class="fa-solid fa-arrow-left me-2"></i> Servisler
       </button>
       <div class="my-3">
-        <div class="form-check form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            role="switch"
-            id="flexSwitchCheckChecked"
-            aria-checked="{mailConfiguration[chosenService].useSSL}"
-            bind:checked="{mailConfiguration[chosenService].useSSL}" />
-          <label class="form-check-label" for="flexSwitchCheckChecked"
-            >SSL kullan</label>
+        <h5>GMail</h5>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="mb-3">
+            <label for="mailUsername">Kullanıcı Adı (Adres)</label>
+            <input
+              class="form-control"
+              id="mailUsername"
+              type="text"
+              placeholder="no-reply"
+              bind:value="{mailConfiguration[chosenService].username}" />
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="mb-3">
+            <label for="mailUserPassword">Şifre</label>
+            <input
+              class="form-control"
+              id="mailUserPassword"
+              placeholder="****************"
+              type="password"
+              bind:value="{mailConfiguration[chosenService].password}" />
+          </div>
         </div>
       </div>
 
-      <div class="mb-3">
+      <details>
+        <summary class="h6 text-primary my-3">Ayrıntılar</summary>
+
+        <div class="row">
+          <div class="col-6 mb-3">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="useSSLCheck"
+                id="useSSLCheck" />
+              <label class="form-check-label" for="useSSLCheck">
+                SSL kullan
+              </label>
+            </div>
+          </div>
+          <div class="col-6 mb-3">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="useTLSCheck"
+                id="useTLSCheck" />
+              <label class="form-check-label" for="useTLSCheck">
+                TSL kullan
+              </label>
+            </div>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-6">
             <div class="mb-3">
@@ -57,6 +103,7 @@
                 on:input="{onAddressChange}" />
             </div>
           </div>
+
           <div class="col-6">
             <div class="mb-3">
               <label for="hostAddress">Sağlayıcı Adresi</label>
@@ -68,30 +115,8 @@
                 bind:value="{mailConfiguration[chosenService].host}" />
             </div>
           </div>
-          <div class="w-100"></div>
+
           <div class="col-6">
-            <div class="mb-3">
-              <label for="mailUsername">Kullanıcı Adı</label>
-              <input
-                class="form-control"
-                id="mailUsername"
-                type="text"
-                placeholder="no-reply"
-                bind:value="{mailConfiguration[chosenService].username}" />
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="mb-3">
-              <label for="mailUserPassword">Şifre</label>
-              <input
-                class="form-control"
-                id="mailUserPassword"
-                placeholder="****************"
-                type="password"
-                bind:value="{mailConfiguration[chosenService].password}" />
-            </div>
-          </div>
-          <div class="col-12">
             <div class="mb-3">
               <label for="port">Port</label>
               <input
@@ -102,8 +127,18 @@
                 bind:value="{mailConfiguration[chosenService].port}" />
             </div>
           </div>
+
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="port">Giriş Metodu</label>
+              <select class="form-select">
+                <option selected>PLAIN</option>
+                <option></option>
+              </select>
+            </div>
+          </div>
         </div>
-      </div>
+      </details>
     </div>
   {/if}
   <div class="row pt-3">
