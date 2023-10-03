@@ -17,8 +17,8 @@ export function checkRoute(step, pathname) {
   }
 }
 
-export async function checkCurrentStep(request) {
-  return ApiUtil.get({ path: "/api/setup/step/check", request })
+export async function checkCurrentStep() {
+  return ApiUtil.get({ path: "/api/setup/step/check" })
     .then((body) => {
       if (body.error) {
         return { ...body, step: 0 };

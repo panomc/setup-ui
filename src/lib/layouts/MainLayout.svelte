@@ -72,7 +72,7 @@
       url: { pathname },
       locals: { acceptedLanguage, CSRFToken },
     } = input;
-    const stepInfo = await checkCurrentStep(input);
+    const stepInfo = await checkCurrentStep();
     const { step } = stepInfo;
 
     const route = checkRoute(step, pathname);
