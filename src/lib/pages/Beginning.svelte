@@ -8,7 +8,7 @@
 
 <h5>Dil seçin</h5>
 
-<ul class="list-group">
+<ul class="list-group mb-3">
   <li class="list-group-item">
     <input
       class="form-check-input me-1"
@@ -31,22 +31,14 @@
   </li>
 </ul>
 
-<div class="row pt-3">
+<div class="row justify-content-end">
   <div class="col-6">
     <button
-      type="button"
-      aria-disabled="true"
-      class="btn btn-lg btn-link w-100 disabled">
-      Geri
-    </button>
-  </div>
-  <div class="col-6">
-    <button
-      class="btn btn-lg btn-primary w-100"
+      class="btn btn-primary w-100"
       on:click="{start}"
       class:disabled="{loading || disabled}"
       disabled="{loading || disabled}">
-      İleri
+      Başla
     </button>
   </div>
 </div>

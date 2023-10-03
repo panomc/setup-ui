@@ -73,9 +73,13 @@
     </div>
   </div>
 
-  <div class="container rounded bg-white p-5">
-    <ErrorAlert error="{stepInfo.error}" />
-    <slot />
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <ErrorAlert error="{stepInfo.error}" />
+        <slot />
+      </div>
+    </div>
   </div>
 </App>
 
