@@ -11,29 +11,7 @@
           <img alt="Pano" src="/assets/img/logo.svg" width="18" />
         </a>
 
-        <ul class="navbar-nav nav-underline text-center">
-          <li class="nav-item">
-            <a class="nav-link link-success" href="#">
-              <i class="fa-solid fa-i-cursor me-lg-1 d-lg-inline d-block"></i>
-              <i class="fa-solid fa-check-circle me-lg-1 d-lg-inline d-block"></i>
-              1. Site Kimliği</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
-              <i class="fa-solid fa-database me-lg-1 d-lg-inline d-block"></i>
-              2. Veri Tabanı</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" aria-disabled="true">
-              <i class="fa-solid fa-envelope me-lg-1 d-lg-inline d-block"></i>
-              3. E-posta Ayarları</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" aria-disabled="true">
-              <i class="fa-solid fa-user me-lg-1 d-lg-inline d-block"></i>
-              Yönetici Hesabı</a>
-          </li>
-        </ul>
+        <Navbar/>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
@@ -105,14 +83,16 @@
 </script>
 
 <script>
-  import App from "$lib/components/App.svelte";
-  import ErrorAlert from "$lib/components/ErrorAlert.svelte";
   import {
     changeLanguage,
     currentLanguage,
     languageLoading,
     Languages,
   } from "$lib/language.util";
+
+  import App from "$lib/components/App.svelte";
+  import ErrorAlert from "$lib/components/ErrorAlert.svelte";
+  import Navbar from "$lib/components/Navbar.svelte";
 
   export let stepInfo;
 </script>
