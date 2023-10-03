@@ -14,7 +14,7 @@
 
 <form on:submit|preventDefault="{next}">
   {#if !chosenService}
-    <div class="list-group">
+    <div class="list-group mb-3">
       {#each Object.keys(services) as service, index (service)}
         <a
           href="javascript:void(0)"
@@ -27,36 +27,31 @@
   {:else}
     <div in:fade>
       <button
-        class="btn btn-link ps-0"
+        class="btn btn-outline-primary mb-3"
         on:click="{() => (chosenService = null)}">
-        <i class="fa-solid fa-arrow-left me-2"></i> Servisler
+        <i class="fa-solid fa-arrow-left me-1"></i> Servisler
       </button>
-      <div class="my-3">
-        <h5>GMail</h5>
-      </div>
+
+      <h5>GMail</h5>
 
       <div class="row">
         <div class="col-6">
-          <div class="mb-3">
-            <label for="mailUsername">Kullanıcı Adı (Adres)</label>
-            <input
-              class="form-control"
-              id="mailUsername"
-              type="text"
-              placeholder="no-reply"
-              bind:value="{mailConfiguration[chosenService].username}" />
-          </div>
+          <label for="mailUsername">Kullanıcı Adı (Adres)</label>
+          <input
+            class="form-control"
+            id="mailUsername"
+            type="text"
+            placeholder="no-reply"
+            bind:value="{mailConfiguration[chosenService].username}" />
         </div>
         <div class="col-6">
-          <div class="mb-3">
-            <label for="mailUserPassword">Şifre</label>
-            <input
-              class="form-control"
-              id="mailUserPassword"
-              placeholder="****************"
-              type="password"
-              bind:value="{mailConfiguration[chosenService].password}" />
-          </div>
+          <label for="mailUserPassword">Şifre</label>
+          <input
+            class="form-control"
+            id="mailUserPassword"
+            placeholder="****************"
+            type="password"
+            bind:value="{mailConfiguration[chosenService].password}" />
         </div>
       </div>
 
@@ -141,7 +136,7 @@
       </details>
     </div>
   {/if}
-  <div class="row pt-3">
+  <div class="row">
     <div class="col-6">
       <a
         href="javascript:void(0);"

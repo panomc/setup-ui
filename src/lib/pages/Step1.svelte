@@ -4,6 +4,7 @@
   Sitenizin başlığı ve açıklaması arama motorlarında yer alacak. Bunları daha
   sonra düzenleyebilirsiniz.
 </p>
+
 <form on:submit|preventDefault="{submit}">
   <label for="websiteName">Başlık</label>
   <input
@@ -15,11 +16,11 @@
   <label for="websiteName">Açıklama</label>
   <textarea
     id="websiteDescription"
-    class="form-control"
+    class="form-control mb-3"
     rows="2"
     bind:value="{websiteDescription}"></textarea>
 
-  <div class="row pt-3">
+  <div class="row">
     <div class="col-6">
       <a
         href="javascript:void(0);"

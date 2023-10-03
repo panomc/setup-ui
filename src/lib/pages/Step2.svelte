@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <div class="mb-3 tab-content">
+  <div class="tab-content">
     <div
       aria-labelledby="mysql-tab"
       class="tab-pane fade show active"
@@ -90,16 +90,16 @@
       </div>
     </div>
 
-    <div
+    <!-- <div
       aria-labelledby="sqlite-tab"
       class="tab-pane fade show"
       id="sqlite"
       role="tabpanel">
       sqlite
-    </div>
+    </div> -->
   </div>
 
-  <div class="row pt-3">
+  <div class="row">
     <div class="col-6">
       <a
         href="javascript:void(0);"
