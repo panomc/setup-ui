@@ -3,7 +3,7 @@
 </svelte:head>
 
 <App>
-  <div class="navbar bg-primary navbar-dark navbar-expand mb-3">
+  <div class="navbar bg-primary navbar-dark navbar-expand">
     <div class="container">
       <div
         class="d-flex flex-row justify-content-between align-items-start w-100">
@@ -11,7 +11,7 @@
           <img alt="Pano" src="/assets/img/logo.svg" width="18" />
         </a>
 
-        <Navbar/>
+        <Navbar />
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
@@ -24,11 +24,13 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="card">
-      <div class="card-body">
-        <ErrorAlert error="{stepInfo.error}" />
-        <slot />
+  <div class="pt-3">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <ErrorAlert error="{stepInfo.error}" />
+          <slot />
+        </div>
       </div>
     </div>
   </div>

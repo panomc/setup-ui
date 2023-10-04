@@ -27,9 +27,9 @@
   {:else}
     <div in:fade>
       <button
-        class="btn btn-outline-primary mb-3"
+        class="btn btn-link mb-3 ps-0"
         on:click="{() => (chosenService = null)}">
-        <i class="fa-solid fa-arrow-left me-1"></i> Servisler
+        <i class="fa-solid fa-arrow-left me-1"></i> Servis listesine geri dön
       </button>
 
       <h5>{services[chosenService].name}</h5>
@@ -131,7 +131,7 @@
 
           <div class="col-6">
             <div class="mb-3">
-              <label for="port">Giriş Metodu:</label>
+              <label for="port">Giriş Metodu</label>
               <select class="form-select" bind:value="{mailConfiguration[chosenService].authMethod}">
                 <option value="PLAIN">PLAIN</option>
                 <option value=""></option>
