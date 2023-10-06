@@ -25,7 +25,7 @@ export const Languages = Object.freeze({
 
 export const loadedLanguages = writable([]);
 export const languageLoading = writable(false);
-export const currentLanguage = writable({});
+export const currentLanguage = writable(null);
 
 export async function init(initialLocale) {
   if (browser) {
@@ -37,7 +37,7 @@ export async function init(initialLocale) {
   }
 
   const language = getLanguageByLocale(get(locale));
-  const languageToLoad = language === null ? Languages.EN_US : language;
+  const languageToLoad = get(currentLanguage) || (language === null ? Languages.EN_US : language);
 
   await loadLanguage(languageToLoad);
   currentLanguage.set(languageToLoad);
@@ -60,6 +60,9 @@ export async function loadLanguage(language) {
   if (get(loadedLanguages).indexOf(language) !== -1) {
     return;
   }
+
+  console.log("geçti 2")
+
 
   loadedLanguages.update((list) => {
     list.push(language);
