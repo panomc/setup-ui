@@ -5,7 +5,8 @@
         class="nav-link"
         class:active="{$currentStep === index + 1}"
         class:link-success="{$currentStep > index + 1}"
-        href="#">
+        href="{$currentStep <= index + 1 ? null : 'javascript:void(0);'}"
+        on:click="{$currentStep <= index + 1 ? null : () => goStep(index + 1)}">
         {#if $currentStep > index + 1}<i
             class="fa-solid fa-check-circle me-lg-1 d-lg-inline d-block"></i
           >{:else}
@@ -17,9 +18,7 @@
 </ul>
 
 <script context="module">
-  import {
-    currentStep,
-  } from "$lib/Store.js";
+  import { currentStep } from "$lib/Store.js";
 
   const steps = [
     {
@@ -39,4 +38,16 @@
       icon: "fa-solid fa-user",
     },
   ];
+</script>
+
+<script>
+  import { page } from "$app/stores";
+  import { goToStep } from "$lib/Store.js";
+
+  function goStep(step) {
+    goToStep(
+      step,
+      $page.url.pathname
+    );
+  }
 </script>

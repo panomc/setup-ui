@@ -52,6 +52,15 @@ export function nextStep(body, path) {
   });
 }
 
+export function goToStep(step, path) {
+  ApiUtil.post({
+    path: "/api/setup/step/goAnyBackStep",
+    body: { step: parseInt(step) },
+  }).then(() => {
+    initializeCurrentStep(path);
+  });
+}
+
 export function backStep(body, path) {
   ApiUtil.post({
     path: "/api/setup/step/backStep",
