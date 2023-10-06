@@ -26,7 +26,7 @@
 
   <div class="pt-3">
     <div class="container">
-      <div class="card">
+      <div class="card bg-white">
         <div class="card-body">
           <ErrorAlert error="{stepInfo.error}" />
           <slot />
