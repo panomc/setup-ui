@@ -61,9 +61,6 @@ export async function loadLanguage(language) {
     return;
   }
 
-  console.log("geçti 2")
-
-
   loadedLanguages.update((list) => {
     list.push(language);
 
