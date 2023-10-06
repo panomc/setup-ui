@@ -1,4 +1,4 @@
-<ul class="navbar-nav nav-underline text-center">
+<ul class="navbar-nav text-center">
   {#each steps as step, index (step)}
     <li class="nav-item">
       <a
@@ -45,9 +45,6 @@
   import { goToStep } from "$lib/Store.js";
 
   function goStep(step) {
-    goToStep(
-      step,
-      $page.url.pathname
-    );
+    goToStep(step, $page.url.pathname);
   }
 </script>
