@@ -19,7 +19,7 @@
           class="list-group-item list-group-item-action"
           on:click="{() => chooseService(service)}"
           in:fade>
-          {services[service].name}</a>
+          {$_(services[service].name) || services[service].name}</a>
       {/each}
     </div>
   {:else}
@@ -216,7 +216,7 @@
       },
     },
     OTHER: {
-      name: "Diğer",
+      name: "other-button",
       config: {
         ...defaultMailConfiguration,
       },

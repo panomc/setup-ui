@@ -58,5 +58,6 @@
   },
   "back-button": "Back",
   "next-button": "Next",
-  "finish-button": "Finish"
+  "finish-button": "Finish",
+  "other-button": "Other"
 }
