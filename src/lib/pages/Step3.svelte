@@ -1,7 +1,7 @@
 <h4>E-posta Ayarları</h4>
 <p class="text-muted">
   Pano, e-posta gönderebilmek için bir e-posta sağlayıcısına ihtiyaç duyar.
-  Lütfen kullanmak istediğiniz e-posta adresi ile oturum açarak platforma
+  Lütfen kullanmak istediğiniz e-posta adresini oturum giriş bilgileriyle platforma
   kaydedin.
   <br />
   <a href="#">

@@ -1,29 +1,10 @@
 <h4>Yönetici Hesabı</h4>
 <p class="text-muted">
-  Mevcut bir Pano hesabı kullanabilir veya yerel hesap oluşturabilirsiniz.
+  Pano'yu yönetebilmek için bir yönetici hesabına ihtiyacınız var.
 </p>
 
 <form on:submit|preventDefault="{submit}">
-  <a target="_blank" href="javascript:void(0);" role="button"> Oturum Aç </a>
-
-  <div class="alert alert-success" style="display: none;">
-    <a
-      class="alert-link"
-      href="https://panomc.com/user/username"
-      target="_blank">
-      ???
-    </a>
-    hesabı başarıyla bağlandı.
-    <button
-      class="btn d-block btn-link link-danger ps-0"
-      href="javascript:void(0);">
-      Bağlantıyı Kes
-    </button>
-  </div>
-
   <ErrorAlert error="{error}" />
-
-  <p class="my-3 text-muted">veya</p>
 
   <div class="mb-3">
     <label for="admin-email">E-Posta</label>

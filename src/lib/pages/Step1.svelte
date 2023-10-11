@@ -2,7 +2,7 @@
 
 <p class="text-muted">
   Sitenizin başlığı ve açıklaması arama motorlarında yer alacak. Bunları daha
-  sonra düzenleyebilirsiniz.
+  sonra da yönetim paneli içerisinden düzenleyebilirsiniz.
 </p>
 
 <form on:submit|preventDefault="{submit}">

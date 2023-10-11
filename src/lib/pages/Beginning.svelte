@@ -1,10 +1,10 @@
 <div class:opacity-75="{disabled}">
-  <h4>Hoş geldiniz</h4>
+  <h4>Pano kurulumuna hoş geldiniz!</h4>
   <p class="text-muted">
-    Yukarıda listelenen adımlarla ilgili gereksinimleri belirleyerek Pano'yu ağ
-    sunucunuza kurabilirsiniz.
+    Pano'yu kullanmaya başlayabilmeniz için öncelik ile bazı bilgileri doldurmanız gerekmekte.
   </p>
 </div>
+
 
 <h5>Dil seçin</h5>
 

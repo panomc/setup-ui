@@ -1,10 +1,9 @@
 <h4>Veri Tabanı</h4>
 <p class="text-muted">
-  Pano'nun ağ sunucnuzda bilgi işleyebilmesi için lütfen veri tabanı bilgilerini
+  Pano'nun veri depolayabilmesi ve işleyebilmesi için veri tabanı bilgilerini
   girin.
-  <br />
-  <a href="#">
-    <i class="fa-solid fa-up-right-from-square me-2"></i>
+  &nbsp; <a href="#">
+    <i class="fa-solid fa-up-right-from-square me-1"></i>
     Veri tabanı bilgilerimi nasıl öğrenirim?
   </a>
 </p>
@@ -78,7 +77,7 @@
         </div>
         <div class="col-12">
           <div class="mb-3">
-            <label for="databaseTablePrefix">Veri Tabanı Tablo Öneki</label>
+            <label for="databaseTablePrefix">Veri Tabanı Tablo Ön Eki</label>
             <input
               class="form-control"
               id="databaseTablePrefix"
