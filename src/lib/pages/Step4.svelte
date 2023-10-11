@@ -1,13 +1,13 @@
-<h4>Yönetici Hesabı</h4>
+<h4>{$_("steps.account.title")}</h4>
 <p class="text-muted">
-  Pano'yu yönetebilmek için bir yönetici hesabına ihtiyacınız var.
+  {$_("steps.account.description")}
 </p>
 
 <form on:submit|preventDefault="{submit}">
   <ErrorAlert error="{error}" />
 
   <div class="mb-3">
-    <label for="admin-email">E-Posta</label>
+    <label for="admin-email">{$_("steps.account.inputs.email")}</label>
     <input
       class="form-control"
       id="admin-email"
@@ -17,7 +17,7 @@
   <div class="row">
     <div class="col-6">
       <div class="mb-3">
-        <label for="admin-username">Minecraft Kullanıcı Adı</label>
+        <label for="admin-username">{$_("steps.account.inputs.username")}</label>
         <input
           class="form-control"
           id="admin-username"
@@ -27,14 +27,14 @@
     </div>
     <div class="col-6">
       <div class="mb-3">
-        <label for="admin-password">Şifre</label>
+        <label for="admin-password">{$_("steps.account.inputs.password")}</label>
         <input
           class="form-control"
           id="admin-password"
           placeholder="************"
           bind:value="{account.password}"
           type="password" />
-        <small>Minimum 6 karakter.</small>
+        <small>{$_("steps.account.inputs.password-help-text")}</small>
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@
         on:click="{back}"
         class:disabled="{loading}"
         disabled="{loading}">
-        Geri
+        {$_("back-button")}
       </a>
     </div>
     <div class="col-6">
@@ -57,7 +57,7 @@
         class="btn btn-secondary w-100"
         class:disabled="{loading || disabled}"
         disabled="{loading || disabled}">
-        Tamamla
+        {$_("finish-button")}
       </button>
     </div>
   </div>
@@ -81,6 +81,7 @@
 
   import ErrorAlert from "$lib/components/ErrorAlert.svelte";
   import { currentLanguage } from "$lib/language.util.js";
+  import { _ } from "svelte-i18n";
 
   let loading = false;
   let error = null;

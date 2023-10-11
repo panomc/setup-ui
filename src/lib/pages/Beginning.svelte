@@ -1,12 +1,11 @@
 <div class:opacity-75="{disabled}">
-  <h4>Pano kurulumuna hoş geldiniz!</h4>
+  <h4>{$_("welcome-title")}</h4>
   <p class="text-muted">
-    Pano'yu kullanmaya başlayabilmeniz için öncelik ile bazı bilgileri doldurmanız gerekmekte.
+    {$_("welcome-description")}
   </p>
 </div>
 
-
-<h5>Dil seçin</h5>
+<h5>{$_("choose-lang")}</h5>
 
 <ul class="list-group mb-3">
   {#each Object.keys(Languages) as language, index (language)}
@@ -34,7 +33,7 @@
       on:click="{start}"
       class:disabled="{loading || disabled}"
       disabled="{loading || disabled}">
-      Başla
+      {$_("start-button")}
     </button>
   </div>
 </div>
@@ -49,6 +48,7 @@
     languageLoading,
     Languages,
   } from "$lib/language.util";
+  import { _ } from "svelte-i18n";
 
   export let stepInfo;
 

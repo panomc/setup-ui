@@ -1,12 +1,10 @@
-<h4>E-posta Ayarları</h4>
+<h4>{$_("steps.email.title")}</h4>
 <p class="text-muted">
-  Pano, e-posta gönderebilmek için bir e-posta sağlayıcısına ihtiyaç duyar.
-  Lütfen kullanmak istediğiniz e-posta adresini oturum giriş bilgileriyle platforma
-  kaydedin.
+  {$_("steps.email.description")}
   <br />
   <a href="#">
     <i class="fa-solid fa-up-right-from-square me-2"></i>
-    E-posta ayarlama hakkında daha fazla bilgi
+    {$_("steps.email.help-link-text")}
   </a>
 </p>
 
@@ -29,14 +27,14 @@
       <button
         class="btn btn-link mb-3 ps-0"
         on:click="{() => (chosenService = null)}">
-        <i class="fa-solid fa-arrow-left me-1"></i> Servis listesine geri dön
+        <i class="fa-solid fa-arrow-left me-1"></i> {$_("steps.email.return-back-to-service-list-text")}
       </button>
 
       <h5>{services[chosenService].name}</h5>
 
       <div class="row">
         <div class="col-6">
-          <label for="mailUsername">Kullanıcı Adı (Adres)</label>
+          <label for="mailUsername">{$_("steps.email.inputs.username")}</label>
           <input
             class="form-control"
             id="mailUsername"
@@ -46,7 +44,7 @@
             on:input="{onUsernameChange}" />
         </div>
         <div class="col-6">
-          <label for="mailUserPassword">Şifre</label>
+          <label for="mailUserPassword">{$_("steps.email.inputs.password")}</label>
           <input
             class="form-control"
             id="mailUserPassword"
@@ -57,7 +55,7 @@
       </div>
 
       <details>
-        <summary class="h6 text-primary my-3">Ayrıntılar</summary>
+        <summary class="h6 text-primary my-3">{$_("steps.email.inputs.details-button")}</summary>
 
         <div class="row">
           <div class="col-6 mb-3">
@@ -71,7 +69,7 @@
                 bind:checked="{mailConfiguration[chosenService].useSSL}"
               />
               <label class="form-check-label" for="useSSLCheck">
-                SSL kullan
+                {$_("steps.email.inputs.use-ssl")}
               </label>
             </div>
           </div>
@@ -86,7 +84,7 @@
                 bind:checked="{mailConfiguration[chosenService].useTLS}"
               />
               <label class="form-check-label" for="useTLSCheck">
-                TLS kullan
+                {$_("steps.email.inputs.use-tls")}
               </label>
             </div>
           </div>
@@ -95,7 +93,7 @@
         <div class="row">
           <div class="col-6">
             <div class="mb-3">
-              <label for="sendingAdress">Gönderme Adresi</label>
+              <label for="sendingAdress">{$_("steps.email.inputs.sending-address")}</label>
               <input
                 class="form-control"
                 id="sendingAdress"
@@ -107,7 +105,7 @@
 
           <div class="col-6">
             <div class="mb-3">
-              <label for="hostAddress">Sağlayıcı Adresi</label>
+              <label for="hostAddress">{$_("steps.email.inputs.host")}</label>
               <input
                 class="form-control"
                 id="hostAddress"
@@ -119,7 +117,7 @@
 
           <div class="col-6">
             <div class="mb-3">
-              <label for="port">Port</label>
+              <label for="port">{$_("steps.email.inputs.port")}</label>
               <input
                 class="form-control"
                 id="port"
@@ -131,7 +129,7 @@
 
           <div class="col-6">
             <div class="mb-3">
-              <label for="port">Giriş Metodu</label>
+              <label for="port">{$_("steps.email.inputs.auth-method")}</label>
               <select class="form-select" bind:value="{mailConfiguration[chosenService].authMethod}">
                 <option value="PLAIN">PLAIN</option>
                 <option value=""></option>
@@ -150,7 +148,7 @@
         role="button"
         class:disabled="{loading}"
         disabled="{loading}"
-        on:click="{back}">Geri</a>
+        on:click="{back}">{$_("back-button")}</a>
     </div>
     <div class="col-6">
       <button
@@ -158,7 +156,7 @@
         class="btn btn-primary w-100"
         class:disabled="{loading || disabled}"
         disabled="{loading || disabled}">
-        İleri
+        {$_("next-button")}
       </button>
     </div>
   </div>
@@ -260,6 +258,7 @@
   import { fade } from "svelte/transition";
   import ApiUtil, { NETWORK_ERROR } from "$lib/api.util.js";
   import ErrorAlert from "$lib/components/ErrorAlert.svelte";
+  import { _ } from "svelte-i18n";
 
   let loading = false;
   let error = null;

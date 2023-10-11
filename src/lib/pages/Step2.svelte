@@ -1,10 +1,9 @@
-<h4>Veri Tabanı</h4>
+<h4>{$_("steps.database.title")}</h4>
 <p class="text-muted">
-  Pano'nun veri depolayabilmesi ve işleyebilmesi için veri tabanı bilgilerini
-  girin.
+  {$_("steps.database.description")}
   &nbsp; <a href="#">
     <i class="fa-solid fa-up-right-from-square me-1"></i>
-    Veri tabanı bilgilerimi nasıl öğrenirim?
+  {$_("steps.database.help-link-text")}
   </a>
 </p>
 <ErrorAlert error="{error}" />
@@ -18,7 +17,7 @@
         id="dbMysqlMariaDB"
         checked />
       <label class="form-check-label" for="dbMysqlMariaDB">
-        MySQL veya MariaDB
+        {$_("steps.database.databases.mysql-or-mariadb")}
       </label>
     </div>
   </div>
@@ -32,7 +31,7 @@
       <div class="row">
         <div class="col-6">
           <div class="mb-3">
-            <label for="databaseAddress">Veri Tabanı Adresi</label>
+            <label for="databaseAddress">{$_("steps.database.inputs.address")}</label>
             <input
               class="form-control"
               id="databaseAddress"
@@ -43,7 +42,7 @@
         </div>
         <div class="col-6">
           <div class="mb-3">
-            <label for="databaseName">Veri Tabanı Adı</label>
+            <label for="databaseName">{$_("steps.database.inputs.name")}</label>
             <input
               class="form-control"
               id="databaseName"
@@ -55,7 +54,7 @@
         <div class="w-100"></div>
         <div class="col-6">
           <div class="mb-3">
-            <label for="databaseUserName">Veri Tabanı Kullanıcı Adı</label>
+            <label for="databaseUserName">{$_("steps.database.inputs.username")}</label>
             <input
               class="form-control"
               id="databaseUserName"
@@ -66,7 +65,7 @@
         </div>
         <div class="col-6">
           <div class="mb-3">
-            <label for="databaseUserPassword">Veri Tabanı Şifresi</label>
+            <label for="databaseUserPassword">{$_("steps.database.inputs.password")}</label>
             <input
               class="form-control"
               id="databaseUserPassword"
@@ -77,7 +76,7 @@
         </div>
         <div class="col-12">
           <div class="mb-3">
-            <label for="databaseTablePrefix">Veri Tabanı Tablo Ön Eki</label>
+            <label for="databaseTablePrefix">{$_("steps.database.inputs.prefix")}</label>
             <input
               class="form-control"
               id="databaseTablePrefix"
@@ -106,7 +105,7 @@
         role="button"
         on:click="{back}"
         class:disabled="{loading}"
-        disabled="{loading}">Geri</a>
+        disabled="{loading}">{$_("back-button")}</a>
     </div>
     <div class="col-6">
       <button
@@ -114,7 +113,7 @@
         class="btn btn-primary w-100"
         class:disabled="{loading || disabled}"
         disabled="{loading || disabled}"
-        >İleri
+        >{$_("next-button")}
       </button>
     </div>
   </div>
@@ -135,6 +134,7 @@
   import { backStep, nextStep } from "$lib/Store.js";
   import ApiUtil, { NETWORK_ERROR } from "$lib/api.util.js";
   import ErrorAlert from "$lib/components/ErrorAlert.svelte";
+  import { _ } from "svelte-i18n";
 
   let loading = false;
   let error = null;

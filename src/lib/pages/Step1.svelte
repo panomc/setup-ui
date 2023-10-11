@@ -1,19 +1,18 @@
-<h4>Site Kimliği</h4>
+<h4>{$_("steps.website.title")}</h4>
 
 <p class="text-muted">
-  Sitenizin başlığı ve açıklaması arama motorlarında yer alacak. Bunları daha
-  sonra da yönetim paneli içerisinden düzenleyebilirsiniz.
+  {$_("steps.website.description")}
 </p>
 
 <form on:submit|preventDefault="{submit}">
-  <label for="websiteName">Başlık</label>
+  <label for="websiteName">{$_("steps.website.inputs.title")}</label>
   <input
     id="websiteName"
     class="form-control form-control-lg mb-3"
     placeholder="Panocraft"
     type="text"
     bind:value="{websiteName}" />
-  <label for="websiteName">Açıklama</label>
+  <label for="websiteName">{$_("steps.website.inputs.description")}</label>
   <textarea
     id="websiteDescription"
     class="form-control mb-3"
@@ -28,7 +27,7 @@
         role="button"
         class:disabled="{loading}"
         disabled="{loading}"
-        on:click="{back}">Geri</a>
+        on:click="{back}">{$_("back-button")}</a>
     </div>
     <div class="col-6">
       <button
@@ -36,7 +35,7 @@
         class="btn btn-primary w-100"
         class:disabled="{loading || disabled}"
         disabled="{loading || disabled}">
-        ileri
+        {$_("next-button")}
       </button>
     </div>
   </div>
@@ -55,6 +54,7 @@
 
 <script>
   import { backStep, nextStep } from "$lib/Store.js";
+  import { _ } from "svelte-i18n";
 
   let loading = false;
 

@@ -1,3 +1,62 @@
 {
-  "title": "Pano Kurulum"
+  "title": "Pano Kurulum",
+  "welcome-title": "Pano kurulumuna hoş geldiniz!",
+  "welcome-description": "Pano'yu kullanmaya başlayabilmeniz için öncelik ile bazı bilgileri doldurmanız gerekmekte.",
+  "choose-lang": "Dil Seçin",
+  "start-button": "Başla",
+  "steps": {
+    "website": {
+      "title": "Site Kimliği",
+      "description": "Sitenizin başlığı ve açıklaması arama motorlarında yer alacak. Bunları daha\n  sonra da yönetim paneli içerisinden düzenleyebilirsiniz.",
+      "inputs": {
+        "title": "Başlık",
+        "description": "Açıklama"
+      }
+    },
+    "database": {
+      "title": "Veri Tabanı",
+      "description": "Pano'nun veri depolayabilmesi ve işleyebilmesi için veri tabanı bilgilerini girin.",
+      "help-link-text": "Veri tabanı bilgilerimi nasıl öğrenirim?",
+      "databases": {
+        "mysql-or-mariadb": "MySQL veya MariaDB"
+      },
+      "inputs": {
+        "address": "Veri Tabanı Adresi",
+        "name": "Veri Tabanı Adı",
+        "username": "Veri Tabanı Kullanıcı Adı",
+        "password": "Veri Tabanı Şifresi",
+        "prefix": "Veri Tabanı Tablo Ön Eki"
+      }
+    },
+    "email": {
+      "title": "E-Posta Ayarları",
+      "description": "Pano, e-posta gönderebilmek için bir e-posta sağlayıcısına ihtiyaç duyar. Lütfen kullanmak istediğiniz e-posta adresini oturum giriş bilgileriyle platforma kaydedin.",
+      "help-link-text": "E-Posta ayarlama hakkında daha fazla bilgi",
+      "return-back-to-service-list-text": "Servis listesine geri dön",
+      "inputs": {
+        "username": "Kullanıcı Adı (Adres)",
+        "password": "Şifre",
+        "details-button": "Ayrıntılar",
+        "use-ssl": "SSL Kullan",
+        "use-tls": "TLS Kullan",
+        "sending-address": "Gönderme Adresi",
+        "host": "Sağlayıcı Adresi",
+        "port": "Port",
+        "auth-method": "Giriş Methodu"
+      }
+    },
+    "account": {
+      "title": "Yönetici Hesabı",
+      "description": "Pano'yu yönetebilmek için bir yönetici hesabına ihtiyacınız var.",
+      "inputs": {
+        "email": "E-Posta",
+        "username": "Minecraft Kullanıcı Adı",
+        "password": "Şifre",
+        "password-help-text": "Minimum 6 karakter."
+      }
+    }
+  },
+  "back-button": "Geri",
+  "next-button": "İleri",
+  "finish-button": "Tamamla"
 }

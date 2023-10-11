@@ -1,3 +1,62 @@
 {
-  "title": "Pano Installer"
+  "title": "Pano Installer",
+  "welcome-title": "Welcome to the Pano installation!",
+  "welcome-description": "Before you can start using the Pano, you need to fill in some information.",
+  "choose-lang": "Select Language",
+  "start-button": "Let's Start",
+  "steps": {
+    "website": {
+      "title": "Website Settings",
+      "description": "The title and description of your site will appear in search engines. You can use these more and then you can edit it in the administration panel.",
+      "inputs": {
+        "title": "Title",
+        "description": "Description"
+      }
+    },
+    "database": {
+      "title": "Database",
+      "description": "Enter database information so that the Pano can store and process data.",
+      "help-link-text": "How do I find out my database information?",
+      "databases": {
+        "mysql-or-mariadb": "MySQL or MariaDB"
+      },
+      "inputs": {
+        "address": "Database Address",
+        "name": "Database Name",
+        "username": "Database Username",
+        "password": "Database Password",
+        "prefix": "Database Table Prefix"
+      }
+    },
+    "email": {
+      "title": "E-Mail Settings",
+      "description": "The Pano requires an email provider to be able to send emails. Please register the email address you wish to use with your login credentials on the platform.",
+      "help-link-text": "More about setting up e-mail",
+      "return-back-to-service-list-text": "Back to service list",
+      "inputs": {
+        "username": "Username (Address)",
+        "password": "Password",
+        "details-button": "Details",
+        "use-ssl": "Use SSL",
+        "use-tls": "Use TLS",
+        "sending-address": "Sending Address",
+        "host": "Host",
+        "port": "Port",
+        "auth-method": "Auth Method"
+      }
+    },
+    "account": {
+      "title": "Account",
+      "description": "You need an administrator account to manage the Pano.",
+      "inputs": {
+        "email": "E-Mail",
+        "username": "Minecraft Username",
+        "password": "Password",
+        "password-help-text": "Minimum 6 letters."
+      }
+    }
+  },
+  "back-button": "Back",
+  "next-button": "Next",
+  "finish-button": "Finish"
 }

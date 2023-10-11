@@ -12,7 +12,7 @@
           >{:else}
           <i class="{step.icon} me-lg-1 d-lg-inline d-block"></i>
         {/if}
-        {index + 1}. {step.name}</a>
+        {index + 1}. {$_(step.name)}</a>
     </li>
   {/each}
 </ul>
@@ -22,19 +22,19 @@
 
   const steps = [
     {
-      name: "Site Kimliği",
+      name: "steps.database.title",
       icon: "fa-solid fa-i-cursor",
     },
     {
-      name: "Veri Tabanı",
+      name: "steps.database.title",
       icon: "fa-solid fa-database",
     },
     {
-      name: "E-posta Ayarları",
+      name: "steps.email.title",
       icon: "fa-solid fa-envelope",
     },
     {
-      name: "Yönetici Hesabı",
+      name: "steps.account.title",
       icon: "fa-solid fa-user",
     },
   ];
@@ -43,6 +43,7 @@
 <script>
   import { page } from "$app/stores";
   import { goToStep } from "$lib/Store.js";
+  import { _ } from "svelte-i18n";
 
   function goStep(step) {
     goToStep(step, $page.url.pathname);
