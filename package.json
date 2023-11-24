@@ -32,6 +32,7 @@
   },
   "type": "module",
   "dependencies": {
+    "animate.css": "^4.1.1",
     "bootstrap": "^5.3.2",
     "svelte-i18n": "^3.7.4"
   }
