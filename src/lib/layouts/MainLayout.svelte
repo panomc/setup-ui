@@ -31,25 +31,9 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="pt-3">
-      <div
-        class="progress"
-        role="progressbar"
-        aria-label="Example 20px high"
-        aria-valuenow="25"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        style="height: 8px">
-        <div class="progress-bar bg-secondary" style="width: 25%"></div>
-      </div>
-    </div>
-
-    <ErrorAlert error="{stepInfo.error}" />
-  </div>
-
   <div class="pt-3">
     <div class="container">
+      <ErrorAlert error="{stepInfo.error}" />
       <div class="card bg-white">
         <div class="card-body">
           <slot />
