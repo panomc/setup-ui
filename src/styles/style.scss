@@ -10,14 +10,24 @@ $fa-font-path: "/assets/webfonts";
 @import "node_modules/@fortawesome/fontawesome-free/scss/brands";
 @import "node_modules/@fortawesome/fontawesome-free/scss/solid";
 
+:root {
+  --animate-duration: 250ms;
+}
+
 // Setup Styles
 
 body {
   width: 100%;
   height: 100vh;
-  background-position: bottom right, bottom left, bottom left;
+  background-position:
+    bottom right,
+    bottom left,
+    bottom left;
   background-image: url("../assets/img/red.svg"),
     url("../assets/img/yellow.svg"), url("../assets/img/green.svg");
   background-repeat: no-repeat;
-  background-size: 64px 64px, 128px 64px, 64px 128px;
+  background-size:
+    64px 64px,
+    128px 64px,
+    64px 128px;
 }

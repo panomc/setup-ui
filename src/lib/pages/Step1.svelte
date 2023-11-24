@@ -1,10 +1,11 @@
-<div class="animate__animated animate__zoomIn">
-  <h4>{$_("steps.website.title")}</h4>
+<div class="animate__animated animate__fadeIn">
+  <div class="animate__animated animate__slideInUp">
+    <h4>{$_("steps.website.title")}</h4>
 
-  <p class="text-muted">
-    {$_("steps.website.description")}
-  </p>
-
+    <p class="text-muted">
+      {$_("steps.website.description")}
+    </p>
+  </div>
   <form on:submit|preventDefault="{submit}">
     <label for="websiteName">{$_("steps.website.inputs.title")}</label>
     <input
@@ -31,13 +32,15 @@
           on:click="{back}">{$_("back-button")}</a>
       </div>
       <div class="col-6">
-        <button
-          type="submit"
-          class="btn btn-primary w-100"
-          class:disabled="{loading || disabled}"
-          disabled="{loading || disabled}">
-          {$_("next-button")}
-        </button>
+        <div class="animate__animated animate__zoomIn">
+          <button
+            type="submit"
+            class="btn btn-primary w-100"
+            class:disabled="{loading || disabled}"
+            disabled="{loading || disabled}">
+            {$_("next-button")}
+          </button>
+        </div>
       </div>
     </div>
   </form>

@@ -1,67 +1,74 @@
-<h4>{$_("steps.account.title")}</h4>
-<p class="text-muted">
-  {$_("steps.account.description")}
-</p>
-
-<form on:submit|preventDefault="{submit}">
-  <ErrorAlert error="{error}" />
-
-  <div class="mb-3">
-    <label for="admin-email">{$_("steps.account.inputs.email")}</label>
-    <input
-      class="form-control"
-      id="admin-email"
-      type="email"
-      bind:value="{account.email}" />
+<div class="animate__animated animate__fadeIn">
+  <div class="animate__animated animate__slideInUp">
+    <h4>{$_("steps.account.title")}</h4>
+    <p class="text-muted">
+      {$_("steps.account.description")}
+    </p>
   </div>
-  <div class="row">
-    <div class="col-6">
-      <div class="mb-3">
-        <label for="admin-username">{$_("steps.account.inputs.username")}</label>
-        <input
-          class="form-control"
-          id="admin-username"
-          type="text"
-          bind:value="{account.username}" />
+  <form on:submit|preventDefault="{submit}">
+    <ErrorAlert error="{error}" />
+
+    <div class="mb-3">
+      <label for="admin-email">{$_("steps.account.inputs.email")}</label>
+      <input
+        class="form-control"
+        id="admin-email"
+        type="email"
+        bind:value="{account.email}" />
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="admin-username"
+            >{$_("steps.account.inputs.username")}</label>
+          <input
+            class="form-control"
+            id="admin-username"
+            type="text"
+            bind:value="{account.username}" />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="admin-password"
+            >{$_("steps.account.inputs.password")}</label>
+          <input
+            class="form-control"
+            id="admin-password"
+            placeholder="************"
+            bind:value="{account.password}"
+            type="password" />
+          <small>{$_("steps.account.inputs.password-help-text")}</small>
+        </div>
       </div>
     </div>
-    <div class="col-6">
-      <div class="mb-3">
-        <label for="admin-password">{$_("steps.account.inputs.password")}</label>
-        <input
-          class="form-control"
-          id="admin-password"
-          placeholder="************"
-          bind:value="{account.password}"
-          type="password" />
-        <small>{$_("steps.account.inputs.password-help-text")}</small>
+
+    <div class="row pt-3">
+      <div class="col-6">
+        <a
+          class="btn btn-link w-100"
+          role="button"
+          href="javascript:void(0);"
+          on:click="{back}"
+          class:disabled="{loading}"
+          disabled="{loading}">
+          {$_("back-button")}
+        </a>
+      </div>
+      <div class="col-6">
+        <div class="animate__animated animate__zoomIn">
+          <button
+            type="submit"
+            class="btn btn-secondary w-100"
+            class:disabled="{loading || disabled}"
+            disabled="{loading || disabled}">
+            {$_("finish-button")}
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="row pt-3">
-    <div class="col-6">
-      <a
-        class="btn btn-link w-100"
-        role="button"
-        href="javascript:void(0);"
-        on:click="{back}"
-        class:disabled="{loading}"
-        disabled="{loading}">
-        {$_("back-button")}
-      </a>
-    </div>
-    <div class="col-6">
-      <button
-        type="submit"
-        class="btn btn-secondary w-100"
-        class:disabled="{loading || disabled}"
-        disabled="{loading || disabled}">
-        {$_("finish-button")}
-      </button>
-    </div>
-  </div>
-</form>
+  </form>
+</div>
 
 <script context="module">
   /**  @type {import('@sveltejs/kit').LayoutLoad} */
