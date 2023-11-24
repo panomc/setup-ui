@@ -22,8 +22,8 @@
 
   const steps = [
     {
-      name: "steps.database.title",
-      icon: "fa-solid fa-i-cursor",
+      name: "steps.website.title",
+      icon: "fa-solid fa-globe",
     },
     {
       name: "steps.database.title",

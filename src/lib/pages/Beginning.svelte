@@ -29,7 +29,7 @@
 <div class="row justify-content-end">
   <div class="col-6">
     <button
-      class="btn btn-primary w-100"
+      class="btn btn-secondary w-100"
       on:click="{start}"
       class:disabled="{loading || disabled}"
       disabled="{loading || disabled}">

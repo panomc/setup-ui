@@ -7,9 +7,16 @@
     <div class="container">
       <div
         class="d-flex flex-row justify-content-between align-items-start w-100">
-        <a href="https://panocms.com" target="_blank" class="navbar-brand">
-          <img alt="Pano" src="/assets/img/logo.svg" width="18" />
-        </a>
+        <div class="navbar-nav">
+          <a href="https://panocms.com" target="_blank" class="navbar-brand">
+            <img
+              alt="Pano"
+              src="/assets/img/logo.svg"
+              class="d-inline-block align-text-top"
+              width="18" />
+          </a>
+          <span class="navbar-text text-light">Setup</span>
+        </div>
 
         <Navbar />
 
