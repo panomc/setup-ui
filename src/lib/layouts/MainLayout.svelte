@@ -15,7 +15,7 @@
               class="d-inline-block align-text-top"
               width="18" />
           </a>
-          <span class="navbar-text text-light">Setup</span>
+          <span class="navbar-text text-light">{$_("title")}</span>
         </div>
 
         <Navbar />
