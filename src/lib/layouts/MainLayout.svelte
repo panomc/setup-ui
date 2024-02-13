@@ -3,31 +3,29 @@
 </svelte:head>
 
 <App>
-  <div class="navbar bg-primary navbar-dark navbar-expand">
+  <div class="navbar bg-primary navbar-dark navbar-expand-lg">
     <div class="container">
-      <div
-        class="d-flex flex-row justify-content-between align-items-start w-100">
-        <div class="navbar-nav">
-          <a href="https://panocms.com" target="_blank" class="navbar-brand">
-            <img
-              alt="Pano"
-              src="/assets/img/logo.svg"
-              class="d-inline-block align-text-top"
-              width="18" />
-          </a>
-          <span class="navbar-text text-light">{$_("title")}</span>
-        </div>
+      <a href="https://panocms.com" target="_blank" class="navbar-brand">
+        <img
+          alt="Pano"
+          src="/assets/img/logo.svg"
+          class="d-inline-block align-text-top me-2"
+          width="18" />
+        {$_("title")}
+      </a>
 
-        <Navbar />
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="https://panomc.com" target="_blank">
-              <i class="fa-solid fa-circle-question"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
+      <Navbar />
     </div>
   </div>
 
