@@ -2,12 +2,11 @@
   "title": "Pano Kurulum",
   "welcome-title": "Hoş geldiniz",
   "welcome-description": "Let's start the installation with language selection.",
-  "choose-lang": "Dil Seçin",
   "start-button": "Başla",
   "steps": {
     "website": {
-      "title": "Site Kimliği",
-      "description": "Başlık ve açıklam arama motorlarında görünecektir. Bunları yönetim panelinden düzenleyebilirsiniz.",
+      "title": "İsim",
+      "description": "Site ismi ve açıklam arama motorlarında görünecektir.",
       "inputs": {
         "title": "Başlık",
         "description": "Açıklama"
@@ -29,9 +28,9 @@
       }
     },
     "email": {
-      "title": "E-Posta Ayarları",
+      "title": "E-Posta",
       "description": "Pano, e-posta gönderebilmek için bir e-posta sağlayıcısına ihtiyaç duyar. Lütfen kullanmak istediğiniz e-posta servisi ile oturum açın.",
-      "help-link-text": "E-Posta ayarlama hakkında daha fazla bilgi",
+      "help-link-text": "E-Posta ayarlama hakkında daha fazla",
       "return-back-to-service-list-text": "Servis listesine geri dön",
       "inputs": {
         "username": "Kullanıcı Adı (Adres)",
@@ -46,7 +45,7 @@
       }
     },
     "account": {
-      "title": "Yönetici Hesabı",
+      "title": "Hesap",
       "description": "Pano'ya giriş yapabilmek için bir yönetici hesabına ihtiyacınız var.",
       "inputs": {
         "email": "E-Posta",

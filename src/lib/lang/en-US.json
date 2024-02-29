@@ -2,12 +2,11 @@
   "title": "Pano Installer",
   "welcome-title": "Welcome",
   "welcome-description": "Let's start the installation with language selection.",
-  "choose-lang": "Select Language",
   "start-button": "Start",
   "steps": {
     "website": {
-      "title": "Website Settings",
-      "description": "The title and description will appear in search engines. You can edit them from the administration panel.",
+      "title": "Title",
+      "description": "The title and description will appear in search engines.",
       "inputs": {
         "title": "Title",
         "description": "Description"
@@ -29,7 +28,7 @@
       }
     },
     "email": {
-      "title": "E-Mail Settings",
+      "title": "E-Mail",
       "description": "Pano requires an email provider to be able to send emails. Please log in with the e-mail service you want to use.",
       "help-link-text": "More about setting e-mail",
       "return-back-to-service-list-text": "Back to service list",

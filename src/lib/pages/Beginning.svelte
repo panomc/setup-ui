@@ -6,8 +6,6 @@
     </p>
   </div>
 
-  <h5>{$_("choose-lang")}</h5>
-
   <ul class="list-group mb-3">
     {#each Object.keys(Languages) as language, index (language)}
       <li class="list-group-item">

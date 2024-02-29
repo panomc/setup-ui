@@ -1,7 +1,7 @@
 <div
-  class="collapse d-lg-flex navbar-collapse justify-content-center"
+  class="collapse navbar-collapse justify-content-center"
   id="navbarSupportedContent">
-  <ul class="navbar-nav text-lg-center mt-lg-0 mt-3">
+  <ul class="navbar-nav text-lg-center mt-lg-0 mt-2">
     {#each steps as step, index (step)}
       <li class="nav-item">
         <a

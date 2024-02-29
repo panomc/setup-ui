@@ -4,10 +4,6 @@
     <p class="text-muted">
       {$_("steps.database.description")}
       &nbsp;
-      <a href="#">
-        <i class="fa-solid fa-up-right-from-square me-1"></i>
-        {$_("steps.database.help-link-text")}
-      </a>
     </p>
   </div>
   <ErrorAlert error="{error}" />
