@@ -3,38 +3,40 @@
 </svelte:head>
 
 <App>
-  <div class="navbar bg-primary navbar-dark navbar-expand-lg">
-    <div class="container">
-      <a href="https://panocms.com" target="_blank" class="navbar-brand">
-        <img
-          alt="Pano"
-          src="/assets/img/logo.svg"
-          class="d-inline-block align-text-top me-2"
-          width="18" />
-        {$_("title")}
-      </a>
+  <div class="bg-light min-vh-100 bg-light overflow-scroll">
+    <div class="navbar bg-primary navbar-dark navbar-expand-lg">
+      <div class="container">
+        <a href="https://panocms.com" target="_blank" class="navbar-brand">
+          <img
+            alt="Pano"
+            src="/assets/img/logo.svg"
+            class="d-inline-block align-text-top me-2"
+            width="18" />
+          {$_("title")}
+        </a>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
 
-      <Navbar />
+        <Navbar />
+      </div>
     </div>
-  </div>
 
-  <div class="pt-3">
-    <div class="container">
-      <ErrorAlert error="{stepInfo.error}" />
-      <div class="card bg-white">
-        <div class="card-body">
-          <slot />
+    <div class="pt-3">
+      <div class="container">
+        <ErrorAlert error="{stepInfo.error}" />
+        <div class="card">
+          <div class="card-body">
+            <slot />
+          </div>
         </div>
       </div>
     </div>
