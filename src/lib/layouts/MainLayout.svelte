@@ -26,10 +26,6 @@
       </button>
 
       <Navbar />
-      
-      <a href="#" target="_blank" class="nav-link">
-        <i class="fa-regular fa-book-open"></i>
-      </a>
     </div>
   </div>
 
