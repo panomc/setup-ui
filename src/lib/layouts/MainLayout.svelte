@@ -6,7 +6,7 @@
   <div class="bg-light min-vh-100 bg-light overflow-scroll">
     <div class="navbar bg-primary navbar-dark navbar-expand-lg">
       <div class="container">
-        <a href="https://panocms.com" target="_blank" class="navbar-brand">
+        <a href="https://panomc.com" target="_blank" class="navbar-brand">
           <img
             alt="Pano"
             src="/assets/img/logo.svg"
